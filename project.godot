@@ -17,6 +17,10 @@ boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 
+[autoload]
+
+controller="*res://scripts/game_controller.gd"
+
 [display]
 
 window/size/viewport_width=320
@@ -26,6 +30,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/codebot/plugin.cfg")
 
 [gui]
 

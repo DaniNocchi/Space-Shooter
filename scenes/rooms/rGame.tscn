@@ -1,0 +1,170 @@
+[gd_scene load_steps=17 format=3 uid="uid://dm2whrfs4t2gf"]
+
+[ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
+[ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
+[ext_resource type="Script" uid="uid://c6yx5j1psamix" path="res://scripts/character_body_2d.gd" id="3_rpxxd"]
+[ext_resource type="Shader" uid="uid://c2lkx3jkwwsta" path="res://shaders/fix.gdshader" id="4_sh26x"]
+[ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="5_ariif"]
+[ext_resource type="Script" uid="uid://cn5gfmxw4c3yt" path="res://scripts/meteor_spawner.gd" id="6_3w7uf"]
+[ext_resource type="Script" uid="uid://btcf5klrgmxa3" path="res://scripts/muzzle_meteor.gd" id="7_1lepj"]
+[ext_resource type="Script" uid="uid://bqdda6p246nlx" path="res://scripts/game_controller.gd" id="7_vdclo"]
+[ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="9_rpxxd"]
+
+[sub_resource type="Gradient" id="Gradient_vae2y"]
+offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
+colors = PackedColorArray(0.0026324103, 0.0026324103, 0.0026324103, 0.6, 0.91351753, 0.91351753, 0.91351753, 1, 1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrghp"]
+size = Vector2(8, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sae1c"]
+shader = ExtResource("4_sh26x")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh26x"]
+size = Vector2(448, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ariif"]
+size = Vector2(448, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w7uf"]
+size = Vector2(8, 328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4nr1"]
+size = Vector2(8, 328)
+
+[node name="RGame" type="Node2D"]
+script = ExtResource("1_vdclo")
+
+[node name="Stars" type="CPUParticles2D" parent="."]
+position = Vector2(321, 89.00001)
+scale = Vector2(0.006041211, 0.78060913)
+amount = 500
+texture = ExtResource("2_1lepj")
+lifetime = 110.0
+speed_scale = 5.0
+lifetime_randomness = 0.55
+fixed_fps = 30
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1, 150)
+direction = Vector2(-100, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 650.0
+initial_velocity_max = 750.0
+scale_amount_min = 0.0
+scale_amount_max = 0.03
+color_initial_ramp = SubResource("Gradient_vae2y")
+
+[node name="Stars2" type="CPUParticles2D" parent="."]
+position = Vector2(162, 94)
+scale = Vector2(0.006125344, 0.7733686)
+emitting = false
+amount = 700
+texture = ExtResource("2_1lepj")
+lifetime = 110.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+lifetime_randomness = 0.55
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(30000.03, 150)
+direction = Vector2(-100, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 650.0
+initial_velocity_max = 700.0
+scale_amount_min = 0.0
+scale_amount_max = 0.03
+color_initial_ramp = SubResource("Gradient_vae2y")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(156, 95)
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("3_rpxxd")
+
+[node name="Collision" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_rrghp")
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+texture_filter = 2
+material = SubResource("ShaderMaterial_sae1c")
+texture = ExtResource("5_ariif")
+
+[node name="Muzzle" type="Marker2D" parent="Player"]
+position = Vector2(7, 0)
+
+[node name="MeteorSpawner" type="Node2D" parent="."]
+script = ExtResource("6_3w7uf")
+
+[node name="MuzzleMeteor1" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(-16, -16)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor2" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(153, -16)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor3" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(336, -16)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor4" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(332, 94)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor5" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(336, 200)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor6" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(153, 200)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor7" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(-16, 200)
+script = ExtResource("7_1lepj")
+
+[node name="MuzzleMeteor8" type="Marker2D" parent="MeteorSpawner"]
+position = Vector2(-16, 94)
+script = ExtResource("7_1lepj")
+
+[node name="gameController" type="Node2D" parent="."]
+script = ExtResource("7_vdclo")
+
+[node name="boundary" type="Node2D" parent="."]
+
+[node name="Top" type="Area2D" parent="boundary"]
+script = ExtResource("9_rpxxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary/Top"]
+position = Vector2(160, -68)
+shape = SubResource("RectangleShape2D_sh26x")
+
+[node name="Bottom" type="Area2D" parent="boundary"]
+script = ExtResource("9_rpxxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary/Bottom"]
+position = Vector2(160, 252)
+shape = SubResource("RectangleShape2D_ariif")
+
+[node name="Left" type="Area2D" parent="boundary"]
+script = ExtResource("9_rpxxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary/Left"]
+position = Vector2(-68, 92)
+shape = SubResource("RectangleShape2D_3w7uf")
+
+[node name="Right" type="Area2D" parent="boundary"]
+script = ExtResource("9_rpxxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundary/Right"]
+position = Vector2(388, 92)
+shape = SubResource("RectangleShape2D_i4nr1")
+
+[connection signal="body_entered" from="boundary/Top" to="boundary/Top" method="_on_body_entered"]
+[connection signal="body_entered" from="boundary/Bottom" to="boundary/Bottom" method="_on_body_entered"]
+[connection signal="body_entered" from="boundary/Left" to="boundary/Left" method="_on_body_entered"]
+[connection signal="body_entered" from="boundary/Right" to="boundary/Right" method="_on_body_entered"]
