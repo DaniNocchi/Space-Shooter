@@ -18,6 +18,7 @@ func _process(_delta): # step event
 	MoveAndRotate()
 	ShootBullets()
 	spriteStretch()
+	pointsText()
 # Player Features
 func MoveAndRotate():
 	hspd = lerpf(hspd, (int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))) * maxSpeed, speedInc)
@@ -59,3 +60,6 @@ func spriteStretch():
 	var spriteVector = Vector2(spriteX, spriteY)
 	$Sprite.scale = spriteVector
 	
+func pointsText():
+	$PointsText.text = str(controller.Points)+" Points"
+	$PointsText.rotation_degrees = 0

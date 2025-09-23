@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://kk4ebs1bp0x3" path="res://Sprites/smallMeteor/small1.png" id="2_ql0ln"]
 [ext_resource type="Script" uid="uid://bb0iio6ksefub" path="res://scenes/objects/area_2d.gd" id="3_ql0ln"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp5jq"]
-size = Vector2(10, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql0ln"]
+radius = 5.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql0ln"]
-size = Vector2(10, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xp5jq"]
+radius = 5.0
 
 [node name="meteor" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_1e73k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xp5jq")
+shape = SubResource("CircleShape2D_ql0ln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ql0ln")
@@ -24,6 +24,6 @@ texture = ExtResource("2_ql0ln")
 script = ExtResource("3_ql0ln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_ql0ln")
+shape = SubResource("CircleShape2D_xp5jq")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

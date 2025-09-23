@@ -104,7 +104,7 @@ texture = ExtResource("5_ariif")
 [node name="Muzzle" type="Marker2D" parent="Player"]
 position = Vector2(7, 0)
 
-[node name="PointsText" type="Label" parent="Player"]
+[node name="Label" type="Label" parent="Player"]
 offset_left = -29.0
 offset_top = -16.0
 offset_right = 28.0

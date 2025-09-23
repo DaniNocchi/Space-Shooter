@@ -7,4 +7,3 @@ var meteorAlive = 0
 func _process(_delta):
 	Wave = (Points%25)+1
 	MaxMeteor = 10*Wave
-	
