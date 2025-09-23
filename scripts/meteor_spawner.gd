@@ -1,6 +1,6 @@
 extends Node2D
 @onready var canSpawn = true
-@onready var meteorTypeArray = [1, 1, 1, 2, 2, 3]
+@onready var meteorTypeArray = [1] #[1, 1, 1, 2, 2, 3]
 @onready var meteorType = 0
 @onready var meteorAlive = 0
 @onready var maxMeteor = 10
@@ -26,7 +26,7 @@ func _process(_delta):
 		
 		match meteorType:
 			1:
-				var meteor = load("res://scenes/objects/bullet.scn").instantiate()
+				var meteor = load("res://scenes/objects/meteorSmall.tscn").instantiate()
 				owner.add_child(meteor)
 				meteor.transform = Muzzle.global_transform
 				meteor.add_to_group("meteors")

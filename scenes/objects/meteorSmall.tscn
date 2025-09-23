@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://crvju4m4a3318"]
+[gd_scene load_steps=6 format=3 uid="uid://crvju4m4a3318"]
 
-[node name="MeteorSmall" type="Node2D"]
+[ext_resource type="Script" uid="uid://ceiyiurx04h6m" path="res://scenes/objects/meteor_small.gd" id="1_1e73k"]
+[ext_resource type="Texture2D" uid="uid://kk4ebs1bp0x3" path="res://Sprites/smallMeteor/small1.png" id="2_ql0ln"]
+[ext_resource type="Script" uid="uid://bb0iio6ksefub" path="res://scenes/objects/area_2d.gd" id="3_ql0ln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp5jq"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql0ln"]
+size = Vector2(10, 10)
+
+[node name="meteor" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_1e73k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xp5jq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ql0ln")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_ql0ln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ql0ln")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -7,7 +7,8 @@ extends CharacterBody2D
 @onready var shootBool = true             # shoot boolean, it says if we can or not shoot
 @onready var shootCooldown = 0.2          # the time it will take to end the cooldown for shooting
 @onready var shootTimer = Timer.new()     # creating the timer for the shooting cooldown
-
+var spriteX = 1.0
+var spriteY = 1.0
 func _ready():
 	shootTimer.one_shot = true
 	add_child(shootTimer)  # precisa estar na árvore para funcionar
@@ -16,7 +17,7 @@ func _ready():
 func _process(_delta): # step event
 	MoveAndRotate()
 	ShootBullets()
-
+	spriteStretch()
 # Player Features
 func MoveAndRotate():
 	hspd = lerpf(hspd, (int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))) * maxSpeed, speedInc)
@@ -42,12 +43,19 @@ func MoveAndRotate():
 	look_at(get_global_mouse_position())
 func ShootBullets():
 	if Input.is_action_pressed("shoot") and shootBool:
+		spriteY = 0.8
 		var bullet = load("res://scenes/objects/bullet.scn").instantiate()
 		owner.add_child(bullet)
-		bullet.add_to_group("bullets")
 		bullet.transform = $Muzzle.global_transform
 		shootTimer.start(shootCooldown)
 		shootBool = false
 		
 func _Shoot_Cooldown_Timeout():
 	shootBool = true
+
+func spriteStretch():
+	spriteX = lerp(spriteX, 1.0, 0.5)
+	spriteY = lerp(spriteY, 1.0, 0.3)
+	var spriteVector = Vector2(spriteX, spriteY)
+	$Sprite.scale = spriteVector
+	
