@@ -61,5 +61,4 @@ func spriteStretch():
 	$Sprite.scale = spriteVector
 	
 func pointsText():
-	$PointsText.text = str(controller.Points)+" Points"
-	$PointsText.rotation_degrees = 0
+	$"../PointsText".text = str(controller.Points)+" Points"

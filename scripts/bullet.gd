@@ -6,3 +6,6 @@ func _ready() -> void:
 func _process(_delta):
 	position += transform.x * Speed
 	
+func particle():
+	$damageParticle.emitting = true
+	

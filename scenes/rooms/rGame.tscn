@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=20 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cn5gfmxw4c3yt" path="res://scripts/meteor_spawner.gd" id="6_3w7uf"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="6_sh26x"]
 [ext_resource type="Script" uid="uid://btcf5klrgmxa3" path="res://scripts/muzzle_meteor.gd" id="7_1lepj"]
+[ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scenes/rooms/points_text.gd" id="7_ariif"]
 [ext_resource type="Script" uid="uid://bqdda6p246nlx" path="res://scripts/game_controller.gd" id="7_vdclo"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="9_rpxxd"]
 
@@ -15,18 +16,18 @@
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
 colors = PackedColorArray(0.0026324103, 0.0026324103, 0.0026324103, 0.6, 0.91351753, 0.91351753, 0.91351753, 1, 1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrghp"]
-size = Vector2(8, 8)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sae1c"]
-shader = ExtResource("4_sh26x")
-
 [sub_resource type="LabelSettings" id="LabelSettings_ariif"]
 line_spacing = 2.5
 font = ExtResource("6_sh26x")
 font_size = 5
 shadow_size = 0
 shadow_offset = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrghp"]
+size = Vector2(8, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sae1c"]
+shader = ExtResource("4_sh26x")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh26x"]
 size = Vector2(448, 8)
@@ -87,6 +88,17 @@ scale_amount_min = 0.0
 scale_amount_max = 0.03
 color_initial_ramp = SubResource("Gradient_vae2y")
 
+[node name="PointsText" type="Label" parent="."]
+offset_left = 129.0
+offset_top = 75.0
+offset_right = 186.0
+offset_bottom = 86.0
+text = "0 Points"
+label_settings = SubResource("LabelSettings_ariif")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_ariif")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(156, 95)
 collision_layer = 0
@@ -103,16 +115,6 @@ texture = ExtResource("5_ariif")
 
 [node name="Muzzle" type="Marker2D" parent="Player"]
 position = Vector2(7, 0)
-
-[node name="PointsText" type="Label" parent="Player"]
-offset_left = -29.0
-offset_top = -16.0
-offset_right = 28.0
-offset_bottom = -5.0
-text = "0 Points"
-label_settings = SubResource("LabelSettings_ariif")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MeteorSpawner" type="Node2D" parent="."]
 script = ExtResource("6_3w7uf")

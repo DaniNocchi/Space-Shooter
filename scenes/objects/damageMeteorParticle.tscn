@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddcqjpxx6sw8"]
+
+[ext_resource type="Script" uid="uid://cayhngbk81mov" path="res://scenes/objects/damage_particle.gd" id="1_rt8do"]
+
+[sub_resource type="Gradient" id="Gradient_rt8do"]
+offsets = PackedFloat32Array(0, 0.76724136, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.5871718, 0.5871718, 0.5871718, 0.58189654, 0.012617188, 0.012617188, 0.012617188, 0)
+
+[node name="damageMeteorParticle" type="CPUParticles2D"]
+rotation = -3.1419113
+emitting = false
+amount = 15
+lifetime = 1.72
+one_shot = true
+speed_scale = 9.0
+explosiveness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(-1, 0)
+spread = 30.86
+gravity = Vector2(0, 0)
+initial_velocity_max = 21.43
+angle_min = -15.0
+angle_max = 15.0
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_rt8do")
+script = ExtResource("1_rt8do")
