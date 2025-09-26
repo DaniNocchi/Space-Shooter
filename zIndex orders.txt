@@ -1,0 +1,6 @@
+15 - pause
+10 - Red Vignette
+5  - wave stuff and its childs
+2  - Player life bar and points text
+1  - Player
+0  - all not mentioned

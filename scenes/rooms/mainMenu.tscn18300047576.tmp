@@ -1,0 +1,205 @@
+[gd_scene load_steps=15 format=3 uid="uid://to3sdmfn88t1"]
+
+[ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scenes/rooms/main_menu.gd" id="1_rbs56"]
+[ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_rtsuv"]
+[ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="3_2rquh"]
+[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_6fjaf"]
+[ext_resource type="Script" uid="uid://cib8b5gqy527h" path="res://scripts/buttonScripts/start_button.gd" id="5_yx1sr"]
+[ext_resource type="Script" uid="uid://c83pjqwlrq8xq" path="res://scripts/buttonScripts/options_button.gd" id="6_ipxnb"]
+[ext_resource type="Script" uid="uid://bmj2a8xy1v5j4" path="res://scripts/buttonScripts/credits_button.gd" id="7_hxyg5"]
+[ext_resource type="Script" uid="uid://cm37m4tt2v8vi" path="res://scripts/buttonScripts/quit_buttonmenu.gd" id="8_t54ei"]
+
+[sub_resource type="Gradient" id="Gradient_am2me"]
+offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
+colors = PackedColorArray(0.0026324103, 0.0026324103, 0.0026324103, 0.6, 0.91351753, 0.91351753, 0.91351753, 1, 1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yx1sr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ipxnb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hxyg5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t54ei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kputg"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_rbs56")
+
+[node name="stars" type="Node2D" parent="."]
+
+[node name="Stars" type="CPUParticles2D" parent="stars"]
+position = Vector2(336, 89.00001)
+scale = Vector2(0.006041211, 0.78060913)
+amount = 500
+texture = ExtResource("2_rtsuv")
+lifetime = 110.0
+speed_scale = 5.0
+lifetime_randomness = 0.55
+fixed_fps = 30
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1, 150)
+direction = Vector2(-100, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 650.0
+initial_velocity_max = 750.0
+scale_amount_min = 0.0
+scale_amount_max = 0.03
+color_initial_ramp = SubResource("Gradient_am2me")
+
+[node name="Stars2" type="CPUParticles2D" parent="stars"]
+position = Vector2(162, 94)
+scale = Vector2(0.006125344, 0.7733686)
+emitting = false
+amount = 700
+texture = ExtResource("2_rtsuv")
+lifetime = 110.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+lifetime_randomness = 0.55
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(30000.03, 150)
+direction = Vector2(-100, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 650.0
+initial_velocity_max = 700.0
+scale_amount_min = 0.0
+scale_amount_max = 0.03
+color_initial_ramp = SubResource("Gradient_am2me")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="pauseButtonContainer" type="VBoxContainer" parent="Control"]
+layout_direction = 2
+layout_mode = 0
+offset_left = 6.0
+offset_top = 122.0
+offset_right = 54.0
+offset_bottom = 174.0
+alignment = 2
+
+[node name="startButton" type="Button" parent="Control/pauseButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2rquh")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ipxnb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hxyg5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t54ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
+text = "Start Game"
+flat = true
+alignment = 0
+script = ExtResource("5_6fjaf")
+mainButton = true
+horizontalAlign = 0
+actionScript = ExtResource("5_yx1sr")
+
+[node name="optionsButton" type="Button" parent="Control/pauseButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2rquh")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ipxnb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hxyg5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t54ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
+text = "Options"
+flat = true
+alignment = 0
+script = ExtResource("5_6fjaf")
+horizontalAlign = 0
+actionScript = ExtResource("6_ipxnb")
+
+[node name="creditsButton" type="Button" parent="Control/pauseButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2rquh")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ipxnb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hxyg5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t54ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
+text = "Credits"
+flat = true
+alignment = 0
+script = ExtResource("5_6fjaf")
+horizontalAlign = 0
+actionScript = ExtResource("7_hxyg5")
+
+[node name="quitButton" type="Button" parent="Control/pauseButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2rquh")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ipxnb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hxyg5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t54ei")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
+text = "Quit"
+flat = true
+alignment = 0
+script = ExtResource("5_6fjaf")
+horizontalAlign = 0
+actionScript = ExtResource("8_t54ei")
+
+[connection signal="button_up" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_button_up"]
+[connection signal="focus_entered" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_focus_exited"]
+[connection signal="gui_input" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/pauseButtonContainer/startButton" to="Control/pauseButtonContainer/startButton" method="_on_pressed"]
+[connection signal="button_up" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_button_up"]
+[connection signal="focus_entered" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_focus_exited"]
+[connection signal="gui_input" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/pauseButtonContainer/optionsButton" to="Control/pauseButtonContainer/optionsButton" method="_on_pressed"]
+[connection signal="button_up" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_button_up"]
+[connection signal="focus_entered" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_focus_exited"]
+[connection signal="gui_input" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/pauseButtonContainer/creditsButton" to="Control/pauseButtonContainer/creditsButton" method="_on_pressed"]
+[connection signal="button_up" from="Control/pauseButtonContainer/quitButton" to="Control/pauseButtonContainer/quitButton" method="_on_button_up"]
+[connection signal="focus_entered" from="Control/pauseButtonContainer/quitButton" to="Control/pauseButtonContainer/quitButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Control/pauseButtonContainer/quitButton" to="Control/pauseButtonContainer/quitButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="Control/pauseButtonContainer/quitButton" to="Control/pauseButtonContainer/quitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/pauseButtonContainer/quitButton" to="Control/pauseButtonContainer/quitButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Control/pauseButtonContainer/quitButton" to="Control/pauseButtonContainer/quitButton" method="_on_pressed"]

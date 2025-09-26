@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 var Speed = 2.5
 func _ready() -> void:
 	add_to_group("bullets")
@@ -6,6 +6,7 @@ func _ready() -> void:
 func _process(_delta):
 	position += transform.x * Speed
 	
-func particle():
-	$damageParticle.emitting = true
-	
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("meteors"):
+		body.damage()
+		queue_free() # apaga a bala

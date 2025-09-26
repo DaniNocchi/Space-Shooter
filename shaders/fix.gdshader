@@ -1,29 +1,40 @@
 shader_type canvas_item;
 render_mode unshaded;
 
-// Texture must have 'Filter'-flag enabled!
+// Uniforms para aparecerem no Inspector
+uniform vec4 flash_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float flash_value : hint_range(0.0, 1.0, 0.1) = 0.0;
+uniform float alpha_value : hint_range(0.0, 1.0, 0.1) = 1.0;
 
-// Automatic smoothing
-// independent of geometry and perspective
+// Função de filtro suave
 vec4 texturePointSmooth(sampler2D smp, vec2 uv, vec2 pixel_size)
 {
-	vec2 ddx = dFdx(uv);
-	vec2 ddy = dFdy(uv);
-	vec2 lxy = sqrt(ddx * ddx + ddy * ddy);
+    vec2 ddx = dFdx(uv);
+    vec2 ddy = dFdy(uv);
+    vec2 lxy = sqrt(ddx * ddx + ddy * ddy);
 
-	vec2 uv_pixels = uv / pixel_size;
+    vec2 uv_pixels = uv / pixel_size;
+    vec2 uv_pixels_floor = round(uv_pixels) - vec2(0.5);
+    vec2 uv_dxy_pixels = uv_pixels - uv_pixels_floor;
 
-	vec2 uv_pixels_floor = round(uv_pixels) - vec2(0.5f);
-	vec2 uv_dxy_pixels = uv_pixels - uv_pixels_floor;
+    uv_dxy_pixels = clamp(
+        (uv_dxy_pixels - vec2(0.5)) * pixel_size / lxy + vec2(0.5),
+        0.0, 1.0
+    );
 
-	uv_dxy_pixels = clamp((uv_dxy_pixels - vec2(0.5f)) * pixel_size / lxy + vec2(0.5f), 0.0f, 1.0f);
-
-	uv = uv_pixels_floor * pixel_size;
-
-	return textureGrad(smp, uv + uv_dxy_pixels * pixel_size, ddx, ddy);
+    uv = uv_pixels_floor * pixel_size;
+    return textureGrad(smp, uv + uv_dxy_pixels * pixel_size, ddx, ddy);
 }
 
 void fragment()
 {
-	COLOR = texturePointSmooth(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+    // Pega a textura suavizada
+    vec4 texture_color = texturePointSmooth(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+
+    // Mistura a cor do flash
+    vec4 flashed_color = mix(texture_color, flash_color, flash_value);
+
+    // Aplica alpha custom
+    COLOR = flashed_color;
+    COLOR.a = texture_color.a * alpha_value;
 }
