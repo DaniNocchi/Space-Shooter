@@ -1,3 +1,3 @@
 extends Resource
 func action(owner):
-	pass
+	owner.get_node("../../creditsAnimation/AnimationPlayer").play("credits")

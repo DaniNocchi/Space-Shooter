@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="JogoTeste"
+config/name="SpaceShooter"
+config/version="2.0"
 run/main_scene="uid://to3sdmfn88t1"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
@@ -21,6 +22,7 @@ boot_splash/use_filter=false
 
 controller="*res://scripts/game_controller.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+Transition="*res://scenes/rooms/transition.tscn"
 
 [debug]
 
@@ -35,7 +37,9 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
-mouse_cursor/custom_image="uid://bh7c8jpupspru"
+mouse_cursor/custom_image="uid://xix5gb2c1lo4"
+mouse_cursor/custom_image_hotspot=Vector2(14, 14)
+mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
 [editor_plugins]
 

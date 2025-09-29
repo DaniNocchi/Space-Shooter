@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var shootCooldown = 0.2          # the time it will take to end the cooldown for shooting
 @onready var shootTimer = Timer.new()     # creating the timer for the shooting cooldown
 @onready var damageTimer = Timer.new()    # Creating the timer for the damage cooldown
+@onready var deadTimer = Timer.new()    # Creating the timer for the dead action
 @onready var camera = $"../Camera2D"      # selecting who the hell is the game camera
 @onready var life = 3                     # the player life
 @onready var canTakeDamage = true         # bool that says if the player can take damage
@@ -26,10 +27,13 @@ extends CharacterBody2D
 func _ready(): #Basically the create event
 	shootTimer.one_shot = true  #Making both timers one shot (it will play and not loop when it ends)
 	damageTimer.one_shot = true
+	deadTimer.one_shot = true
 	add_child(damageTimer)  #Adding the timers as a child (it needs to be a child so it works)
 	add_child(shootTimer)
+	add_child(deadTimer)
 	shootTimer.timeout.connect(Callable(self, "_Shoot_Cooldown_Timeout"))    #Assigning the function the timer will call when it finishes
 	damageTimer.timeout.connect(Callable(self, "_Damage_Cooldown_Timeout"))
+	deadTimer.timeout.connect(Callable(self, "_Dead_Cooldown_Timeout"))
 
 func _process(_delta): # step event
 	MoveAndRotate()
@@ -105,6 +109,8 @@ func damage(): #take damage
 		var partDamage = load("res://scenes/objects/playerDebris.tscn").instantiate()
 		partDamage.position = global_position
 		$"..".add_child(partDamage)
+		if life<=0:
+			deadTimer.start(3)
 
 func damageProcess():
 	for body in bodiesInside:
@@ -126,6 +132,8 @@ func _Damage_Cooldown_Timeout():
 	canTakeDamage = true
 func _Shoot_Cooldown_Timeout(): 
 	shootBool = true
+func _Dead_Cooldown_Timeout(): 
+	Transition.change_scene("res://scenes/rooms/mainMenu.tscn")
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("meteors"):
 		bodiesInside.append(body)

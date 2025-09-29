@@ -29,19 +29,19 @@ func _play_tween(target: Vector2, duration: float):
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", target, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 func _on_mouse_entered():
-	if not button_pressed:
+	if not button_pressed and not disabled:
 		_play_tween(Vector2(selectedSize, selectedSize), sizeSpeed)
 func _on_mouse_exited():
 	if not button_pressed:
 		_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 func _on_focus_entered():
-	if not button_pressed:
+	if not button_pressed and not disabled:
 		_play_tween(Vector2(selectedSize, selectedSize), sizeSpeed)
 func _on_focus_exited():
 	if not button_pressed:
 		_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 func _on_pressed():
-	_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed / 2)
+	_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 
 #region managing focus stuff
 func removeFocusFromMouse():

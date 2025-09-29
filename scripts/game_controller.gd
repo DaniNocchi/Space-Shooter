@@ -13,6 +13,8 @@ func _process(_delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	
 		
 func _input(event: InputEvent):
 	if event is InputEventKey or event is InputEventMouse:

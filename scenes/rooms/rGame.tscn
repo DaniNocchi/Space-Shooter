@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=50 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
@@ -10,11 +10,10 @@
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="6_sh26x"]
 [ext_resource type="Script" uid="uid://btcf5klrgmxa3" path="res://scripts/muzzle_meteor.gd" id="7_1lepj"]
 [ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scripts/points_text.gd" id="7_ariif"]
-[ext_resource type="Script" uid="uid://bqdda6p246nlx" path="res://scripts/game_controller.gd" id="7_vdclo"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="9_rpxxd"]
 [ext_resource type="Texture2D" uid="uid://db68drhbssvnf" path="res://Sprites/waveBackground.png" id="12_3w7uf"]
 [ext_resource type="Script" uid="uid://drykxf0m5g0q6" path="res://scripts/wave_text.gd" id="13_i4nr1"]
-[ext_resource type="Script" uid="uid://uyvmknu1khc3" path="res://scripts/waves.gd" id="13_yvfuv"]
+[ext_resource type="Script" uid="uid://c2h8kpc76oi2a" path="res://scenes/rooms/nine_patch_rect.gd" id="14_ijb5p"]
 [ext_resource type="Script" uid="uid://c75coiyeq8k6p" path="res://scripts/camera_2d.gd" id="15_hutln"]
 [ext_resource type="Shader" uid="uid://dyoyb3lncle2a" path="res://shaders/vignette.gdshader" id="17_tiwvj"]
 [ext_resource type="Shader" uid="uid://sisn2poemume" path="res://shaders/blur.gdshader" id="19_eo355"]
@@ -108,7 +107,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.2]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_hutln"]
@@ -197,29 +196,9 @@ resource_local_to_scene = true
 shader = ExtResource("17_tiwvj")
 shader_parameter/inner_radius = 0.2
 shader_parameter/outer_radius = 1.0
-shader_parameter/vignette_strength = 0.2
+shader_parameter/vignette_strength = 0.0
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = Color(0.95, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_1o34b"]
-resource_name = "fix"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/vignette_strength")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tiwvj"]
-_data = {
-&"fix": SubResource("Animation_1o34b")
-}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tiwvj"]
 shader = ExtResource("19_eo355")
@@ -261,7 +240,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -273,7 +252,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -480,87 +459,11 @@ tracks/6/keys = {
 "values": [1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_kbtag"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../pauseText:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(116, -22)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Control/quitButton:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Control/resumeButton:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Control/resumeButton:disabledAlpha")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Control/quitButton:disabledAlpha")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbtag"]
 _data = {
 &"RESET": SubResource("Animation_tgmq2"),
 &"in": SubResource("Animation_eo355"),
-&"out": SubResource("Animation_ijb5p"),
-&"start": SubResource("Animation_kbtag")
+&"out": SubResource("Animation_ijb5p")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eo355"]
@@ -575,9 +478,6 @@ _data = {
 
 [node name="RGame" type="Node2D"]
 script = ExtResource("1_vdclo")
-
-[node name="gameController" type="Node2D" parent="."]
-script = ExtResource("7_vdclo")
 
 [node name="pausable" type="Node2D" parent="."]
 process_mode = 1
@@ -757,21 +657,39 @@ shape = SubResource("RectangleShape2D_i4nr1")
 position = Vector2(160, 90)
 script = ExtResource("15_hutln")
 
-[node name="waves" type="Sprite2D" parent="pausable/Camera2D"]
-position = Vector2(0, -77)
-texture = ExtResource("12_3w7uf")
-script = ExtResource("13_yvfuv")
-
-[node name="waveText" type="Label" parent="pausable/Camera2D/waves"]
+[node name="NinePatchRect" type="NinePatchRect" parent="pausable/Camera2D"]
+z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -27.0
-offset_right = -3.0
-offset_bottom = -16.0
+offset_left = -31.0
+offset_top = -139.0
+offset_right = 30.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 0)
+texture = ExtResource("12_3w7uf")
+region_rect = Rect2(7, 0, 52, 19)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("14_ijb5p")
+
+[node name="waveText" type="Label" parent="pausable/Camera2D/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = 19.5
+offset_right = 30.0
+offset_bottom = 30.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(28, 5)
@@ -782,6 +700,7 @@ vertical_alignment = 1
 script = ExtResource("13_i4nr1")
 
 [node name="vignetteLayer" type="CanvasLayer" parent="pausable/Camera2D"]
+visible = false
 
 [node name="vignette" type="ColorRect" parent="pausable/Camera2D/vignetteLayer"]
 material = SubResource("ShaderMaterial_tgmq2")
@@ -791,12 +710,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vignette fix, ignore" type="AnimationPlayer" parent="pausable/Camera2D/vignetteLayer/vignette"]
-libraries = {
-&"": SubResource("AnimationLibrary_tiwvj")
-}
-autoplay = "fix"
-
 [node name="pauseController" type="Node2D" parent="."]
 z_index = 15
 script = ExtResource("19_tgmq2")
@@ -804,20 +717,22 @@ script = ExtResource("19_tgmq2")
 [node name="pauseLayer" type="CanvasLayer" parent="pauseController"]
 
 [node name="ColorRect" type="ColorRect" parent="pauseController/pauseLayer"]
+visible = false
 material = SubResource("ShaderMaterial_tiwvj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pauseController/pauseLayer/ColorRect"]
 libraries = {
 &"": SubResource("AnimationLibrary_kbtag")
 }
-autoplay = "start"
 
 [node name="pauseText" type="Label" parent="pauseController/pauseLayer"]
+visible = false
 offset_left = 116.0
 offset_top = -22.0
 offset_right = 209.0
@@ -855,6 +770,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ijb5p")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_kbtag")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_pgve5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ll64c")
+disabled = true
 text = "Resume"
 flat = true
 script = ExtResource("20_eo355")
@@ -881,11 +797,15 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ijb5p")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_kbtag")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_pgve5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ll64c")
+disabled = true
 text = "Quit"
 flat = true
 script = ExtResource("20_eo355")
 disabledAlpha = 0.0
 actionScript = ExtResource("22_pgve5")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(160, 27)
 
 [connection signal="body_entered" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_body_exited"]
