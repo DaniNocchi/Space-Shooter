@@ -700,7 +700,6 @@ vertical_alignment = 1
 script = ExtResource("13_i4nr1")
 
 [node name="vignetteLayer" type="CanvasLayer" parent="pausable/Camera2D"]
-visible = false
 
 [node name="vignette" type="ColorRect" parent="pausable/Camera2D/vignetteLayer"]
 material = SubResource("ShaderMaterial_tgmq2")
@@ -717,7 +716,6 @@ script = ExtResource("19_tgmq2")
 [node name="pauseLayer" type="CanvasLayer" parent="pauseController"]
 
 [node name="ColorRect" type="ColorRect" parent="pauseController/pauseLayer"]
-visible = false
 material = SubResource("ShaderMaterial_tiwvj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -732,7 +730,6 @@ libraries = {
 }
 
 [node name="pauseText" type="Label" parent="pauseController/pauseLayer"]
-visible = false
 offset_left = 116.0
 offset_top = -22.0
 offset_right = 209.0
@@ -803,9 +800,6 @@ flat = true
 script = ExtResource("20_eo355")
 disabledAlpha = 0.0
 actionScript = ExtResource("22_pgve5")
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(160, 27)
 
 [connection signal="body_entered" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_body_exited"]

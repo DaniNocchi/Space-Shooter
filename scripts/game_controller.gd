@@ -4,6 +4,7 @@ var Points = 0
 var MaxMeteor = 15
 var meteorAlive = 0
 var gamepad = false
+var optionsEnabled = false
 
 func _process(_delta):
 	@warning_ignore("integer_division") #remove that fking stupid error, i already know that 
@@ -13,12 +14,14 @@ func _process(_delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
+	print("Has focus: "+str(get_viewport().gui_get_focus_owner()))
+	print("gamepad: "+str(gamepad))
+	print("Is options on: "+str(optionsEnabled))
 	
 		
 func _input(event: InputEvent):
 	if event is InputEventKey or event is InputEventMouse:
 		gamepad = false
 
-	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		gamepad = true

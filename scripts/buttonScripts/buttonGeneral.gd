@@ -1,7 +1,8 @@
 extends Button
 @export var mainButton : bool = false
 @export var canGrabFocus : bool = true
-
+@export var optionsCanDisable : bool = false
+var verySpecificVar = false
 @onready var tween = get_tree().create_tween()
 @export var sizeSpeed = 0.1
 @export var defaultSize = 1.0
@@ -25,7 +26,7 @@ func _ready():
 	if !is_connected("button_up", 	  Callable(self, "_on_button_up")): 	 connect("button_up", 	  Callable(self, "_on_button_up"))
 func _play_tween(target: Vector2, duration: float):
 	if tween and tween.is_valid():
-		tween.kill()
+		tween.kill() 
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", target, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 func _on_mouse_entered():
@@ -48,25 +49,41 @@ func removeFocusFromMouse():
 	if controller.gamepad:
 		focus_mode = Control.FOCUS_ALL
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
-		manageFocus(1)
+		if !disabled: manageFocus(1)
 	else:
 		manageFocus(2)
 		focus_mode = Control.FOCUS_NONE
 		mouse_filter = Control.MOUSE_FILTER_PASS
+func manageFocus(action):
+	if !disabled:
+		match action:
+			1:
+				if mainButton:
+					if canGrabFocus:
+						grab_focus()
+						canGrabFocus = false
+			2:
+				canGrabFocus = true
+#endregion
+func disableOnOptionsOn():
+	if optionsCanDisable:
+		if controller.optionsEnabled:
+			disabled=true
+			
+		else:
+			disabled=false
 func _process(delta):
 	removeFocusFromMouse()
+	disableOnOptionsOn()
+	if disabled:
+		manageFocus(2)
+		verySpecificVar = false
+	else:
+		if !verySpecificVar:
+			manageFocus(1)
+			verySpecificVar = true
 	add_theme_color_override("font_disabled_color", Color(0.5, 0.5, 0.5, disabledAlpha))
 	alignment = horizontalAlign
-func manageFocus(action):
-	match action:
-		1:
-			if mainButton:
-				if canGrabFocus:
-					grab_focus()
-					canGrabFocus = false
-		2:
-			canGrabFocus = true
-#endregion
 
 # BUTTON ACTION
 func _on_button_up():

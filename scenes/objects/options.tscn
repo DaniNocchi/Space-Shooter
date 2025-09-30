@@ -1,0 +1,941 @@
+[gd_scene load_steps=50 format=3 uid="uid://dbgn5r4vvasq4"]
+
+[ext_resource type="Script" uid="uid://dvp8rp6xqdokx" path="res://scenes/objects/node_2d.gd" id="1_42sfy"]
+[ext_resource type="Texture2D" uid="uid://byt0a1x4nhc85" path="res://Sprites/box.png" id="1_ki6n4"]
+[ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="2_42sfy"]
+[ext_resource type="Script" uid="uid://cwcw4f8npp1sr" path="res://scenes/rooms/settings_container.gd" id="3_xqjv0"]
+[ext_resource type="Texture2D" uid="uid://q5lt0higopc" path="res://Sprites/backButton.png" id="4_vrhon"]
+[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_sl78m"]
+[ext_resource type="Texture2D" uid="uid://bx12ni2utgkmo" path="res://Sprites/nextButton.png" id="6_amjcb"]
+[ext_resource type="Texture2D" uid="uid://bfub8cfrivac0" path="res://Sprites/slider/vertical/sliderBallVertical.png" id="7_heh3d"]
+[ext_resource type="Texture2D" uid="uid://bvufxdi42mrmq" path="res://Sprites/slider/vertical/sliderBallVerticalGrab.png" id="8_ubl4e"]
+[ext_resource type="Script" uid="uid://dvai6jm1ev14k" path="res://addons/slidergamepad/hslider_gamepad.gd" id="9_qx4md"]
+[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_button.gd" id="10_42sfy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngwu7"]
+line_spacing = 2.0
+font = ExtResource("2_42sfy")
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ats0"]
+bg_color = Color(0.5, 0.5, 0.5, 1)
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2rvu"]
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbax1"]
+bg_color = Color(0.3, 0.3, 0.3, 1)
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jcaq"]
+bg_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2ik2"]
+
+[sub_resource type="Theme" id="Theme_00o4k"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_5ats0")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_n2rvu")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_sbax1")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_5jcaq")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_m2ik2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trw5i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jr13o"]
+line_spacing = 2.0
+font = ExtResource("2_42sfy")
+font_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hb6uo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oj3cd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2v31w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7advn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwec5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqjv0"]
+bg_color = Color(0.08, 0.08, 0.08, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.99116415, 0.99116427, 0.99116415, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrhon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7lcs"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1plq"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.30980393, 0.30980393, 0.30980393, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8hxh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mcpc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbgxg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfo3u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6arj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbrkk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cir8h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ld5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q37v0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_45ueg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_haoea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfkqb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bfket"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cmdc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kpsin"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oysgr"]
+
+[sub_resource type="Animation" id="Animation_6vnmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.90125054),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SettingsBackground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SettingsContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SettingsContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SettingsContainer:scroll_vertical")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer2/screenShake:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer/FullscreenCheck:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:editable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:editable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:focus_mode")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:focus_mode")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vdxma"]
+resource_name = "in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.6901961)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SettingsBackground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SettingsContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SettingsContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SettingsContainer:scroll_vertical")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer2/screenShake:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer/FullscreenCheck:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:editable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:editable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:focus_mode")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:focus_mode")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"manageFocus"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5ats0"]
+resource_name = "out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.6901961), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SettingsBackground:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SettingsContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SettingsContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer2/screenShake:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer/FullscreenCheck:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:editable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:editable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:focus_mode")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:focus_mode")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer3/backButton")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../../Node2D")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disableOptionsMode"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n2rvu"]
+_data = {
+&"RESET": SubResource("Animation_6vnmf"),
+&"in": SubResource("Animation_vdxma"),
+&"out": SubResource("Animation_5ats0")
+}
+
+[node name="Options" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_42sfy")
+
+[node name="options" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="options"]
+
+[node name="ColorRect" type="ColorRect" parent="options/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TitleBackground" type="NinePatchRect" parent="options/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -59.0
+offset_right = 82.0
+offset_bottom = -39.25
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ki6n4")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="TitleText" type="Label" parent="options/CanvasLayer/TitleBackground"]
+layout_mode = 0
+offset_right = 163.0
+offset_bottom = 20.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_ngwu7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsBackground" type="NinePatchRect" parent="options/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -40.0
+offset_right = 82.0
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ki6n4")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="SettingsContainer" type="ScrollContainer" parent="options/CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 82.0
+offset_top = 54.0
+offset_right = 239.82132
+offset_bottom = 147.0
+scale = Vector2(0.994796, 1)
+theme = SubResource("Theme_00o4k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_trw5i")
+follow_focus = true
+horizontal_scroll_mode = 0
+script = ExtResource("3_xqjv0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/CanvasLayer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Language" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Language"
+label_settings = SubResource("LabelSettings_jr13o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="back" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../next")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hb6uo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oj3cd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7advn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wwec5")
+disabled = true
+icon = ExtResource("4_vrhon")
+script = ExtResource("5_sl78m")
+mainButton = true
+
+[node name="Label" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_42sfy")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_xqjv0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vrhon")
+text = "Português"
+
+[node name="next" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../back")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hb6uo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oj3cd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7advn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wwec5")
+disabled = true
+icon = ExtResource("6_amjcb")
+script = ExtResource("5_sl78m")
+
+[node name="SoundVolume" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound Volume"
+label_settings = SubResource("LabelSettings_jr13o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="soundSlider" type="HSlider" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("7_heh3d")
+theme_override_icons/grabber_highlight = ExtResource("8_ubl4e")
+theme_override_icons/grabber_disabled = ExtResource("7_heh3d")
+theme_override_styles/slider = SubResource("StyleBoxFlat_e7lcs")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l1plq")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_u8hxh")
+value = 50.0
+editable = false
+scrollable = false
+script = ExtResource("9_qx4md")
+metadata/_custom_type_script = "uid://dvai6jm1ev14k"
+
+[node name="MusicVolume" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_jr13o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="musicSlider" type="HSlider" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("7_heh3d")
+theme_override_icons/grabber_highlight = ExtResource("8_ubl4e")
+theme_override_icons/grabber_disabled = ExtResource("7_heh3d")
+theme_override_styles/slider = SubResource("StyleBoxFlat_e7lcs")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l1plq")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_u8hxh")
+value = 50.0
+editable = false
+scrollable = false
+script = ExtResource("9_qx4md")
+metadata/_custom_type_script = "uid://dvai6jm1ev14k"
+
+[node name="Fullscreen" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_jr13o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenCheck" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_6arj7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sbrkk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cir8h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
+disabled = true
+
+[node name="ScreenShake" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Screen Shake"
+label_settings = SubResource("LabelSettings_jr13o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="screenShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_6arj7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sbrkk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cir8h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
+disabled = true
+
+[node name="CenterContainer3" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="backButton" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/CenterContainer3"]
+clip_contents = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_42sfy")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lfkqb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bfket")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7cmdc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kpsin")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oysgr")
+text = "Save and Exit"
+flat = true
+script = ExtResource("5_sl78m")
+actionScript = ExtResource("10_42sfy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="options/CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_n2rvu")
+}
+autoplay = "in"
