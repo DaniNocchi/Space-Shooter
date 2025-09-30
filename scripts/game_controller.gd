@@ -14,9 +14,6 @@ func _process(_delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	print("Has focus: "+str(get_viewport().gui_get_focus_owner()))
-	print("gamepad: "+str(gamepad))
-	print("Is options on: "+str(optionsEnabled))
 	
 		
 func _input(event: InputEvent):

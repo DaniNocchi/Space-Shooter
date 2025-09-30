@@ -8,6 +8,7 @@ func set_scaled_size(new_size: Vector2) -> void:
 func _process(delta):
 	set_scaled_size(Vector2($waveText.size.x, 0) + Vector2(10, 65))
 	changeAlpha()
+	$waveText.text = "Wave "+str(controller.Wave)
 	
 func changeAlpha():
 	var Player = $"../../Player"

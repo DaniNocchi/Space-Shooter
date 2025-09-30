@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dbgn5r4vvasq4"]
+[gd_scene load_steps=56 format=3 uid="uid://dbgn5r4vvasq4"]
 
 [ext_resource type="Script" uid="uid://dvp8rp6xqdokx" path="res://scenes/objects/node_2d.gd" id="1_42sfy"]
 [ext_resource type="Texture2D" uid="uid://byt0a1x4nhc85" path="res://Sprites/box.png" id="1_ki6n4"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bvufxdi42mrmq" path="res://Sprites/slider/vertical/sliderBallVerticalGrab.png" id="8_ubl4e"]
 [ext_resource type="Script" uid="uid://dvai6jm1ev14k" path="res://addons/slidergamepad/hslider_gamepad.gd" id="9_qx4md"]
 [ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_button.gd" id="10_42sfy"]
+[ext_resource type="StyleBox" uid="uid://cm7c6eocwjpfu" path="res://scenes/objects/bestFocus.tres" id="11_amjcb"]
+[ext_resource type="Texture2D" uid="uid://njfipxm8ph4x" path="res://Sprites/selectPositive.png" id="11_sl78m"]
+[ext_resource type="Texture2D" uid="uid://dc454ec637353" path="res://Sprites/selectFalse.png" id="12_amjcb"]
+[ext_resource type="Script" uid="uid://cfktg50vhxl2t" path="res://scenes/objects/checkGeneral.gd" id="14_heh3d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ngwu7"]
 line_spacing = 2.0
@@ -77,13 +81,17 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 1.0
+expand_margin_left = 2.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrhon"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_heh3d"]
+line_spacing = 0.0
+font_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7lcs"]
 content_margin_left = 1.0
@@ -98,10 +106,16 @@ content_margin_left = 1.0
 content_margin_top = 1.0
 content_margin_right = 1.0
 content_margin_bottom = 1.0
-bg_color = Color(0.30980393, 0.30980393, 0.30980393, 1)
+bg_color = Color(0.33, 0.33, 0.33, 1)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8hxh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heh3d"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.46, 0.46, 0.46, 1)
+anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mcpc"]
 
@@ -122,6 +136,8 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_45ueg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_haoea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amjcb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfkqb"]
 
@@ -210,31 +226,31 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer2/screenShake:disabled")
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/screenShakeCenter/screenShake:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer/FullscreenCheck:disabled")
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:editable")
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -246,19 +262,19 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:editable")
+tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -270,19 +286,19 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
+tracks/11/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:focus_mode")
+tracks/12/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -294,14 +310,14 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:focus_mode")
+tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_vdxma"]
@@ -382,31 +398,31 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer2/screenShake:disabled")
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/screenShakeCenter/screenShake:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer/FullscreenCheck:disabled")
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:editable")
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -418,19 +434,19 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:editable")
+tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -442,52 +458,52 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
+tracks/11/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [2]
 }
-tracks/12/type = "value"
+tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:focus_mode")
+tracks/12/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:focus_mode")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [1],
 "method": &"manageFocus"
 }]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_5ats0"]
@@ -556,31 +572,31 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer2/screenShake:disabled")
+tracks/5/path = NodePath("SettingsContainer/VBoxContainer/screenShakeCenter/screenShake:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer/FullscreenCheck:disabled")
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:editable")
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -592,19 +608,19 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:editable")
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -616,63 +632,63 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
+tracks/10/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [0]
 }
-tracks/11/type = "value"
+tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("SettingsContainer/VBoxContainer/soundSlider:focus_mode")
+tracks/11/path = NodePath("SettingsContainer/VBoxContainer/backButtonCenter/backButton")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SettingsContainer/VBoxContainer/musicSlider:focus_mode")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SettingsContainer/VBoxContainer/CenterContainer3/backButton")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
 }
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("../../Node2D")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../../Node2D")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"disableOptionsMode"
 }]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n2rvu"]
@@ -788,6 +804,7 @@ alignment = 1
 [node name="back" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_right = NodePath("../next")
+focus_neighbor_bottom = NodePath("../../soundContainer/soundSlider")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hb6uo")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oj3cd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
@@ -809,6 +826,7 @@ text = "Português"
 [node name="next" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../back")
+focus_neighbor_bottom = NodePath("../../soundContainer/soundSlider")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hb6uo")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oj3cd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
@@ -825,20 +843,44 @@ label_settings = SubResource("LabelSettings_jr13o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="soundSlider" type="HSlider" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+[node name="soundContainer" type="HBoxContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
+
+[node name="space1" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "  "
+label_settings = SubResource("LabelSettings_heh3d")
+
+[node name="soundSlider" type="HSlider" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../HBoxContainer/next")
+focus_neighbor_bottom = NodePath("../../musicContainer/musicSlider")
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("7_heh3d")
 theme_override_icons/grabber_highlight = ExtResource("8_ubl4e")
 theme_override_icons/grabber_disabled = ExtResource("7_heh3d")
 theme_override_styles/slider = SubResource("StyleBoxFlat_e7lcs")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l1plq")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_u8hxh")
-value = 50.0
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_heh3d")
+max_value = 10.0
+value = 5.0
 editable = false
 scrollable = false
 script = ExtResource("9_qx4md")
+slider_speed = 1.0
+dpad_step = 2
+joystick_discrete = true
+joystick_smooth_discrete_threshold = 5.0
 metadata/_custom_type_script = "uid://dvai6jm1ev14k"
+
+[node name="space2" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "  "
+label_settings = SubResource("LabelSettings_heh3d")
 
 [node name="MusicVolume" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -847,20 +889,45 @@ label_settings = SubResource("LabelSettings_jr13o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="musicSlider" type="HSlider" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+[node name="musicContainer" type="HBoxContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="space1" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "  "
+label_settings = SubResource("LabelSettings_heh3d")
+
+[node name="musicSlider" type="HSlider" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../soundContainer/soundSlider")
+focus_neighbor_bottom = NodePath("../../fullscreenCenter/FullscreenCheck")
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("7_heh3d")
 theme_override_icons/grabber_highlight = ExtResource("8_ubl4e")
 theme_override_icons/grabber_disabled = ExtResource("7_heh3d")
 theme_override_styles/slider = SubResource("StyleBoxFlat_e7lcs")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l1plq")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_u8hxh")
-value = 50.0
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_heh3d")
+max_value = 10.0
+value = 5.0
 editable = false
 scrollable = false
 script = ExtResource("9_qx4md")
+slider_speed = 1.0
+dpad_step = 2
+joystick_discrete = true
+joystick_smooth_discrete_threshold = 5.0
 metadata/_custom_type_script = "uid://dvai6jm1ev14k"
+
+[node name="space2" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "  "
+label_settings = SubResource("LabelSettings_heh3d")
 
 [node name="Fullscreen" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -869,10 +936,10 @@ label_settings = SubResource("LabelSettings_jr13o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+[node name="fullscreenCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FullscreenCheck" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/CenterContainer"]
+[node name="FullscreenCheck" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
@@ -884,7 +951,17 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
+theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_icons/checked = ExtResource("11_sl78m")
+theme_override_icons/unchecked = ExtResource("12_amjcb")
+theme_override_icons/radio_checked = ExtResource("12_amjcb")
+theme_override_icons/radio_unchecked = ExtResource("12_amjcb")
+theme_override_icons/checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
 disabled = true
+script = ExtResource("14_heh3d")
 
 [node name="ScreenShake" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -893,27 +970,36 @@ label_settings = SubResource("LabelSettings_jr13o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer2" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+[node name="screenShakeCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="screenShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/CenterContainer2"]
+[node name="screenShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_6arj7")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_sbrkk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_amjcb")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cir8h")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
+theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_icons/checked = ExtResource("11_sl78m")
+theme_override_icons/unchecked = ExtResource("12_amjcb")
+theme_override_icons/radio_checked = ExtResource("12_amjcb")
+theme_override_icons/radio_unchecked = ExtResource("12_amjcb")
+theme_override_icons/checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
 disabled = true
 
-[node name="CenterContainer3" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+[node name="backButtonCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="backButton" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/CenterContainer3"]
+[node name="backButton" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/backButtonCenter"]
 clip_contents = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)

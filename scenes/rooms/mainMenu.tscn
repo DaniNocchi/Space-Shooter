@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=26 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_rtsuv"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scenes/rooms/credits_animation.gd" id="9_ipxnb"]
 [ext_resource type="Texture2D" uid="uid://bwnn32oh22gbd" path="res://Sprites/green_ring.png" id="10_exhbh"]
 [ext_resource type="Script" uid="uid://bqdda6p246nlx" path="res://scripts/game_controller.gd" id="10_hxyg5"]
-[ext_resource type="Script" uid="uid://tuv3y812c05l" path="res://scenes/rooms/start_button.gd" id="10_inafh"]
 [ext_resource type="Texture2D" uid="uid://pgiflukjxlgq" path="res://Sprites/ring.png" id="10_orv06"]
 [ext_resource type="Texture2D" uid="uid://cw8u83w3iji8b" path="res://Sprites/spaceshooterlogo.svg" id="11_t54ei"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_kputg"]
@@ -107,6 +106,54 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../mainButtons/startButton:canEnable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../mainButtons/optionsButton:canEnable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../mainButtons/quitButton:canEnable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../mainButtons/creditsButton:canEnable")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_yx1sr"]
 resource_name = "credits"
@@ -118,10 +165,10 @@ tracks/0/path = NodePath("../mainButtons/startButton:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335, 30),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(-0.033333335, 0, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -130,10 +177,10 @@ tracks/1/path = NodePath("../mainButtons/optionsButton:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.033333335, 30),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(-0.033333335, 0, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -142,10 +189,10 @@ tracks/2/path = NodePath("../mainButtons/creditsButton:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(-0.033333335, 30),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(-0.033333335, 0, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -182,6 +229,66 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.5019608), Color(0, 0, 0, 0.5019608), Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../mainButtons/startButton:canEnable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 29.74),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../mainButtons/optionsButton:canEnable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 29.74),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../mainButtons/quitButton:canEnable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 29.74),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../mainButtons/creditsButton:canEnable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 29.74),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hxyg5"]
@@ -241,7 +348,7 @@ tracks/4/path = NodePath("../mainButtons/quitButton:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(-0.033333335),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -257,6 +364,68 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0.5019608), Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../mainButtons/startButton:canEnable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../mainButtons/optionsButton:canEnable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../mainButtons/quitButton:canEnable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../mainButtons/creditsButton:canEnable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../mainButtons/startButton")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_focus"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxyg5"]
@@ -356,7 +525,7 @@ color = Color(0, 0, 0, 0)
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/creditsAnimation/CanvasLayer"]
 offset_top = 180.0
 offset_right = 320.0
-offset_bottom = 374.99738
+offset_bottom = 374.9975
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("3_2rquh")
@@ -489,7 +658,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
 text = "Start Game"
 flat = true
 alignment = 0
-script = ExtResource("10_inafh")
+script = ExtResource("5_6fjaf")
 mainButton = true
 optionsCanDisable = true
 horizontalAlign = 0
@@ -549,7 +718,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ipxnb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_hxyg5")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_t54ei")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
-toggle_mode = true
 text = "Credits"
 flat = true
 alignment = 0

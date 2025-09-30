@@ -1,12 +1,15 @@
 extends Node2D
+var focusFix = false
 func disableOptionsMode():
 	controller.optionsEnabled = false
-	if get_node("UI/mainButtons/startButton") != null: get_node("UI/mainButtons/startButton").manageFocus(1)
 	$"..".queue_free()
-
+func _ready():
+	controller.optionsEnabled = true
 func _process(delta):
 	if controller.gamepad:
-		$"../options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer/back".manageFocus(1)
+		if !focusFix:
+			$"../options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer/back".grab_focus()
+			focusFix=true
 	else:
+		focusFix = false
 		$"../options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer/back".canGrabFocus = true
-	print(str($"../options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer/back".canGrabFocus))

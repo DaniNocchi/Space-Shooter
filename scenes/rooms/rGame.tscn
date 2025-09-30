@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=49 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scripts/points_text.gd" id="7_ariif"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="9_rpxxd"]
 [ext_resource type="Texture2D" uid="uid://db68drhbssvnf" path="res://Sprites/waveBackground.png" id="12_3w7uf"]
-[ext_resource type="Script" uid="uid://drykxf0m5g0q6" path="res://scripts/wave_text.gd" id="13_i4nr1"]
 [ext_resource type="Script" uid="uid://c2h8kpc76oi2a" path="res://scenes/rooms/nine_patch_rect.gd" id="14_ijb5p"]
 [ext_resource type="Script" uid="uid://c75coiyeq8k6p" path="res://scripts/camera_2d.gd" id="15_hutln"]
 [ext_resource type="Shader" uid="uid://dyoyb3lncle2a" path="res://shaders/vignette.gdshader" id="17_tiwvj"]
@@ -697,7 +696,6 @@ text = "Wave 1"
 label_settings = SubResource("LabelSettings_3w7uf")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("13_i4nr1")
 
 [node name="vignetteLayer" type="CanvasLayer" parent="pausable/Camera2D"]
 

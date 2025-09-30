@@ -8,8 +8,11 @@ var verySpecificVar = false
 @export var defaultSize = 1.0
 @export var selectedSize = 1.2
 @export var disabledAlpha = 1.0
+var pressing = false
 @export var horizontalAlign = HORIZONTAL_ALIGNMENT_CENTER
 @export var actionScript : Script
+var canDisable = true
+@export var canEnable = true
 var action_instance
 
 func _ready():
@@ -30,62 +33,58 @@ func _play_tween(target: Vector2, duration: float):
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", target, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 func _on_mouse_entered():
-	if not button_pressed and not disabled:
+	if !pressing and not disabled:
 		_play_tween(Vector2(selectedSize, selectedSize), sizeSpeed)
 func _on_mouse_exited():
-	if not button_pressed:
+	if !pressing:
 		_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 func _on_focus_entered():
-	if not button_pressed and not disabled:
+	if !pressing and not disabled:
 		_play_tween(Vector2(selectedSize, selectedSize), sizeSpeed)
 func _on_focus_exited():
-	if not button_pressed:
+	if !pressing:
 		_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 func _on_pressed():
+	pressing = true
 	_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 
 #region managing focus stuff
 func removeFocusFromMouse():
-	if controller.gamepad:
+	if controller.gamepad and !disabled:
 		focus_mode = Control.FOCUS_ALL
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
-		if !disabled: manageFocus(1)
+		manageFocus(1)
 	else:
-		manageFocus(2)
 		focus_mode = Control.FOCUS_NONE
 		mouse_filter = Control.MOUSE_FILTER_PASS
+		manageFocus(2)
 func manageFocus(action):
-	if !disabled:
-		match action:
-			1:
-				if mainButton:
-					if canGrabFocus:
-						grab_focus()
-						canGrabFocus = false
-			2:
-				canGrabFocus = true
+	match action:
+		1:
+			if mainButton:
+				if canGrabFocus:
+					grab_focus()
+					canGrabFocus = false
+		2:
+			canGrabFocus = true
 #endregion
 func disableOnOptionsOn():
 	if optionsCanDisable:
 		if controller.optionsEnabled:
-			disabled=true
-			
+			if canDisable: disabled=true
+			manageFocus(2)
 		else:
-			disabled=false
+			if canEnable: disabled=false
+			if controller.gamepad: focus_mode = Control.FOCUS_ALL
+			if controller.gamepad: manageFocus(1)
 func _process(delta):
 	removeFocusFromMouse()
 	disableOnOptionsOn()
-	if disabled:
-		manageFocus(2)
-		verySpecificVar = false
-	else:
-		if !verySpecificVar:
-			manageFocus(1)
-			verySpecificVar = true
 	add_theme_color_override("font_disabled_color", Color(0.5, 0.5, 0.5, disabledAlpha))
 	alignment = horizontalAlign
 
 # BUTTON ACTION
 func _on_button_up():
+	pressing = false
 	if action_instance and action_instance.has_method("action"):
 		action_instance.action(self)

@@ -1,16 +1,13 @@
 extends Node
+var fix = false
 func _process(delta):
 	if controller.gamepad and !controller.optionsEnabled:
-		$"../startButton".manageFocus(1)
+		if !fix:
+			get_node("../startButton").focus_mode = Control.FOCUS_ALL
+			get_node("../startButton").grab_focus()
+			fix=true
 	else:
-		$"../startButton".manageFocus(2)
-	
-	if get_node_or_null("../Options") != null:
-		if controller.gamepad:
-			get_node_or_null("../Options/options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer/back").manageFocus(1)
-		else:
-			get_node_or_null("../Options/options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer/back").manageFocus(2)
-			
+		fix=false
 		
 # "why?" you ask.
 # well... I couldnt find any better way of doing this
