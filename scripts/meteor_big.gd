@@ -4,6 +4,8 @@ var spriteList = ["res://Sprites/bigMeteor/big1.png","res://Sprites/bigMeteor/bi
 var speed = 0.0
 var life = 3
 var pointsGiven = 3
+@export var damageAudioPlayer : AudioStreamPlayer
+@export var dieAudioPlayer : AudioStreamPlayer
 @onready var damageAnim: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 func _ready():
@@ -25,10 +27,12 @@ func damage():
 		$CollisionShape2D.queue_free()
 		$Area2D.queue_free()
 		damageAnim.play("die")
+		dieAudioPlayer.play()
 		remove_from_group("meteors")
 		pointsText(pointsGiven)
 	else:
 		damageAnim.stop()
+		damageAudioPlayer.play()
 		damageAnim.play("flash")
 
 func spriteChange():

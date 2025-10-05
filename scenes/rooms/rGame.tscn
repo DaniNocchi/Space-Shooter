@@ -1,10 +1,14 @@
-[gd_scene load_steps=49 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=59 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
+[ext_resource type="AudioStream" uid="uid://b0y8fm1sp6a6u" path="res://sounds/Shoot.wav" id="2_lwggh"]
+[ext_resource type="AudioStream" uid="uid://cuqhb3hcixrba" path="res://sounds/meteorDamage.wav" id="3_4bgge"]
 [ext_resource type="Script" uid="uid://c6yx5j1psamix" path="res://scripts/player.gd" id="3_rpxxd"]
+[ext_resource type="AudioStream" uid="uid://bfgehh1rskwr" path="res://sounds/meteorDie.wav" id="4_vwyey"]
 [ext_resource type="Script" uid="uid://bpgdtgjlgq8lo" path="res://scripts/texture_progress_bar.gd" id="5_a3i0e"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="5_ariif"]
+[ext_resource type="AudioStream" uid="uid://bhcpta2uddqfm" path="res://sounds/playerDamage.wav" id="5_tm4iw"]
 [ext_resource type="Script" uid="uid://cn5gfmxw4c3yt" path="res://scripts/meteor_spawner.gd" id="6_3w7uf"]
 [ext_resource type="Shader" uid="uid://dfe76k56ujk1d" path="res://shaders/fix.gdshader" id="6_hutln"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="6_sh26x"]
@@ -12,14 +16,15 @@
 [ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scripts/points_text.gd" id="7_ariif"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="9_rpxxd"]
 [ext_resource type="Texture2D" uid="uid://db68drhbssvnf" path="res://Sprites/waveBackground.png" id="12_3w7uf"]
-[ext_resource type="Script" uid="uid://c2h8kpc76oi2a" path="res://scenes/rooms/nine_patch_rect.gd" id="14_ijb5p"]
+[ext_resource type="Script" uid="uid://c2h8kpc76oi2a" path="res://scripts/nine_patch_rect.gd" id="14_ijb5p"]
 [ext_resource type="Script" uid="uid://c75coiyeq8k6p" path="res://scripts/camera_2d.gd" id="15_hutln"]
 [ext_resource type="Shader" uid="uid://dyoyb3lncle2a" path="res://shaders/vignette.gdshader" id="17_tiwvj"]
 [ext_resource type="Shader" uid="uid://sisn2poemume" path="res://shaders/blur.gdshader" id="19_eo355"]
 [ext_resource type="Script" uid="uid://bbnd4i2pb0spo" path="res://scripts/pause_controller.gd" id="19_tgmq2"]
 [ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="20_eo355"]
-[ext_resource type="Script" uid="uid://dc4d6c5b23djb" path="res://scripts/buttonScripts/resume_button.gd" id="21_kbtag"]
-[ext_resource type="Script" uid="uid://bmk0sw5egpixk" path="res://scripts/buttonScripts/quit_button.gd" id="22_pgve5"]
+[ext_resource type="Script" uid="uid://c83pjqwlrq8xq" path="res://scripts/buttonScripts/options_button.gd" id="20_ijb5p"]
+[ext_resource type="Script" uid="uid://dc4d6c5b23djb" path="res://scripts/buttonScripts/resume_game_button.gd" id="21_kbtag"]
+[ext_resource type="Script" uid="uid://bmk0sw5egpixk" path="res://scripts/buttonScripts/quit_game_button.gd" id="22_pgve5"]
 
 [sub_resource type="Gradient" id="Gradient_vae2y"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
@@ -220,14 +225,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../pauseText:position")
+tracks/1/path = NodePath("../VBoxContainer/pauseText:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(116, -22)]
+"values": [Vector2(110, -25)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -256,26 +261,98 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Control/resumeButton:disabledAlpha")
+tracks/4/path = NodePath("../VBoxContainer:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0, -20)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Control/quitButton:disabledAlpha")
+tracks/5/path = NodePath("../Control/resumeButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Control/quitButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Control/optionsButton:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Control/optionsButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Control/resumeButton:canEnable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Control/quitButton:canEnable")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Control/optionsButton:canEnable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_eo355"]
@@ -293,31 +370,31 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0000000475]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../pauseText:position")
+tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.49),
-"transitions": PackedFloat32Array(0.17677669, 19.698307),
-"update": 0,
-"values": [Vector2(116, -22), Vector2(116, 29)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"pause"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, 40)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -326,10 +403,10 @@ tracks/3/path = NodePath("../Control/resumeButton:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -338,34 +415,94 @@ tracks/4/path = NodePath("../Control/quitButton:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Control/quitButton:disabledAlpha")
+tracks/5/path = NodePath("../Control/resumeButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.09),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Control/resumeButton:disabledAlpha")
+tracks/6/path = NodePath("../Control/quitButton:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.09),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Control/optionsButton:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Control/optionsButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Control/resumeButton:canEnable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Control/quitButton:canEnable")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Control/optionsButton:canEnable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ijb5p"]
@@ -378,36 +515,36 @@ tracks/0/path = NodePath(".:material:shader_parameter/lod")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.49),
-"transitions": PackedFloat32Array(0.20306301, 8.282116),
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(0.5358868, 26.908686),
 "update": 0,
 "values": [1.0000000475, 0.0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../pauseText:position")
+tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.39999998),
-"transitions": PackedFloat32Array(3.605001, 0.8122529),
-"update": 0,
-"values": [Vector2(116, 29), Vector2(116, -22)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.33333334),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"unpause"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(0, 40), Vector2(0, -20)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -416,10 +553,10 @@ tracks/3/path = NodePath("../Control/resumeButton:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -428,34 +565,94 @@ tracks/4/path = NodePath("../Control/quitButton:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Control/quitButton:disabledAlpha")
+tracks/5/path = NodePath("../Control/resumeButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.249, 0.33199394),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Control/resumeButton:disabledAlpha")
+tracks/6/path = NodePath("../Control/quitButton:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.249, 0.33199394),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Control/optionsButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Control/optionsButton:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Control/resumeButton:canEnable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Control/quitButton:canEnable")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Control/optionsButton:canEnable")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbtag"]
@@ -475,11 +672,41 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ll64c"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwggh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bgge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwyey"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tm4iw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_osssd"]
+
 [node name="RGame" type="Node2D"]
 script = ExtResource("1_vdclo")
 
 [node name="pausable" type="Node2D" parent="."]
 process_mode = 1
+
+[node name="shootAudio" type="AudioStreamPlayer" parent="pausable"]
+stream = ExtResource("2_lwggh")
+max_polyphony = 20
+bus = &"Sounds"
+
+[node name="meteorDamageAudio" type="AudioStreamPlayer" parent="pausable"]
+stream = ExtResource("3_4bgge")
+max_polyphony = 20
+bus = &"Sounds"
+
+[node name="meteorDieAudio" type="AudioStreamPlayer" parent="pausable"]
+stream = ExtResource("4_vwyey")
+max_polyphony = 20
+bus = &"Sounds"
+
+[node name="playerDamageAudio" type="AudioStreamPlayer" parent="pausable"]
+stream = ExtResource("5_tm4iw")
+max_polyphony = 20
+bus = &"Sounds"
 
 [node name="stars" type="Node2D" parent="pausable"]
 
@@ -721,18 +948,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pauseController/pauseLayer/ColorRect"]
 libraries = {
 &"": SubResource("AnimationLibrary_kbtag")
 }
 
-[node name="pauseText" type="Label" parent="pauseController/pauseLayer"]
-offset_left = 116.0
-offset_top = -22.0
-offset_right = 209.0
-offset_bottom = 0.9999809
-pivot_offset = Vector2(43, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseController/pauseLayer"]
+offset_top = -20.0
+offset_right = 320.0
+
+[node name="pauseText" type="Label" parent="pauseController/pauseLayer/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sh26x")
 text = "--PAUSED--"
 horizontal_alignment = 1
@@ -747,17 +975,21 @@ offset_right = 182.0
 offset_bottom = 115.0
 
 [node name="resumeButton" type="Button" parent="pauseController/pauseLayer/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_top = 2.0
-offset_right = 40.0
-offset_bottom = 12.0
-pivot_offset = Vector2(20, 5)
+offset_left = -142.0
+offset_top = 12.0
+offset_right = 178.0
+offset_bottom = 22.0
+pivot_offset = Vector2(160, 5)
+focus_neighbor_top = NodePath("../quitButton")
+focus_neighbor_bottom = NodePath("../optionsButton")
 theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_colors/font_disabled_color = Color(0.88, 0.88, 0.88, 0)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("6_sh26x")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eo355")
@@ -770,21 +1002,58 @@ text = "Resume"
 flat = true
 script = ExtResource("20_eo355")
 mainButton = true
-disabledAlpha = 0.0
+optionsCanDisable = true
 actionScript = ExtResource("21_kbtag")
+canEnable = false
 
-[node name="quitButton" type="Button" parent="pauseController/pauseLayer/Control"]
+[node name="optionsButton" type="Button" parent="pauseController/pauseLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
 layout_mode = 0
-offset_top = 16.0
-offset_right = 40.0
-offset_bottom = 26.0
-pivot_offset = Vector2(20, 5)
+offset_left = -142.0
+offset_top = 26.0
+offset_right = 178.0
+offset_bottom = 36.0
+pivot_offset = Vector2(160, 5)
+focus_neighbor_top = NodePath("../resumeButton")
+focus_neighbor_bottom = NodePath("../quitButton")
 theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_colors/font_disabled_color = Color(0.88, 0.88, 0.88, 0)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
+theme_override_fonts/font = ExtResource("6_sh26x")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lwggh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4bgge")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vwyey")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tm4iw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_osssd")
+disabled = true
+text = "Options"
+flat = true
+script = ExtResource("20_eo355")
+optionsCanDisable = true
+actionScript = ExtResource("20_ijb5p")
+canEnable = false
+
+[node name="quitButton" type="Button" parent="pauseController/pauseLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -142.0
+offset_top = 40.0
+offset_right = 178.0
+offset_bottom = 50.0
+pivot_offset = Vector2(160, 5)
+focus_neighbor_top = NodePath("../optionsButton")
+focus_neighbor_bottom = NodePath("../resumeButton")
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("6_sh26x")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eo355")
@@ -796,8 +1065,9 @@ disabled = true
 text = "Quit"
 flat = true
 script = ExtResource("20_eo355")
-disabledAlpha = 0.0
+optionsCanDisable = true
 actionScript = ExtResource("22_pgve5")
+canEnable = false
 
 [connection signal="body_entered" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_body_exited"]
@@ -809,3 +1079,10 @@ actionScript = ExtResource("22_pgve5")
 [connection signal="body_entered" from="pausable/boundary/Left" to="pausable/boundary/Left" method="_on_body_entered"]
 [connection signal="area_entered" from="pausable/boundary/Right" to="pausable/boundary/Right" method="_on_area_entered"]
 [connection signal="body_entered" from="pausable/boundary/Right" to="pausable/boundary/Right" method="_on_body_entered"]
+[connection signal="button_up" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_button_up"]
+[connection signal="focus_entered" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_focus_exited"]
+[connection signal="gui_input" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_gui_input"]
+[connection signal="mouse_entered" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_pressed"]

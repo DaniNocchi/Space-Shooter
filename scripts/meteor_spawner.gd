@@ -16,31 +16,19 @@ func _ready():
 
 
 func _process(_delta):
-	meteorAlive = controller.meteorAlive
-	maxMeteor = controller.MaxMeteor
-	if canSpawn and meteorAlive < maxMeteor:
-		meteorType = meteorTypeArray.pick_random()
-		Muzzle = muzzleArray.pick_random()
+	if canSpawn and controller.meteorAlive < controller.MaxMeteor:
+		meteorType = meteorTypeArray.pick_random(); Muzzle = muzzleArray.pick_random()
 		meteorTimer.start(meteorCooldown)
+		var _meteor : RigidBody2D
+		match meteorType:
+			1: _meteor = load("res://scenes/objects/meteorSmall.tscn").instantiate()
+			2: _meteor = load("res://scenes/objects/meteorMedium.tscn").instantiate()
+			3: _meteor = load("res://scenes/objects/meteorBig.tscn").instantiate()
+		$"..".add_child(_meteor)
+		_meteor.transform = Muzzle.global_transform
+		_meteor.damageAudioPlayer = $"../meteorDamageAudio"; _meteor.dieAudioPlayer = $"../meteorDieAudio"
+		controller.meteorAlive += 1
 		canSpawn = false
 
-		match meteorType:
-			1:
-				var meteor = load("res://scenes/objects/meteorSmall.tscn").instantiate()
-				$"..".add_child(meteor)
-				meteor.transform = Muzzle.global_transform
-				controller.meteorAlive += 1
-				
-			2:
-				var meteor = load("res://scenes/objects/meteorMedium.tscn").instantiate()
-				$"..".add_child(meteor)
-				meteor.transform = Muzzle.global_transform
-				controller.meteorAlive += 1
-			3:
-				var meteor = load("res://scenes/objects/meteorBig.tscn").instantiate()
-				$"..".add_child(meteor)
-				meteor.transform = Muzzle.global_transform
-				controller.meteorAlive += 1
-
-func _Spawn_Cooldown_Timeout():
+func _Spawn_Cooldown_Timeout(): 
 	canSpawn = true

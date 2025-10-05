@@ -82,12 +82,13 @@ func ShootBullets(): #the name says it all
 			spriteY = 0.8
 			spriteX = 1.3
 			knockbackSpeed = 0.15
+			$"../shootAudio".play()
 			var bullet = load("res://scenes/objects/bullet.scn").instantiate()
 			$"..".add_child(bullet)
 			bullet.transform = $Muzzle.global_transform
 			shootTimer.start(shootCooldown)
 			camera.add_trauma(0.2)
-			if controller.gamepad:
+			if controller.gamepad and controller.gamepadShake:
 				Input.start_joy_vibration(0, 0.1, 0.1, 0.1)
 			shootBool = false
 func spriteStretch(): #squatch and stretch when shooting
@@ -98,13 +99,14 @@ func spriteStretch(): #squatch and stretch when shooting
 func damage(): #take damage
 	if canTakeDamage:
 		life -=1
+		$"../playerDamageAudio".play()
 		canTakeDamage = false
 		damageTimer.start(5)
 		var animDamage = $Sprite/AnimationPlayer #spawn blinking animation
 		animDamage.stop()
 		animDamage.play("damage")
 		camera.add_trauma(0.5)
-		if controller.gamepad:
+		if controller.gamepad and controller.gamepadShake:
 				Input.start_joy_vibration(0, 0.5, 0.8, 0.7)
 		var partDamage = load("res://scenes/objects/playerDebris.tscn").instantiate()
 		partDamage.position = global_position

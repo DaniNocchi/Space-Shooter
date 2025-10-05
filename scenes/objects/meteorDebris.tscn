@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkeuuciq61ypm"]
 
-[ext_resource type="Texture2D" uid="uid://cirnqsq5d26ic" path="res://Sprites/particles/playerParticle.png" id="1_omipu"]
+[ext_resource type="Texture2D" uid="uid://db08d4jr8ogab" path="res://Sprites/particles/meteorParticle.png" id="1_omipu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1c0e0"]
 particles_animation = true
-particles_anim_h_frames = 4
+particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 

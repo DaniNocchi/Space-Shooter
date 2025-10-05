@@ -20,3 +20,22 @@ func _process(delta):
 	if controller.Wave!=oldWave:
 		oldWave = controller.Wave
 		DiscordRPC.refresh() 
+	match controller.locale:
+		1:
+			$pausable/PointsText.text = str(controller.Points)+" Points"
+			$pauseController/pauseLayer/Control/resumeButton.text = "Resume"
+			$pauseController/pauseLayer/Control/quitButton.text = "Quit"
+			$pausable/Camera2D/NinePatchRect/waveText.text = "Wave "+str(controller.Wave)
+			$pauseController/pauseLayer/VBoxContainer/pauseText.text = "--PAUSED--"
+		2:
+			$pausable/PointsText.text = str(controller.Points)+" Pontos"
+			$pauseController/pauseLayer/Control/resumeButton.text = "Continuar"
+			$pauseController/pauseLayer/Control/quitButton.text = "Sair"
+			$pausable/Camera2D/NinePatchRect/waveText.text = "Onda "+str(controller.Wave)
+			$pauseController/pauseLayer/VBoxContainer/pauseText.text = "--PAUSADO--"
+		3:
+			$pausable/PointsText.text = str(controller.Points)+" Puntos"
+			$pauseController/pauseLayer/Control/resumeButton.text = "Reanudar"
+			$pauseController/pauseLayer/Control/quitButton.text = "Salir"
+			$pausable/Camera2D/NinePatchRect/waveText.text = "Oleada "+str(controller.Wave)
+			$pauseController/pauseLayer/VBoxContainer/pauseText.text = "--PAUSADO--"

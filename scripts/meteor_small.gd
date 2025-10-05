@@ -4,6 +4,8 @@ var spriteList = ["res://Sprites/smallMeteor/small1.png","res://Sprites/smallMet
 var sprite = rng.randi_range(0, 3) 
 var speed = 0.0
 var life = 1
+@export var damageAudioPlayer : AudioStreamPlayer
+@export var dieAudioPlayer : AudioStreamPlayer
 var pointsGiven = 1
 @onready var damageAnim: AnimationPlayer = $Sprite2D/AnimationPlayer
 
@@ -27,10 +29,12 @@ func damage():
 		$CollisionShape2D.queue_free()
 		$Area2D.queue_free()
 		damageAnim.play("die")
+		dieAudioPlayer.play()
 		remove_from_group("meteors")
 		pointsText(pointsGiven)
 	else:
 		damageAnim.stop()
+		damageAudioPlayer.play()
 		damageAnim.play("flash")
 func pointsText(_points):
 	var _pointsText = load("res://scenes/objects/PointsNumber.tscn").instantiate()

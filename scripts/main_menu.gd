@@ -9,3 +9,34 @@ func _ready():
 	DiscordRPC.large_image_text = "Space Shooter"
 	DiscordRPC.refresh()
 	
+	
+	
+
+func _process(delta: float) -> void:
+	match controller.locale:
+		1:
+			$UI/creditsAnimation/CanvasLayer/Label.text = "Skipping..."
+			$UI/mainButtons/startButton.text = "Start Game"
+			$UI/mainButtons/optionsButton.text = "Settings"
+			$UI/mainButtons/creditsButton.text = "Credits"
+			$UI/mainButtons/quitButton.text = "Quit"
+			$"UI/made by".text = "Made by DaniNocchi"
+			$UI/version.text = "Version "+controller.version
+		2:
+			$UI/creditsAnimation/CanvasLayer/Label.text = "Pulando..."
+			$UI/mainButtons/startButton.text = "Começar o Jogo"
+			$UI/mainButtons/optionsButton.text = "Configurações"
+			$UI/mainButtons/creditsButton.text = "Creditos"
+			$UI/mainButtons/quitButton.text = "Sair"
+			$"UI/made by".text = "Feito por DaniNocchi"
+			$UI/version.text = "Versão "+controller.version
+		3:
+			$UI/creditsAnimation/CanvasLayer/Label.text = "Saltando..."
+			$UI/mainButtons/startButton.text = "Comenzar Juego"
+			$UI/mainButtons/optionsButton.text = "Ajustes"
+			$UI/mainButtons/creditsButton.text = "Creditos"
+			$UI/mainButtons/quitButton.text = "Salir"
+			$"UI/made by".text = "Hecho por DaniNocchi"
+			$UI/version.text = "Versión "+controller.version
+
+	

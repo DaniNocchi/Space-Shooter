@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=25 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_rtsuv"]
@@ -6,15 +6,14 @@
 [ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_6fjaf"]
 [ext_resource type="Script" uid="uid://cib8b5gqy527h" path="res://scripts/buttonScripts/start_button.gd" id="5_yx1sr"]
 [ext_resource type="Script" uid="uid://c83pjqwlrq8xq" path="res://scripts/buttonScripts/options_button.gd" id="6_ipxnb"]
+[ext_resource type="Script" uid="uid://cjx4a8imem3k5" path="res://scripts/rich_text_label.gd" id="6_oirye"]
 [ext_resource type="Script" uid="uid://bmj2a8xy1v5j4" path="res://scripts/buttonScripts/credits_button.gd" id="7_hxyg5"]
-[ext_resource type="Script" uid="uid://cm37m4tt2v8vi" path="res://scripts/buttonScripts/quit_buttonmenu.gd" id="8_t54ei"]
-[ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scenes/rooms/credits_animation.gd" id="9_ipxnb"]
+[ext_resource type="Script" uid="uid://cm37m4tt2v8vi" path="res://scripts/buttonScripts/quit_button.gd" id="8_t54ei"]
+[ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scripts/credits_animation.gd" id="9_ipxnb"]
 [ext_resource type="Texture2D" uid="uid://bwnn32oh22gbd" path="res://Sprites/green_ring.png" id="10_exhbh"]
-[ext_resource type="Script" uid="uid://bqdda6p246nlx" path="res://scripts/game_controller.gd" id="10_hxyg5"]
 [ext_resource type="Texture2D" uid="uid://pgiflukjxlgq" path="res://Sprites/ring.png" id="10_orv06"]
 [ext_resource type="Texture2D" uid="uid://cw8u83w3iji8b" path="res://Sprites/spaceshooterlogo.svg" id="11_t54ei"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_kputg"]
-[ext_resource type="Script" uid="uid://bvsekfpi6dv5h" path="res://scenes/rooms/node.gd" id="16_oirye"]
 
 [sub_resource type="Gradient" id="Gradient_am2me"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
@@ -494,9 +493,6 @@ scale_amount_min = 0.0
 scale_amount_max = 0.03
 color_initial_ramp = SubResource("Gradient_am2me")
 
-[node name="gameController" type="Node2D" parent="."]
-script = ExtResource("10_hxyg5")
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -551,6 +547,7 @@ since the first version of it.
 "
 scroll_active = false
 horizontal_alignment = 1
+script = ExtResource("6_oirye")
 
 [node name="Label" type="Label" parent="UI/creditsAnimation/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -589,15 +586,14 @@ texture = ExtResource("12_kputg")
 
 [node name="made by" type="RichTextLabel" parent="UI"]
 layout_mode = 0
-offset_left = 263.0
+offset_left = 88.0
 offset_top = 170.0
-offset_right = 436.0
+offset_right = 844.3333
 offset_bottom = 190.0
 scale = Vector2(0.3, 0.3)
 theme_override_fonts/normal_font = ExtResource("3_2rquh")
 bbcode_enabled = true
 text = "Made by DaniNocchi"
-fit_content = true
 scroll_active = false
 autowrap_mode = 0
 autowrap_trim_flags = 0
@@ -607,7 +603,7 @@ horizontal_alignment = 2
 layout_mode = 0
 offset_left = 5.0
 offset_top = 170.0
-offset_right = 143.0
+offset_right = 455.0
 offset_bottom = 190.0
 scale = Vector2(0.3, 0.3)
 theme_override_fonts/normal_font = ExtResource("3_2rquh")
@@ -647,7 +643,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("3_2rquh")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
@@ -679,7 +675,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("3_2rquh")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
@@ -710,7 +706,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("3_2rquh")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
@@ -741,7 +737,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("3_2rquh")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yx1sr")
@@ -757,9 +753,6 @@ script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
 actionScript = ExtResource("8_t54ei")
-
-[node name="Node" type="Node" parent="UI/mainButtons"]
-script = ExtResource("16_oirye")
 
 [connection signal="button_up" from="UI/mainButtons/optionsButton" to="UI/mainButtons/optionsButton" method="_on_button_up"]
 [connection signal="focus_entered" from="UI/mainButtons/optionsButton" to="UI/mainButtons/optionsButton" method="_on_focus_entered"]

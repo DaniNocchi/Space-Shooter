@@ -1,20 +1,76 @@
-[gd_scene load_steps=56 format=3 uid="uid://dbgn5r4vvasq4"]
+[gd_scene load_steps=62 format=3 uid="uid://dbgn5r4vvasq4"]
 
-[ext_resource type="Script" uid="uid://dvp8rp6xqdokx" path="res://scenes/objects/node_2d.gd" id="1_42sfy"]
+[ext_resource type="Script" uid="uid://bc6knn14kyqun" path="res://scripts/options.gd" id="1_7advn"]
 [ext_resource type="Texture2D" uid="uid://byt0a1x4nhc85" path="res://Sprites/box.png" id="1_ki6n4"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="2_42sfy"]
-[ext_resource type="Script" uid="uid://cwcw4f8npp1sr" path="res://scenes/rooms/settings_container.gd" id="3_xqjv0"]
+[ext_resource type="Script" uid="uid://cwcw4f8npp1sr" path="res://scripts/settings_container.gd" id="3_xqjv0"]
 [ext_resource type="Texture2D" uid="uid://q5lt0higopc" path="res://Sprites/backButton.png" id="4_vrhon"]
 [ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_sl78m"]
 [ext_resource type="Texture2D" uid="uid://bx12ni2utgkmo" path="res://Sprites/nextButton.png" id="6_amjcb"]
 [ext_resource type="Texture2D" uid="uid://bfub8cfrivac0" path="res://Sprites/slider/vertical/sliderBallVertical.png" id="7_heh3d"]
+[ext_resource type="Script" uid="uid://f0h7kbfssyj0" path="res://scripts/buttonScripts/langBack_button.gd" id="7_ubl4e"]
 [ext_resource type="Texture2D" uid="uid://bvufxdi42mrmq" path="res://Sprites/slider/vertical/sliderBallVerticalGrab.png" id="8_ubl4e"]
+[ext_resource type="Script" uid="uid://caxnf4vvjd2p2" path="res://scripts/buttonScripts/langNext_button.gd" id="9_ngwu7"]
 [ext_resource type="Script" uid="uid://dvai6jm1ev14k" path="res://addons/slidergamepad/hslider_gamepad.gd" id="9_qx4md"]
-[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_button.gd" id="10_42sfy"]
-[ext_resource type="StyleBox" uid="uid://cm7c6eocwjpfu" path="res://scenes/objects/bestFocus.tres" id="11_amjcb"]
+[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_options_button.gd" id="10_42sfy"]
+[ext_resource type="StyleBox" uid="uid://cm7c6eocwjpfu" path="res://styles/bestFocus.tres" id="11_amjcb"]
 [ext_resource type="Texture2D" uid="uid://njfipxm8ph4x" path="res://Sprites/selectPositive.png" id="11_sl78m"]
 [ext_resource type="Texture2D" uid="uid://dc454ec637353" path="res://Sprites/selectFalse.png" id="12_amjcb"]
-[ext_resource type="Script" uid="uid://cfktg50vhxl2t" path="res://scenes/objects/checkGeneral.gd" id="14_heh3d"]
+[ext_resource type="Script" uid="uid://cfktg50vhxl2t" path="res://scripts/checkGeneral.gd" id="14_heh3d"]
+
+[sub_resource type="Animation" id="Animation_00o4k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.6901961)]
+}
+
+[sub_resource type="Animation" id="Animation_ngwu7"]
+resource_name = "in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.5019608)]
+}
+
+[sub_resource type="Animation" id="Animation_qx4md"]
+resource_name = "out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.5019608), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trw5i"]
+_data = {
+&"RESET": SubResource("Animation_00o4k"),
+&"in": SubResource("Animation_ngwu7"),
+&"out": SubResource("Animation_qx4md")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_ngwu7"]
 line_spacing = 2.0
@@ -154,19 +210,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("TitleBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.90125054),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleBackground:modulate")
+tracks/1/path = NodePath("SettingsBackground:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -178,7 +234,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SettingsBackground:modulate")
+tracks/2/path = NodePath("SettingsContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -190,130 +246,70 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SettingsContainer:modulate")
+tracks/3/path = NodePath("SettingsContainer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SettingsContainer:visible")
+tracks/4/path = NodePath("SettingsContainer:scroll_vertical")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SettingsContainer:scroll_vertical")
+tracks/5/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SettingsContainer/VBoxContainer/screenShakeCenter/screenShake:disabled")
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck:disabled")
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -322,27 +318,27 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_vdxma"]
 resource_name = "in"
-length = 0.5
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("TitleBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.6901961)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleBackground:modulate")
+tracks/1/path = NodePath("SettingsBackground:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -350,11 +346,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SettingsBackground:modulate")
+tracks/2/path = NodePath("SettingsContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -362,118 +358,46 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SettingsContainer:modulate")
+tracks/3/path = NodePath("SettingsContainer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SettingsContainer:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SettingsContainer:scroll_vertical")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SettingsContainer:scroll_vertical")
+tracks/5/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
 }
-tracks/6/type = "value"
+tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SettingsContainer/VBoxContainer/screenShakeCenter/screenShake:disabled")
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -481,25 +405,25 @@ tracks/12/keys = {
 "method": &"manageFocus"
 }]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -508,27 +432,27 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id="Animation_5ats0"]
 resource_name = "out"
-length = 0.5
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("TitleBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.6901961), Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleBackground:modulate")
+tracks/1/path = NodePath("SettingsBackground:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -536,11 +460,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SettingsBackground:modulate")
+tracks/2/path = NodePath("SettingsContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -548,55 +472,55 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SettingsContainer:modulate")
+tracks/3/path = NodePath("SettingsContainer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SettingsContainer:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SettingsContainer/VBoxContainer/screenShakeCenter/screenShake:disabled")
+tracks/5/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck:disabled")
+tracks/6/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:editable")
+tracks/7/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -605,90 +529,22 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/8/type = "value"
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/back:disabled")
+tracks/8/path = NodePath("../..")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SettingsContainer/VBoxContainer/HBoxContainer/next:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SettingsContainer/VBoxContainer/musicContainer/musicSlider:focus_mode")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("SettingsContainer/VBoxContainer/backButtonCenter/backButton")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../../Node2D")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"disableOptionsMode"
+"method": &"playBackgroundFade"
+}, {
+"args": [],
+"method": &"disableOptions"
 }]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:focus_mode")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("SettingsContainer/VBoxContainer/soundContainer/soundSlider:editable")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n2rvu"]
@@ -699,9 +555,7 @@ _data = {
 }
 
 [node name="Options" type="Node2D"]
-
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("1_42sfy")
+script = ExtResource("1_7advn")
 
 [node name="options" type="Control" parent="."]
 layout_mode = 3
@@ -711,6 +565,11 @@ offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="options"]
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="options/CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_trw5i")
+}
+
 [node name="ColorRect" type="ColorRect" parent="options/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -718,7 +577,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 0.6901961)
 
 [node name="TitleBackground" type="NinePatchRect" parent="options/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -810,10 +669,10 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_oj3cd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7advn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wwec5")
-disabled = true
 icon = ExtResource("4_vrhon")
 script = ExtResource("5_sl78m")
 mainButton = true
+actionScript = ExtResource("7_ubl4e")
 
 [node name="Label" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -821,7 +680,7 @@ theme_override_fonts/font = ExtResource("2_42sfy")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_xqjv0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vrhon")
-text = "Português"
+text = "English"
 
 [node name="next" type="Button" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -832,9 +691,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_oj3cd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7advn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wwec5")
-disabled = true
 icon = ExtResource("6_amjcb")
 script = ExtResource("5_sl78m")
+actionScript = ExtResource("9_ngwu7")
 
 [node name="SoundVolume" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -960,7 +819,6 @@ theme_override_icons/checked_disabled = ExtResource("12_amjcb")
 theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
 theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
 theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
-disabled = true
 script = ExtResource("14_heh3d")
 
 [node name="ScreenShake" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
@@ -994,7 +852,40 @@ theme_override_icons/checked_disabled = ExtResource("12_amjcb")
 theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
 theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
 theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
-disabled = true
+button_pressed = true
+
+[node name="ControllerShake" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Screen Shake"
+label_settings = SubResource("LabelSettings_jr13o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="controllerShakeCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="controllerShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_6arj7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_amjcb")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cir8h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
+theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_icons/checked = ExtResource("11_sl78m")
+theme_override_icons/unchecked = ExtResource("12_amjcb")
+theme_override_icons/radio_checked = ExtResource("12_amjcb")
+theme_override_icons/radio_unchecked = ExtResource("12_amjcb")
+theme_override_icons/checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
+button_pressed = true
 
 [node name="backButtonCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -1025,3 +916,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_n2rvu")
 }
 autoplay = "in"
+
+[connection signal="value_changed" from="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider" to="." method="_on_sound_slider_value_changed"]
