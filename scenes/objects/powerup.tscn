@@ -1,0 +1,169 @@
+[gd_scene load_steps=12 format=3 uid="uid://drk8wujqga8qe"]
+
+[ext_resource type="Script" uid="uid://co0x0b1leweuf" path="res://scripts/powerup.gd" id="1_82byj"]
+[ext_resource type="Texture2D" uid="uid://c0jsgh48w5ccr" path="res://Sprites/power0.png" id="2_bgm50"]
+[ext_resource type="Script" uid="uid://bwdv5resuux7k" path="res://scripts/textureCircle.gd" id="3_8pgny"]
+[ext_resource type="Texture2D" uid="uid://8itsgqdpal5t" path="res://Sprites/bullet.png" id="4_dyv1u"]
+[ext_resource type="Shader" uid="uid://bxawbwn2hfenx" path="res://shaders/flash.gdshader" id="4_mgiqp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s05rw"]
+shader = ExtResource("4_mgiqp")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+shader_parameter/alpha_value = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3hsn"]
+size = Vector2(14, 14)
+
+[sub_resource type="Animation" id="Animation_8pgny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureCircle:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite:material:shader_parameter/flash_value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bgm50"]
+resource_name = "in"
+length = 1.51
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(2.1630003, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.1, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureCircle:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.09, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 0.26794335, 1),
+"update": 0,
+"values": [2.0, 8.0, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_dyv1u"]
+resource_name = "out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.13940513, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dyv1u"]
+_data = {
+&"RESET": SubResource("Animation_8pgny"),
+&"in": SubResource("Animation_bgm50"),
+&"out": SubResource("Animation_dyv1u")
+}
+
+[node name="powerup" type="Area2D"]
+script = ExtResource("1_82byj")
+
+[node name="TextureCircle" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+script = ExtResource("3_8pgny")
+texture_outline = ExtResource("4_dyv1u")
+radius = 6.0
+metadata/_custom_type_script = "uid://bwdv5resuux7k"
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_s05rw")
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_bgm50")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_n3hsn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dyv1u")
+}
+autoplay = "in"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

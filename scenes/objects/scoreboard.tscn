@@ -1,0 +1,273 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmhjgb5t5gryh"]
+
+[ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="1_66hs5"]
+[ext_resource type="Texture2D" uid="uid://byt0a1x4nhc85" path="res://Sprites/box.png" id="1_fr884"]
+[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="3_wv5kj"]
+[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_options_button.gd" id="4_gteia"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fr884"]
+font = ExtResource("1_66hs5")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_k3vyu"]
+font = ExtResource("1_66hs5")
+font_size = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhesa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cowgs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdr06"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8whb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6ead"]
+
+[node name="scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 44.0
+offset_right = 384.0
+offset_bottom = 78.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fr884")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="title"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 36.0
+text = "Scoreboard"
+label_settings = SubResource("LabelSettings_fr884")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="main" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 66.0
+offset_right = 384.0
+offset_bottom = 160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fr884")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="scoreboardTable" type="VBoxContainer" parent="main"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 198.66667
+offset_bottom = 60.0
+scale = Vector2(1.5, 1.5)
+
+[node name="player1" type="HBoxContainer" parent="main/scoreboardTable"]
+layout_mode = 2
+
+[node name="rank" type="Label" parent="main/scoreboardTable/player1"]
+layout_mode = 2
+text = "#1"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="main/scoreboardTable/player1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 1"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="points" type="Label" parent="main/scoreboardTable/player1"]
+layout_mode = 2
+text = "50000"
+label_settings = SubResource("LabelSettings_k3vyu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="player2" type="HBoxContainer" parent="main/scoreboardTable"]
+layout_mode = 2
+
+[node name="rank" type="Label" parent="main/scoreboardTable/player2"]
+layout_mode = 2
+text = "#2"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="main/scoreboardTable/player2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 2"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="points" type="Label" parent="main/scoreboardTable/player2"]
+layout_mode = 2
+text = "4000"
+label_settings = SubResource("LabelSettings_k3vyu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="player3" type="HBoxContainer" parent="main/scoreboardTable"]
+layout_mode = 2
+
+[node name="rank" type="Label" parent="main/scoreboardTable/player3"]
+layout_mode = 2
+text = "#3"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="main/scoreboardTable/player3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 3"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="points" type="Label" parent="main/scoreboardTable/player3"]
+layout_mode = 2
+text = "3000"
+label_settings = SubResource("LabelSettings_k3vyu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="player4" type="HBoxContainer" parent="main/scoreboardTable"]
+layout_mode = 2
+
+[node name="rank" type="Label" parent="main/scoreboardTable/player4"]
+layout_mode = 2
+text = "#4"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="main/scoreboardTable/player4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 4"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="points" type="Label" parent="main/scoreboardTable/player4"]
+layout_mode = 2
+text = "2500"
+label_settings = SubResource("LabelSettings_k3vyu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="player5" type="HBoxContainer" parent="main/scoreboardTable"]
+layout_mode = 2
+
+[node name="rank" type="Label" parent="main/scoreboardTable/player5"]
+layout_mode = 2
+text = "#5"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="main/scoreboardTable/player5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 5"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="points" type="Label" parent="main/scoreboardTable/player5"]
+layout_mode = 2
+text = "1000"
+label_settings = SubResource("LabelSettings_k3vyu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="self" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 119.0
+offset_right = 384.0
+offset_bottom = 143.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fr884")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="self"]
+layout_mode = 0
+offset_left = 4.0000076
+offset_top = 4.0
+offset_right = 198.66669
+offset_bottom = 14.666672
+scale = Vector2(1.5, 1.5)
+
+[node name="selfRank" type="Label" parent="self/HBoxContainer"]
+layout_mode = 2
+text = "#1"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="selfName" type="Label" parent="self/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 1"
+label_settings = SubResource("LabelSettings_k3vyu")
+vertical_alignment = 1
+
+[node name="selfPoints" type="Label" parent="self/HBoxContainer"]
+layout_mode = 2
+text = "50000"
+label_settings = SubResource("LabelSettings_k3vyu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="backButton" type="Button" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 84.0
+offset_top = 138.0
+offset_right = 234.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(0.52114034, 0.52114064, 0.5211405, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_66hs5")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jhesa")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cowgs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gdr06")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g8whb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k6ead")
+text = "- Exit - "
+flat = true
+script = ExtResource("3_wv5kj")
+mainButton = true
+actionScript = ExtResource("4_gteia")

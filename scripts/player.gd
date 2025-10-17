@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var damageTimer = Timer.new()    # Creating the timer for the damage cooldown
 @onready var deadTimer = Timer.new()    # Creating the timer for the dead action
 @onready var camera = $"../Camera2D"      # selecting who the hell is the game camera
+@onready var debugNode = $"../../DebugMode"
 @onready var life = 3                     # the player life
 @onready var canTakeDamage = true         # bool that says if the player can take damage
 @onready var canMoveAndRotate = true      # bool that says if the player can take damage
@@ -36,47 +37,60 @@ func _ready(): #Basically the create event
 	deadTimer.timeout.connect(Callable(self, "_Dead_Cooldown_Timeout"))
 
 func _process(_delta): # step event
-	MoveAndRotate()
+	if canMoveAndRotate: MoveAndRotate()
+	else:
+		hspd = lerpf(hspd, 0, speedInc)
+		vspd = lerpf(vspd, 0, speedInc)
 	ShootBullets()
 	spriteStretch()
 	damageProcess()
 
 # Player Features
 func MoveAndRotate(): #the name says it all
-	if canMoveAndRotate:
+	if debugNode.canChangePlayerMaxSpeed:
+		maxSpeed = debugNode.playerMaxSpeed
+	
+	
+	
+	if debugNode.noPlayerSlide:
 		if controller.gamepad:
+			hspd = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)*maxSpeed
+			vspd = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)*maxSpeed
+		else:
 			hspd = lerpf(hspd, Input.get_joy_axis(0, JOY_AXIS_LEFT_X)*maxSpeed, speedInc)
 			vspd = lerpf(vspd, Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)*maxSpeed, speedInc)
+	else:
+		if debugNode.noPlayerSlide:
+			hspd = (float(Input.is_action_pressed("right")) - float(Input.is_action_pressed("left"))) * maxSpeed
+			vspd = (float(Input.is_action_pressed("down")) - float(Input.is_action_pressed("up"))) * maxSpeed
 		else:
 			hspd = lerpf(hspd, (float(Input.is_action_pressed("right")) - float(Input.is_action_pressed("left"))) * maxSpeed, speedInc)
 			vspd = lerpf(vspd, (float(Input.is_action_pressed("down")) - float(Input.is_action_pressed("up"))) * maxSpeed, speedInc)
-		
-		hspd = clamp(hspd, -maxSpeed, maxSpeed)
-		vspd = clamp(vspd, -maxSpeed, maxSpeed)
-
-		var oldX = global_position.x
-		var oldY = global_position.y
-
-		if global_position.x != oldX: #if touched the wall, stop trying to walk to it
-			hspd = 0
-		if global_position.y != oldY:
-			vspd = 0
-		if controller.gamepad:
-			var rightJoystick = Input.get_vector("lookLeft", "lookRight", "lookUp", "lookDown", deadZone)
-			if rightJoystick != Vector2.ZERO:
-				rotation = rightJoystick.angle()
-		else:
-			look_at(get_global_mouse_position())
+		#
+	hspd = clamp(hspd, -maxSpeed, maxSpeed)
+	vspd = clamp(vspd, -maxSpeed, maxSpeed)
+	var oldX = global_position.x
+	var oldY = global_position.y
+	if global_position.x != oldX: #if touched the wall, stop trying to walk to it
+		hspd = 0
+	if global_position.y != oldY:
+		vspd = 0
+	if controller.gamepad:
+		var rightJoystick = Input.get_vector("lookLeft", "lookRight", "lookUp", "lookDown", deadZone)
+		if rightJoystick != Vector2.ZERO:
+			rotation = rightJoystick.angle()
 	else:
-		hspd = lerpf(hspd, 0, speedInc)
-		vspd = lerpf(vspd, 0, speedInc)
+		look_at(get_global_mouse_position())
 	global_position.x = clamp(global_position.x, 0, 320) #Limiting where you can go
 	global_position.y = clamp(global_position.y, 0, 180)
 	global_position.x += hspd #Making the hspd/vspd actually affect the position
 	global_position.y += vspd
-	knockbackSpeed = lerp(knockbackSpeed, 0.0, 0.05)
-	position -= transform.x * knockbackSpeed
+	if !debugNode.noPlayerKnockback:
+		knockbackSpeed = lerp(knockbackSpeed, 0.0, 0.05)
+		position -= transform.x * knockbackSpeed
 func ShootBullets(): #the name says it all
+	if controller.fastShots: shootCooldown = 0.1
+	else: shootCooldown = 0.2
 	if canShoot:
 		if Input.is_action_pressed("shoot") and shootBool:
 			spriteY = 0.8
@@ -97,7 +111,7 @@ func spriteStretch(): #squatch and stretch when shooting
 	var spriteVector = Vector2(spriteX, spriteY)
 	$Sprite.scale = spriteVector
 func damage(): #take damage
-	if canTakeDamage:
+	if canTakeDamage and !debugNode.noPlayerDamage:
 		life -=1
 		$"../playerDamageAudio".play()
 		canTakeDamage = false
@@ -112,6 +126,7 @@ func damage(): #take damage
 		partDamage.position = global_position
 		$"..".add_child(partDamage)
 		if life<=0:
+			controller.newPersonalRecord()
 			deadTimer.start(3)
 
 func damageProcess():
@@ -135,11 +150,11 @@ func _Damage_Cooldown_Timeout():
 func _Shoot_Cooldown_Timeout(): 
 	shootBool = true
 func _Dead_Cooldown_Timeout(): 
-	Transition.change_scene("res://scenes/rooms/mainMenu.tscn")
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("meteors"):
-		bodiesInside.append(body)
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("meteors"):
-		bodiesInside.erase(body)
+	Transition.change_scene("res://scenes/rooms/gameover.tscn")
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("meteors"):
+		bodiesInside.append(area)
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("meteors"):
+		bodiesInside.erase(area)
 #endregion

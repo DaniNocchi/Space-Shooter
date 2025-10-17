@@ -3,8 +3,8 @@ var backgroundFade = true
 func _ready():
 	if backgroundFade:
 		$options/CanvasLayer/AnimationPlayer2.play("in")
-	$options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value = controller.soundsVolume
-	$options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer/musicSlider.value = controller.musicsVolume
+	$options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value = controller.SFXVolume
+	$options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer/musicSlider.value = controller.musicVolume
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck.button_pressed = controller.fullscreen
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter/screenShake.button_pressed = controller.screenShake
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter/controllerShake.button_pressed = controller.gamepadShake
@@ -16,8 +16,8 @@ func playBackgroundFade():
 		$options/CanvasLayer/AnimationPlayer2.play("out")
 func _process(delta):
 	controller.fullscreen = $options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck.button_pressed
-	controller.soundsVolume = $options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value
-	controller.musicsVolume = $options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer/musicSlider.value
+	controller.SFXVolume = $options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value
+	controller.musicVolume = $options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer/musicSlider.value
 	controller.screenShake = $options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter/screenShake.button_pressed
 	controller.gamepadShake = $options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter/controllerShake.button_pressed
 	

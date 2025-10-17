@@ -3,7 +3,6 @@ extends Button
 @export var mainButton : bool = false
 @export var canGrabFocus : bool = true
 @export var optionsCanDisable : bool = false
-var verySpecificVar = false
 @export var sizeSpeed = 0.1
 @export var defaultSize = 1.0
 @export var selectedSize = 1.2
@@ -11,6 +10,8 @@ var verySpecificVar = false
 @export var actionScript : Script
 @export var canDisable = true
 @export var canEnable = true
+@export var selectAudio : AudioStreamPlayer
+@export var clickAudio : AudioStreamPlayer
 var action_instance
 
 var is_pressing := false
@@ -38,7 +39,7 @@ func _play_tween(target: Vector2, duration: float):
 
 func update_button_scale():
 	# PRIORIDADE MÁXIMA: Se está pressionando, sempre pequeno
-	if is_pressing:
+	if is_pressing or disabled:
 		_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 		return  # Sai da função aqui, ignora o resto
 	
@@ -54,6 +55,8 @@ func update_button_scale():
 		else:
 			_play_tween(Vector2(defaultSize, defaultSize), sizeSpeed)
 func _on_mouse_entered():
+	if !disabled:
+		selectAudio.play()
 	hovered = true
 	update_button_scale()
 func _on_mouse_exited():
@@ -62,6 +65,8 @@ func _on_mouse_exited():
 		is_pressing = false
 	update_button_scale()
 func _on_focus_entered():
+	if !disabled:
+		selectAudio.play()
 	is_focused = true
 	update_button_scale()
 func _on_focus_exited():
@@ -75,6 +80,8 @@ func _on_button_down():
 func _on_button_up():
 	is_pressing = false
 	update_button_scale()
+	if !disabled:
+		clickAudio.play()
 	if action_instance and action_instance.has_method("action"):
 		action_instance.action(self)
 
@@ -92,7 +99,7 @@ func manageFocus(action):
 	match action:
 		1:
 			if mainButton:
-				if canGrabFocus:
+				if canGrabFocus and focus_mode == FOCUS_ALL:
 					grab_focus()
 					canGrabFocus = false
 		2:

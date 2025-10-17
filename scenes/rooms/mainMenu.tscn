@@ -1,12 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=27 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
+[ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="2_oirye"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_rtsuv"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="3_2rquh"]
+[ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="3_f7dxx"]
 [ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_6fjaf"]
 [ext_resource type="Script" uid="uid://cib8b5gqy527h" path="res://scripts/buttonScripts/start_button.gd" id="5_yx1sr"]
 [ext_resource type="Script" uid="uid://c83pjqwlrq8xq" path="res://scripts/buttonScripts/options_button.gd" id="6_ipxnb"]
-[ext_resource type="Script" uid="uid://cjx4a8imem3k5" path="res://scripts/rich_text_label.gd" id="6_oirye"]
+[ext_resource type="Script" uid="uid://cjx4a8imem3k5" path="res://scripts/creditsText.gd" id="6_oirye"]
 [ext_resource type="Script" uid="uid://bmj2a8xy1v5j4" path="res://scripts/buttonScripts/credits_button.gd" id="7_hxyg5"]
 [ext_resource type="Script" uid="uid://cm37m4tt2v8vi" path="res://scripts/buttonScripts/quit_button.gd" id="8_t54ei"]
 [ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scripts/credits_animation.gd" id="9_ipxnb"]
@@ -447,6 +449,16 @@ _data = {
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_rbs56")
 
+[node name="selectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oirye")
+max_polyphony = 20
+bus = &"Sounds"
+
+[node name="clickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f7dxx")
+max_polyphony = 20
+bus = &"Sounds"
+
 [node name="stars" type="Node2D" parent="."]
 
 [node name="Stars" type="CPUParticles2D" parent="stars"]
@@ -566,9 +578,9 @@ offset_top = 3.0000002
 offset_right = 602.0
 offset_bottom = 303.0
 scale = Vector2(0.05, 0.05)
-max_value = 3.0
+max_value = 2.0
 step = 0.0
-value = 3.0
+value = 2.0
 fill_mode = 5
 texture_under = ExtResource("10_exhbh")
 texture_progress = ExtResource("10_orv06")
@@ -628,7 +640,7 @@ offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="startButton" type="Button" parent="UI/mainButtons"]
+[node name="startButton" type="Button" parent="UI/mainButtons" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 clip_contents = true
 layout_mode = 0
 offset_left = 4.0
@@ -659,8 +671,10 @@ mainButton = true
 optionsCanDisable = true
 horizontalAlign = 0
 actionScript = ExtResource("5_yx1sr")
+selectAudio = NodePath("../../../selectAudio")
+clickAudio = NodePath("../../../clickAudio")
 
-[node name="optionsButton" type="Button" parent="UI/mainButtons"]
+[node name="optionsButton" type="Button" parent="UI/mainButtons" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 clip_contents = true
 layout_mode = 0
 offset_left = 4.0
@@ -690,8 +704,10 @@ script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
 actionScript = ExtResource("6_ipxnb")
+selectAudio = NodePath("../../../selectAudio")
+clickAudio = NodePath("../../../clickAudio")
 
-[node name="creditsButton" type="Button" parent="UI/mainButtons"]
+[node name="creditsButton" type="Button" parent="UI/mainButtons" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 clip_contents = true
 layout_mode = 0
 offset_left = 4.0
@@ -721,8 +737,10 @@ script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
 actionScript = ExtResource("7_hxyg5")
+selectAudio = NodePath("../../../selectAudio")
+clickAudio = NodePath("../../../clickAudio")
 
-[node name="quitButton" type="Button" parent="UI/mainButtons"]
+[node name="quitButton" type="Button" parent="UI/mainButtons" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 clip_contents = true
 layout_mode = 0
 offset_left = 4.0
@@ -753,6 +771,8 @@ script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
 actionScript = ExtResource("8_t54ei")
+selectAudio = NodePath("../../../selectAudio")
+clickAudio = NodePath("../../../clickAudio")
 
 [connection signal="button_up" from="UI/mainButtons/optionsButton" to="UI/mainButtons/optionsButton" method="_on_button_up"]
 [connection signal="focus_entered" from="UI/mainButtons/optionsButton" to="UI/mainButtons/optionsButton" method="_on_focus_entered"]

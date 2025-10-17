@@ -21,7 +21,7 @@ func _process(delta):
 		if pressing == true:
 			if timerActive == false:
 				timerActive = true
-				pressedTimer.start(3)
+				pressedTimer.start(2)
 			skipText.modulate = lerp(skipText.modulate, Color(1, 1, 1, 1), 0.1)
 			skipProgress.modulate = lerp(skipProgress.modulate, Color(1, 1, 1, 1), 0.1)
 			skipProgress.value = round(pressedTimer.time_left*100)/100

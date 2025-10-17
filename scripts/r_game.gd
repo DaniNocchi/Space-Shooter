@@ -7,6 +7,13 @@ func _ready() -> void:
 	controller.meteorAlive = 0
 	controller.Points = 0
 	controller.Wave = 1
+	controller.bulletsMissed = 0
+	controller.bulletsShot = 0
+	controller.powerupsGotten = 0
+	controller.meteorKilled = 0
+	controller.doublePoints = false
+	controller.fastShots = false
+	controller.existingPowerup.clear()
 	
 	
 	DiscordRPC.app_id = 1084242258229993533 # Application ID
