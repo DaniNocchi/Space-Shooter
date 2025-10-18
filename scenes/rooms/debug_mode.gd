@@ -1,5 +1,5 @@
 extends Node
-@export var normalPlayerMovement := false
+@export var noPlayerSlide := false
 @export var noPlayerDamage := false
 @export var noPlayerKnockback := false
 @export var canChangePlayerMaxSpeed := false

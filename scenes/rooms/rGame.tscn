@@ -777,8 +777,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 142.0
 offset_top = 83.0
-offset_right = 206.0
-offset_bottom = 147.0
+offset_right = 172.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 3.0
@@ -928,7 +928,7 @@ grow_vertical = 2
 [node name="PowerupSpawner" type="Node" parent="pausable"]
 script = ExtResource("20_tm4iw")
 
-[node name="powerupList" type="VBoxContainer" parent="pausable" node_paths=PackedStringArray("player")]
+[node name="powerupList" type="VBoxContainer" parent="pausable"]
 material = SubResource("ShaderMaterial_16aem")
 offset_left = 6.0
 offset_top = 5.0
@@ -938,7 +938,6 @@ scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("21_16aem")
-player = NodePath("../Player")
 
 [node name="powerupProgressBar" parent="pausable/powerupList" instance=ExtResource("21_osssd")]
 layout_mode = 2
