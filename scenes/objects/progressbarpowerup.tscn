@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7ow47ub3pknq"]
 
-[ext_resource type="Script" uid="uid://cj1xguav58iuo" path="res://scenes/objects/progressbarpowerup.gd" id="1_2tnxq"]
+[ext_resource type="Script" uid="uid://cj1xguav58iuo" path="res://scenes/objects/powerup_timer.gd" id="1_2tnxq"]
 [ext_resource type="Texture2D" uid="uid://c0jsgh48w5ccr" path="res://Sprites/power0.png" id="1_3swrj"]
 
 [node name="powerupProgressBar" type="TextureProgressBar"]

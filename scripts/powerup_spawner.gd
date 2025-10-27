@@ -18,11 +18,8 @@ func _process(delta: float) -> void:
 		oldWave = controller.Wave
 		spawn()
 func spawn():
-	var filteredList = powerupList.filter(func(p): return p not in controller.existingPowerup)
-	if filteredList.size() != 0:
-		var chosenPowerup = filteredList.pick_random()
-		var powerupObject = load("res://scenes/objects/powerup.tscn").instantiate()
-		powerupObject.power = chosenPowerup
-		powerupObject.progressList = $"../powerupList"
-		$"..".add_child(powerupObject)
-		controller.existingPowerup.append(chosenPowerup)
+	var chosenPowerup = powerupList.pick_random()
+	var powerupObject = load("res://scenes/objects/powerup.tscn").instantiate()
+	powerupObject.power = chosenPowerup
+	powerupObject.progressList = $"../powerupList"
+	$"..".add_child(powerupObject)

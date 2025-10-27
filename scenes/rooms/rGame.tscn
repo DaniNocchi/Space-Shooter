@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=68 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
@@ -28,7 +28,6 @@
 [ext_resource type="Script" uid="uid://dg0kqrqmjbep6" path="res://scenes/rooms/powerup_list.gd" id="21_16aem"]
 [ext_resource type="Shader" uid="uid://0a2aplsr3cyk" path="res://scenes/rooms/aaaaaa.gdshader" id="21_36k4g"]
 [ext_resource type="Script" uid="uid://dc4d6c5b23djb" path="res://scripts/buttonScripts/resume_game_button.gd" id="21_kbtag"]
-[ext_resource type="PackedScene" uid="uid://c7ow47ub3pknq" path="res://scenes/objects/progressbarpowerup.tscn" id="21_osssd"]
 [ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="21_tm4iw"]
 [ext_resource type="Script" uid="uid://bmk0sw5egpixk" path="res://scripts/buttonScripts/quit_game_button.gd" id="22_pgve5"]
 [ext_resource type="Script" uid="uid://c7g77el357lcn" path="res://scenes/rooms/debug_mode.gd" id="32_u88d2"]
@@ -202,6 +201,9 @@ font_size = 8
 shadow_color = Color(0.34781694, 0.34781697, 0.3478169, 0.09411765)
 shadow_offset = Vector2(0.5, 0.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx448"]
+size = Vector2(61, 65)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgmq2"]
 resource_local_to_scene = true
 shader = ExtResource("17_tiwvj")
@@ -217,6 +219,9 @@ shader_parameter/player_position = Vector2(0, 0)
 shader_parameter/fade_distance = 10.0
 shader_parameter/min_alpha = 0.3
 shader_parameter/box_size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u88d2"]
+size = Vector2(16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tiwvj"]
 shader = ExtResource("19_eo355")
@@ -263,7 +268,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../VBoxContainer:position")
+tracks/3/path = NodePath("../textContainer:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -356,6 +361,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../textContainer/pauseText:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_eo355"]
 resource_name = "in"
@@ -389,7 +406,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/path = NodePath("../textContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -506,6 +523,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../textContainer/pauseText:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ijb5p"]
 resource_name = "out"
@@ -539,7 +568,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/path = NodePath("../textContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -655,6 +684,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../textContainer/pauseText:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbtag"]
@@ -915,6 +956,13 @@ label_settings = SubResource("LabelSettings_3w7uf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="area" type="Area2D" parent="pausable/Camera2D/NinePatchRect"]
+position = Vector2(-129, 49)
+
+[node name="collision" type="CollisionShape2D" parent="pausable/Camera2D/NinePatchRect/area"]
+position = Vector2(159.5, -16.5)
+shape = SubResource("RectangleShape2D_rx448")
+
 [node name="vignetteLayer" type="CanvasLayer" parent="pausable/Camera2D"]
 
 [node name="vignette" type="ColorRect" parent="pausable/Camera2D/vignetteLayer"]
@@ -939,23 +987,11 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("21_16aem")
 
-[node name="powerupProgressBar" parent="pausable/powerupList" instance=ExtResource("21_osssd")]
-layout_mode = 2
-script = null
+[node name="area" type="Area2D" parent="pausable/powerupList"]
 
-[node name="powerupProgressBar2" parent="pausable/powerupList" instance=ExtResource("21_osssd")]
-layout_mode = 2
-script = null
-
-[node name="selectAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_vwyey")
-max_polyphony = 20
-bus = &"Sounds"
-
-[node name="clickAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_tm4iw")
-max_polyphony = 20
-bus = &"Sounds"
+[node name="collision" type="CollisionShape2D" parent="pausable/powerupList/area"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_u88d2")
 
 [node name="pauseController" type="Node2D" parent="."]
 z_index = 15
@@ -963,7 +999,8 @@ script = ExtResource("19_tgmq2")
 
 [node name="pauseLayer" type="CanvasLayer" parent="pauseController"]
 
-[node name="ColorRect" type="ColorRect" parent="pauseController/pauseLayer"]
+[node name="pauseFade" type="ColorRect" parent="pauseController/pauseLayer"]
+visible = false
 material = SubResource("ShaderMaterial_tiwvj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -973,16 +1010,17 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pauseController/pauseLayer/ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pauseController/pauseLayer/pauseFade"]
 libraries = {
 &"": SubResource("AnimationLibrary_kbtag")
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pauseController/pauseLayer"]
+[node name="textContainer" type="VBoxContainer" parent="pauseController/pauseLayer"]
 offset_top = -20.0
 offset_right = 320.0
 
-[node name="pauseText" type="Label" parent="pauseController/pauseLayer/VBoxContainer"]
+[node name="pauseText" type="Label" parent="pauseController/pauseLayer/textContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_sh26x")
 text = "--PAUSED--"
@@ -1103,6 +1141,16 @@ actionScript = ExtResource("22_pgve5")
 canEnable = false
 selectAudio = NodePath("../../../../selectAudio")
 clickAudio = NodePath("../../../../clickAudio")
+
+[node name="selectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_vwyey")
+max_polyphony = 20
+bus = &"Sounds"
+
+[node name="clickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_tm4iw")
+max_polyphony = 20
+bus = &"Sounds"
 
 [node name="DebugMode" type="Node" parent="."]
 script = ExtResource("32_u88d2")

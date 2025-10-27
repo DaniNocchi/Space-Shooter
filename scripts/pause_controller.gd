@@ -1,7 +1,7 @@
 extends Node2D
 @onready var pausable = $"../pausable"
 var paused = false
-@onready var animPlayer = $pauseLayer/ColorRect/AnimationPlayer
+@onready var animPlayer = $pauseLayer/pauseFade/AnimationPlayer
 
 func _process(_delta):
 	if Input.is_action_just_released("pause"):

@@ -14,7 +14,7 @@ func _process(_delta):
 	var shape1 = selfCollision.shape
 	var shape2 = playerCollision.shape
 	
-	shape1.size.y =   (max(0, controller.usingPowerup.size() - 1) * 20 + 16)
+	shape1.size.y            = (max(0, controller.usingPowerup.size() - 1) * 20 + 16)
 	selfCollision.position.y = (max(0, controller.usingPowerup.size() - 1) * 10 + 8)
 	# considering scales
 	var size1 = shape1.size

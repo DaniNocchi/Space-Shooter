@@ -15,7 +15,7 @@ var meteorKilled = 0
 var doublePoints = false
 var canShowMouse = true
 var fastShots = false
-var existingPowerup = []
+var usingPowerup = []
 
 var locale : int = 1           # 1: English, 2: Portuguese, 3: Spanish
 var maxLocaleOptions = 3       #Sets how much languages are in the game

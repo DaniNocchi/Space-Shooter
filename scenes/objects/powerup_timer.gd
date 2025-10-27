@@ -25,6 +25,5 @@ func _timer_timeout():
 		1: controller.doublePoints = false
 		2: controller.fastShots = false
 		#3:
-		
-	controller.existingPowerup.erase(power)
+	controller.usingPowerup.erase(power)
 	queue_free()

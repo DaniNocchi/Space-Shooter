@@ -13,10 +13,9 @@ func _ready() -> void:
 	controller.meteorKilled = 0
 	controller.doublePoints = false
 	controller.fastShots = false
-	controller.existingPowerup.clear()
+	controller.usingPowerup.clear()
 	
-	
-	DiscordRPC.app_id = 1084242258229993533 # Application ID
+
 	DiscordRPC.details = "Playing a Match"
 	DiscordRPC.state = "Wave "+str(controller.Wave)
 	DiscordRPC.large_image = "logo" # Image key from "Art Assets"
@@ -33,16 +32,16 @@ func _process(delta):
 			$pauseController/pauseLayer/Control/resumeButton.text = "Resume"
 			$pauseController/pauseLayer/Control/quitButton.text = "Quit"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Wave "+str(controller.Wave)
-			$pauseController/pauseLayer/VBoxContainer/pauseText.text = "--PAUSED--"
+			$pauseController/pauseLayer/textContainer/pauseText.text = "--PAUSED--"
 		2:
 			$pausable/PointsText.text = str(controller.Points)+" Pontos"
 			$pauseController/pauseLayer/Control/resumeButton.text = "Continuar"
 			$pauseController/pauseLayer/Control/quitButton.text = "Sair"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Onda "+str(controller.Wave)
-			$pauseController/pauseLayer/VBoxContainer/pauseText.text = "--PAUSADO--"
+			$pauseController/pauseLayer/textContainer/pauseText.text = "--PAUSADO--"
 		3:
 			$pausable/PointsText.text = str(controller.Points)+" Puntos"
 			$pauseController/pauseLayer/Control/resumeButton.text = "Reanudar"
 			$pauseController/pauseLayer/Control/quitButton.text = "Salir"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Oleada "+str(controller.Wave)
-			$pauseController/pauseLayer/VBoxContainer/pauseText.text = "--PAUSADO--"
+			$pauseController/pauseLayer/textContainer/pauseText.text = "--PAUSADO--"
