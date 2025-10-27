@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="1_66hs5"]
 [ext_resource type="Texture2D" uid="uid://byt0a1x4nhc85" path="res://Sprites/box.png" id="1_fr884"]
-[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="3_wv5kj"]
-[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_options_button.gd" id="4_gteia"]
+[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/button_general.gd" id="3_wv5kj"]
+[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/baOptionsBack.gd" id="4_gteia"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fr884"]
 font = ExtResource("1_66hs5")

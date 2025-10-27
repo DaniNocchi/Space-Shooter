@@ -1,20 +1,22 @@
-[gd_scene load_steps=26 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=28 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
 [ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="2_oirye"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_rtsuv"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="3_2rquh"]
 [ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="3_f7dxx"]
+[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/button_general.gd" id="5_6fjaf"]
+[ext_resource type="Script" uid="uid://cib8b5gqy527h" path="res://scripts/buttonScripts/start_button.gd" id="5_yx1sr"]
+[ext_resource type="Script" uid="uid://c83pjqwlrq8xq" path="res://scripts/buttonScripts/baOptions.gd" id="6_ipxnb"]
 [ext_resource type="Script" uid="uid://cjx4a8imem3k5" path="res://scripts/creditsText.gd" id="6_oirye"]
+[ext_resource type="Script" uid="uid://bmj2a8xy1v5j4" path="res://scripts/buttonScripts/baCredits.gd" id="7_hxyg5"]
+[ext_resource type="Script" uid="uid://cm37m4tt2v8vi" path="res://scripts/buttonScripts/quit_button.gd" id="8_t54ei"]
 [ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scripts/credits_animation.gd" id="9_ipxnb"]
 [ext_resource type="Texture2D" uid="uid://bwnn32oh22gbd" path="res://Sprites/green_ring.png" id="10_exhbh"]
 [ext_resource type="Texture2D" uid="uid://pgiflukjxlgq" path="res://Sprites/ring.png" id="10_orv06"]
 [ext_resource type="Texture2D" uid="uid://cw8u83w3iji8b" path="res://Sprites/spaceshooterlogo.svg" id="11_t54ei"]
-[ext_resource type="Script" uid="uid://b8o5csoyngw3m" path="res://scripts/buttonScripts/startButton.gd" id="12_f7dxx"]
+[ext_resource type="Script" uid="uid://b8o5csoyngw3m" path="res://scenes/rooms/startButton.gd" id="12_f7dxx"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_kputg"]
-[ext_resource type="Script" uid="uid://chg2niikwibju" path="res://scripts/buttonScripts/buttonOptions.gd" id="14_6vnmf"]
-[ext_resource type="Script" uid="uid://vhmlgp76ner2" path="res://scripts/buttonScripts/buttonCredits.gd" id="16_5ats0"]
-[ext_resource type="Script" uid="uid://c5ubvadeuegmw" path="res://scripts/buttonScripts/buttonQuit.gd" id="18_n2rvu"]
 
 [sub_resource type="Gradient" id="Gradient_am2me"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
@@ -669,6 +671,7 @@ script = ExtResource("12_f7dxx")
 mainButton = true
 optionsCanDisable = true
 horizontalAlign = 0
+actionScript = ExtResource("5_yx1sr")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 
@@ -698,9 +701,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
 text = "Options"
 flat = true
 alignment = 0
-script = ExtResource("14_6vnmf")
+script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
+actionScript = ExtResource("6_ipxnb")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 
@@ -730,9 +734,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
 text = "Credits"
 flat = true
 alignment = 0
-script = ExtResource("16_5ats0")
+script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
+actionScript = ExtResource("7_hxyg5")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 
@@ -763,9 +768,10 @@ toggle_mode = true
 text = "Quit"
 flat = true
 alignment = 0
-script = ExtResource("18_n2rvu")
+script = ExtResource("5_6fjaf")
 optionsCanDisable = true
 horizontalAlign = 0
+actionScript = ExtResource("8_t54ei")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 

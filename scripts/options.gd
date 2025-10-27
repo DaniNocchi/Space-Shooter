@@ -1,19 +1,20 @@
 extends Node2D
 var backgroundFade = true
 func _ready():
-	if backgroundFade:
-		$options/CanvasLayer/AnimationPlayer2.play("in")
+	
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value = controller.SFXVolume
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer/musicSlider.value = controller.musicVolume
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck.button_pressed = controller.fullscreen
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter/screenShake.button_pressed = controller.screenShake
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter/controllerShake.button_pressed = controller.gamepadShake
+	await await get_tree().process_frame
+	if backgroundFade: $options/CanvasLayer/AnimationPlayer2.play("in")
+	$options/CanvasLayer/AnimationPlayer.play("in")
 func disableOptions():
 	controller.optionsEnabled = false
 	queue_free()
 func playBackgroundFade():
-	if backgroundFade:
-		$options/CanvasLayer/AnimationPlayer2.play("out")
+	if backgroundFade: $options/CanvasLayer/AnimationPlayer2.play("out")
 func _process(delta):
 	controller.fullscreen = $options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck.button_pressed
 	controller.SFXVolume = $options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value

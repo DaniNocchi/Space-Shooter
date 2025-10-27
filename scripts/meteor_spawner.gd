@@ -17,14 +17,22 @@ func _process(_delta):
 	if debugNode.toggleMeteorSpawn and canSpawn and controller.meteorAlive < controller.MaxMeteor:
 		#picking the meteor properties randomly
 		var meteorType = meteorTypeList.pick_random();
-		var locationX = randi_range(-16, 336)
-		var locationY = randi_range(-16, 196)
-		var location = Vector2(locationX, locationY)
+		var spawnPlace = randi_range(0, 1)
+		var locationX : int
+		var locationY : int
+		if spawnPlace == 1: #0 = Horizontal spawn, it will spawn or on the bottom or on the top of the scene
+			locationX = randi_range(-16, 336)
+			locationY = [-16, 196].pick_random()
+		else:				#1 = vertical spawn, it will spawn or on the left or on the right of the scene
+			locationX = [-16, 336].pick_random()
+			locationY = randi_range(-16, 196)
+		
 		meteorTimer.start(meteorCooldown)
-		var meteor = load("res://scenes/objects/meteor.tscn").instantiate()
+		var meteor : Area2D = load("res://scenes/objects/meteor.tscn").instantiate()
 		meteor.type = meteorType
 		$"..".add_child(meteor)
-		meteor.transform = location.global_transform
+		meteor.position = Vector2(locationX, locationY)
+		meteor.rotation = randi_range(0, 360)
 		meteor.damageAudioPlayer = $"../meteorDamageAudio"; 
 		meteor.dieAudioPlayer = $"../meteorDieAudio"
 		controller.meteorAlive += 1

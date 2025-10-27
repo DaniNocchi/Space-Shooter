@@ -7,21 +7,19 @@ extends Button
 @export var defaultSize = 1.0
 @export var selectedSize = 1.2
 @export var horizontalAlign = HORIZONTAL_ALIGNMENT_CENTER
-@export var actionScript : Script
 @export var canDisable = true
 @export var canEnable = true
 @export var selectAudio : AudioStreamPlayer
 @export var clickAudio : AudioStreamPlayer
-var action_instance
 
 var is_pressing := false
 var hovered := false
 var is_focused := false
 @onready var tween := get_tree().create_tween()
 
+func action():
+	print_debug("Code Error 001: Base button_general 'action()' function result. Did you override it in the extended code?")
 func _ready():
-	if actionScript:
-		action_instance = actionScript.new()
 	if horizontalAlign == HORIZONTAL_ALIGNMENT_CENTER:
 		pivot_offset = size/2
 	if !is_connected("mouse_entered", Callable(self, "_on_mouse_entered")):  connect("mouse_entered", Callable(self, "_on_mouse_entered"))
@@ -82,8 +80,7 @@ func _on_button_up():
 	update_button_scale()
 	if !disabled:
 		clickAudio.play()
-	if action_instance and action_instance.has_method("action"):
-		action_instance.action(self)
+	action()
 
 #region managing focus stuff
 func removeFocusFromMouse():
@@ -95,8 +92,8 @@ func removeFocusFromMouse():
 		focus_mode = Control.FOCUS_NONE
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		manageFocus(2)
-func manageFocus(action):
-	match action:
+func manageFocus(_action):
+	match _action:
 		1:
 			if mainButton:
 				if canGrabFocus and focus_mode == FOCUS_ALL:

@@ -157,7 +157,6 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_bgm50")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_n3hsn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
