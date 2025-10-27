@@ -5,8 +5,7 @@ extends Node2D
 @onready var maxMeteor = 10
 @onready var meteorTimer = Timer.new()
 @onready var meteorCooldown = 0.05
-@onready var Muzzle = $MuzzleMeteor1
-@onready var locationList = [$MuzzleMeteor1, $MuzzleMeteor2, $MuzzleMeteor3, $MuzzleMeteor4, $MuzzleMeteor5, $MuzzleMeteor6, $MuzzleMeteor7, $MuzzleMeteor8]
+@onready var debugNode = $"../../DebugMode"
 
 func _ready():
 	meteorTimer.one_shot = true
@@ -15,14 +14,17 @@ func _ready():
 
 
 func _process(_delta):
-	if canSpawn and controller.meteorAlive < controller.MaxMeteor:
+	if debugNode.toggleMeteorSpawn and canSpawn and controller.meteorAlive < controller.MaxMeteor:
+		#picking the meteor properties randomly
 		var meteorType = meteorTypeList.pick_random();
-		Muzzle = locationList.pick_random()
+		var locationX = randi_range(-16, 336)
+		var locationY = randi_range(-16, 196)
+		var location = Vector2(locationX, locationY)
 		meteorTimer.start(meteorCooldown)
 		var meteor = load("res://scenes/objects/meteor.tscn").instantiate()
 		meteor.type = meteorType
 		$"..".add_child(meteor)
-		meteor.transform = Muzzle.global_transform
+		meteor.transform = location.global_transform
 		meteor.damageAudioPlayer = $"../meteorDamageAudio"; 
 		meteor.dieAudioPlayer = $"../meteorDieAudio"
 		controller.meteorAlive += 1

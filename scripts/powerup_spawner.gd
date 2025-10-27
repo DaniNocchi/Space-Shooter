@@ -1,4 +1,5 @@
 extends Node
+var debugNode = $"../../DebugMode"
 var powerupList = [1, 2, 2, 2]
 #Powerup List:
 #1- Double Points .
@@ -16,7 +17,7 @@ var oldWave = controller.Wave
 func _process(delta: float) -> void:
 	if oldWave != controller.Wave:
 		oldWave = controller.Wave
-		spawn()
+		if debugNode.spawnPowerup:spawn()
 func spawn():
 	var chosenPowerup = powerupList.pick_random()
 	var powerupObject = load("res://scenes/objects/powerup.tscn").instantiate()

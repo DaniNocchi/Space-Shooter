@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=67 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/r_game.gd" id="1_vdclo"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_1lepj"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://cn5gfmxw4c3yt" path="res://scripts/meteor_spawner.gd" id="6_3w7uf"]
 [ext_resource type="Shader" uid="uid://dfe76k56ujk1d" path="res://shaders/fix.gdshader" id="6_hutln"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="6_sh26x"]
-[ext_resource type="Script" uid="uid://btcf5klrgmxa3" path="res://scripts/muzzle_meteor.gd" id="7_1lepj"]
 [ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scripts/points_text.gd" id="7_ariif"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="9_rpxxd"]
 [ext_resource type="Texture2D" uid="uid://db68drhbssvnf" path="res://Sprites/waveBackground.png" id="12_3w7uf"]
@@ -859,38 +858,6 @@ shape = SubResource("RectangleShape2D_rrghp")
 
 [node name="MeteorSpawner" type="Node2D" parent="pausable"]
 script = ExtResource("6_3w7uf")
-
-[node name="MuzzleMeteor1" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(-16, -16)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor2" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(160, -16)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor3" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(336, -16)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor4" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(336, 90)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor5" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(336, 196)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor6" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(160, 196)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor7" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(-16, 196)
-script = ExtResource("7_1lepj")
-
-[node name="MuzzleMeteor8" type="Marker2D" parent="pausable/MeteorSpawner"]
-position = Vector2(-16, 90)
-script = ExtResource("7_1lepj")
 
 [node name="boundary" type="Area2D" parent="pausable"]
 script = ExtResource("9_rpxxd")
