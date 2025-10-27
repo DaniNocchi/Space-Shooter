@@ -1,5 +1,5 @@
 extends Node
-var debugNode = $"../../DebugMode"
+@onready var debugNode = $"../../DebugMode"
 var powerupList = [1, 2, 2, 2]
 #Powerup List:
 #1- Double Points .
