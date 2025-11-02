@@ -60,7 +60,7 @@ func damage():
 		damageAudioPlayer.play()
 		damageAnim.play("flash")
 	else:
-		if controller.doublePoints: pointsGiven *= 2
+		if pwrupController.doublePoints: pointsGiven *= 2
 		controller.Points += pointsGiven
 		controller.meteorAlive -= 1
 		controller.meteorKilled += 1
@@ -68,6 +68,8 @@ func damage():
 		dieAudioPlayer.play()
 		remove_from_group("meteors")
 		pointsText(pointsGiven)
+		await $sprite/animation.animation_finished
+		queue_free()
 func spriteChange():
 	match type:
 		1: #small

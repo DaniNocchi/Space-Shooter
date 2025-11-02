@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=30 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
 [ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="2_oirye"]
@@ -19,6 +19,40 @@
 [sub_resource type="Gradient" id="Gradient_am2me"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
 colors = PackedColorArray(0.0026324103, 0.0026324103, 0.0026324103, 0.6, 0.91351753, 0.91351753, 0.91351753, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_inafh"]
+gradient = SubResource("Gradient_am2me")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oirye"]
+lifetime_randomness = 0.55
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 150, 0)
+direction = Vector3(-100, 0, 0)
+spread = 0.0
+initial_velocity_min = 650.0
+initial_velocity_max = 750.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.03
+color_initial_ramp = SubResource("GradientTexture1D_inafh")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f7dxx"]
+gradient = SubResource("Gradient_am2me")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdxma"]
+lifetime_randomness = 0.55
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30000.03, 150, 0)
+direction = Vector3(-100, 0, 0)
+spread = 0.0
+initial_velocity_min = 650.0
+initial_velocity_max = 700.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.03
+color_initial_ramp = SubResource("GradientTexture1D_f7dxx")
 
 [sub_resource type="Animation" id="Animation_ipxnb"]
 length = 0.001
@@ -460,28 +494,17 @@ bus = &"Sounds"
 
 [node name="stars" type="Node2D" parent="."]
 
-[node name="Stars" type="CPUParticles2D" parent="stars"]
+[node name="Stars" type="GPUParticles2D" parent="stars"]
 position = Vector2(336, 89.00001)
 scale = Vector2(0.006041211, 0.78060913)
 amount = 500
 texture = ExtResource("2_rtsuv")
 lifetime = 110.0
 speed_scale = 5.0
-lifetime_randomness = 0.55
-fixed_fps = 30
-draw_order = 1
-emission_shape = 3
-emission_rect_extents = Vector2(1, 150)
-direction = Vector2(-100, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 650.0
-initial_velocity_max = 750.0
-scale_amount_min = 0.0
-scale_amount_max = 0.03
-color_initial_ramp = SubResource("Gradient_am2me")
+visibility_rect = Rect2(-81122.31, -181.68283, 81150.375, 363.60046)
+process_material = SubResource("ParticleProcessMaterial_oirye")
 
-[node name="Stars2" type="CPUParticles2D" parent="stars"]
+[node name="Stars2" type="GPUParticles2D" parent="stars"]
 position = Vector2(162, 94)
 scale = Vector2(0.006125344, 0.7733686)
 emitting = false
@@ -491,18 +514,9 @@ lifetime = 110.0
 one_shot = true
 speed_scale = 5.0
 explosiveness = 1.0
-lifetime_randomness = 0.55
-fixed_fps = 30
-emission_shape = 3
-emission_rect_extents = Vector2(30000.03, 150)
-direction = Vector2(-100, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 650.0
-initial_velocity_max = 700.0
-scale_amount_min = 0.0
-scale_amount_max = 0.03
-color_initial_ramp = SubResource("Gradient_am2me")
+visibility_rect = Rect2(-101966, -181.77249, 131868.44, 363.6124)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_vdxma")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

@@ -89,7 +89,7 @@ func MoveAndRotate(): #the name says it all
 		knockbackSpeed = lerp(knockbackSpeed, 0.0, 0.05)
 		position -= transform.x * knockbackSpeed
 func ShootBullets(): #the name says it all
-	if controller.fastShots: shootCooldown = 0.1
+	if pwrupController.fastShots: shootCooldown = 0.1
 	else: shootCooldown = 0.2
 	if canShoot:
 		if Input.is_action_pressed("shoot") and shootBool:

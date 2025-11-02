@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://drk8wujqga8qe"]
 
 [ext_resource type="Script" uid="uid://co0x0b1leweuf" path="res://scripts/powerup_object.gd" id="1_82byj"]
-[ext_resource type="Texture2D" uid="uid://c0jsgh48w5ccr" path="res://Sprites/power0.png" id="2_bgm50"]
+[ext_resource type="Texture2D" uid="uid://c0jsgh48w5ccr" path="res://Sprites/power1.png" id="2_bgm50"]
 [ext_resource type="Script" uid="uid://bwdv5resuux7k" path="res://scripts/textureCircle.gd" id="3_8pgny"]
 [ext_resource type="Texture2D" uid="uid://8itsgqdpal5t" path="res://Sprites/bullet.png" id="4_dyv1u"]
 [ext_resource type="Shader" uid="uid://bxawbwn2hfenx" path="res://shaders/flash.gdshader" id="4_mgiqp"]
@@ -76,34 +76,34 @@ tracks/0/path = NodePath("sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(2.1630003, 1),
+"times": PackedFloat32Array(0, 0.2, 0.23333333),
+"transitions": PackedFloat32Array(2.1630003, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("TextureCircle:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.09, 0.1, 1, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.09, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("TextureCircle:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.09, 0.1, 1.5),
-"transitions": PackedFloat32Array(1, 0.26794335, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [2.0, 8.0, 75.0]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_dyv1u"]

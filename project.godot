@@ -28,6 +28,7 @@ config/windows_native_icon="res://Sprites/icon.ico"
 controller="*res://scripts/game_controller.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 Transition="*res://scenes/objects/transition.tscn"
+pwrupController="*res://scripts/powerup_controller.gd"
 
 [debug]
 

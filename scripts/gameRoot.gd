@@ -3,17 +3,10 @@ var oldWave = 1
 func _ready() -> void:
 	$pausable/stars/Stars2.emitting=true
 	if !controller.gamepad: Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	controller.MaxMeteor = 15
-	controller.meteorAlive = 0
-	controller.Points = 0
-	controller.Wave = 1
-	controller.bulletsMissed = 0
-	controller.bulletsShot = 0
-	controller.powerupsGotten = 0
-	controller.meteorKilled = 0
-	controller.doublePoints = false
-	controller.fastShots = false
-	controller.usingPowerup.clear()
+	pwrupController.newGame()
+	
+
+
 	
 
 	DiscordRPC.details = "Playing a Match"

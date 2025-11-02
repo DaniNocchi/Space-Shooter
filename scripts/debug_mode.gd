@@ -4,5 +4,5 @@ extends Node
 @export var noPlayerKnockback := false
 @export var canChangePlayerMaxSpeed := false
 @export_range(0.0, 10.0) var playerMaxSpeed: float = 2.0
-@export var spawnPowerup := false
+@export var spawnPowerup := true
 @export var toggleMeteorSpawn := true
