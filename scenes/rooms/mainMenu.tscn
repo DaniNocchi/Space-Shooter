@@ -107,7 +107,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/4/path = NodePath("CanvasLayer/creditsText:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -131,7 +131,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/6/path = NodePath("CanvasLayer/creditsText:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -243,7 +243,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/4/path = NodePath("CanvasLayer/creditsText:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -315,7 +315,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/10/path = NodePath("CanvasLayer/creditsText:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -330,7 +330,7 @@ resource_name = "end"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/0/path = NodePath("CanvasLayer/creditsText:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -527,7 +527,7 @@ offset_bottom = 40.0
 [node name="creditsAnimation" type="Node2D" parent="UI"]
 script = ExtResource("9_ipxnb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/creditsAnimation"]
+[node name="animation" type="AnimationPlayer" parent="UI/creditsAnimation"]
 libraries = {
 &"": SubResource("AnimationLibrary_hxyg5")
 }
@@ -543,7 +543,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/creditsAnimation/CanvasLayer"]
+[node name="creditsText" type="RichTextLabel" parent="UI/creditsAnimation/CanvasLayer"]
 offset_top = 180.0
 offset_right = 320.0
 offset_bottom = 374.9975
@@ -574,7 +574,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("6_oirye")
 
-[node name="Label" type="Label" parent="UI/creditsAnimation/CanvasLayer"]
+[node name="skippingText" type="Label" parent="UI/creditsAnimation/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 266.0
 offset_top = 6.0
@@ -585,7 +585,7 @@ theme_override_fonts/font = ExtResource("3_2rquh")
 text = "Skipping..."
 horizontal_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/creditsAnimation/CanvasLayer"]
+[node name="skippingProgress" type="TextureProgressBar" parent="UI/creditsAnimation/CanvasLayer"]
 offset_left = 302.0
 offset_top = 3.0000002
 offset_right = 602.0
@@ -593,7 +593,7 @@ offset_bottom = 303.0
 scale = Vector2(0.05, 0.05)
 max_value = 2.0
 step = 0.0
-value = 2.0
+value = 1.0
 fill_mode = 5
 texture_under = ExtResource("10_exhbh")
 texture_progress = ExtResource("10_orv06")

@@ -1,7 +1,7 @@
 extends TextureProgressBar
 var sprite : Texture2D
 var timer = Timer.new()
-var timerTime : int
+var timerTime : float
 var power : int
 func _ready():
 	timerTime = pwrupController.pullTimerTime(power)

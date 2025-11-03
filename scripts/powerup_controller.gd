@@ -47,18 +47,20 @@ func action(pwr, obj):
 		2:
 			fastShots = true
 			obj.spawnTimer()
+		3:
+			shieldOn = true
+			obj.spawnTimer()
 	#the powerup action
 func pullTimerTime(pwr): 
-	match pwr:
-		1: return 10
-		2: return 10
-	#The time the powerup will have
-	#(if the powerup has a timer)
+	match pwr: #The time the powerup timer will have (in seconds)
+		1: return 10.00
+		2: return 10.00
+		3: return 15.00
 func timerTimeout(pwr): 
 	match pwr:
 		1: doublePoints = false
 		2: fastShots = false
-		#3:
+		3: shieldOn = false
 	#What happens if the timer runs out
 	#basically just invert the action() effect
 
@@ -78,12 +80,14 @@ func newGame():
 	controller.bulletsShot = 0
 	controller.powerupsGotten = 0
 	controller.meteorKilled = 0
+	shieldOn = false
 
 #Creating variables area
 #(add it in the newGame() too)
 var doublePoints = false
 var fastShots = false
 var oldWave = 1
+var shieldOn = false
 
 
 

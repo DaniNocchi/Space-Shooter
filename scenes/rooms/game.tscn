@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=77 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/gameRoot.gd" id="1_comqk"]
 [ext_resource type="AudioStream" uid="uid://cmx3tfvxy66jl" path="res://sounds/soShoot.wav" id="2_b6jqf"]
@@ -29,6 +29,8 @@
 [ext_resource type="Script" uid="uid://d3r2woen8jmta" path="res://scripts/buttonScripts/buttonPauseQuit.gd" id="26_y4aer"]
 [ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="27_2y8oi"]
 [ext_resource type="Script" uid="uid://c7g77el357lcn" path="res://scripts/debug_mode.gd" id="28_o7ra1"]
+[ext_resource type="Script" uid="uid://cv7pxbn1pey8e" path="res://scenes/objects/shield.gd" id="30_y4aer"]
+[ext_resource type="Texture2D" uid="uid://cd5we4gxychsl" path="res://Sprites/shield.png" id="31_y8cjt"]
 
 [sub_resource type="Gradient" id="Gradient_vae2y"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
@@ -212,6 +214,168 @@ tracks/3/keys = {
 _data = {
 &"RESET": SubResource("Animation_a3i0e"),
 &"damage": SubResource("Animation_hutln")
+}
+
+[sub_resource type="Animation" id="Animation_am3y5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collision:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i3nqv"]
+resource_name = "in"
+length = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collision:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qf3ha"]
+resource_name = "out"
+length = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collision:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjq5u"]
+_data = {
+&"RESET": SubResource("Animation_am3y5"),
+&"in": SubResource("Animation_i3nqv"),
+&"out": SubResource("Animation_qf3ha")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh26x"]
@@ -872,6 +1036,27 @@ position = Vector2(7, 0)
 [node name="Collision" type="CollisionShape2D" parent="pausable/Player/Area2D"]
 shape = SubResource("RectangleShape2D_rrghp")
 
+[node name="shield" type="Area2D" parent="pausable"]
+position = Vector2(156, 95)
+script = ExtResource("30_y4aer")
+
+[node name="sprite" type="Sprite2D" parent="pausable/shield"]
+visible = false
+position = Vector2(12, 0)
+texture = ExtResource("31_y8cjt")
+
+[node name="collision" type="CollisionPolygon2D" parent="pausable/shield"]
+visible = false
+position = Vector2(7.625001, 0)
+scale = Vector2(0.6249999, 1)
+polygon = PackedVector2Array(5.3999987, -11, 6.999999, -10, 8.599999, -9, 10.2, -7, 11.8, -4, 11.8, 4, 10.2, 7, 8.599999, 9, 6.999999, 10, 5.3999987, 11, 2.1999989, 11, 2.1999989, 9, 5.3999987, 7, 6.999999, 4, 6.999999, -4, 5.3999987, -7, 2.1999989, -9, 2.1999989, -11)
+disabled = true
+
+[node name="animation" type="AnimationPlayer" parent="pausable/shield"]
+libraries = {
+&"": SubResource("AnimationLibrary_cjq5u")
+}
+
 [node name="MeteorSpawner" type="Node2D" parent="pausable"]
 script = ExtResource("13_boltt")
 
@@ -1136,6 +1321,8 @@ script = ExtResource("28_o7ra1")
 
 [connection signal="area_entered" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="pausable/Player/Area2D" to="pausable/Player" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="pausable/shield" to="pausable/shield" method="_on_area_entered"]
+[connection signal="body_entered" from="pausable/shield" to="pausable/shield" method="_on_body_entered"]
 [connection signal="area_entered" from="pausable/boundary" to="pausable/boundary" method="_on_area_entered"]
 [connection signal="button_up" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_button_up"]
 [connection signal="focus_entered" from="pauseController/pauseLayer/Control/optionsButton" to="pauseController/pauseLayer/Control/optionsButton" method="_on_focus_entered"]

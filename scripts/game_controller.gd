@@ -59,7 +59,7 @@ func _process(_delta):
 	
 	
 	
-	Wave = floori((Points/25.0)+1.0) #basically, +25 points equals to +1 waves.
+	Wave = floori((Points/50.0)+1.0) #basically, +25 points equals to +1 waves.
 	MaxMeteor = 15*Wave 
 	#basically, +1 waves means +15 max meteors that can spawn. 
 	#I prob have to lower it cause 30 meteors when you have only 

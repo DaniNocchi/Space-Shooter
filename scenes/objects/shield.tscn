@@ -4,6 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="1_kdf5a"]
 [ext_resource type="Texture2D" uid="uid://cd5we4gxychsl" path="res://Sprites/shield.png" id="2_i3nqv"]
 
+[sub_resource type="Animation" id="Animation_am3y5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_i3nqv"]
 resource_name = "in"
 length = 0.16
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_am3y5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qf3ha"]
@@ -76,14 +76,14 @@ _data = {
 script = ExtResource("1_i3nqv")
 
 [node name="sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(12, 0)
 texture = ExtResource("2_i3nqv")
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2(7.625001, 0)
 scale = Vector2(0.6249999, 1)
-polygon = PackedVector2Array(5.3999987, -11, 10.2, -7, 11.8, -4, 11.8, 4, 10.2, 7, 5.3999987, 11, 2.1999989, 11, 2.1999989, 9, 5.3999987, 7, 6.999999, 4, 6.999999, -4, 5.3999987, -7, 2.1999989, -9, 2.1999989, -11)
+polygon = PackedVector2Array(5.3999987, -11, 6.999999, -10, 8.599999, -9, 10.2, -7, 11.8, -4, 11.8, 4, 10.2, 7, 8.599999, 9, 6.999999, 10, 5.3999987, 11, 2.1999989, 11, 2.1999989, 9, 5.3999987, 7, 6.999999, 4, 6.999999, -4, 5.3999987, -7, 2.1999989, -9, 2.1999989, -11)
 
 [node name="SPlayer" type="Sprite2D" parent="."]
 texture = ExtResource("1_kdf5a")
