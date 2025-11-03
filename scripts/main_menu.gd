@@ -1,19 +1,24 @@
 extends Node2D
+var oldOptionsEnabled = controller.optionsEnabled
 var locale = 0
 func _ready():
 	$stars/Stars2.emitting=true
-	$UI/mainButtons/startButton.manageFocus(1)
+	$UI/mainButtons/startButton.changeFocus()
 	$UI/mainButtons/startButton.focus_mode = Control.FOCUS_ALL
 	DiscordRPC.app_id = 1084242258229993533 # Application ID
 	DiscordRPC.details = "On the Main Menu"
 	DiscordRPC.large_image = "logo" 
 	DiscordRPC.large_image_text = "Space Shooter"
 	DiscordRPC.refresh()
-	
+	controller.currentMenu = 1
 	
 	
 
 func _process(delta: float) -> void:
+	if oldOptionsEnabled != controller.optionsEnabled:
+		oldOptionsEnabled = controller.optionsEnabled
+		if !oldOptionsEnabled:
+			controller.currentMenu = 1
 	if controller.locale != locale:
 		locale = controller.locale
 		match controller.locale:

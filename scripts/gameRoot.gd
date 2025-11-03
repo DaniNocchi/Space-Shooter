@@ -1,10 +1,11 @@
 extends Node2D
 var oldWave = 1
+var oldOptionsEnabled = controller.optionsEnabled
 func _ready() -> void:
 	$pausable/stars/Stars2.emitting=true
 	if !controller.gamepad: Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	pwrupController.newGame()
-	
+	controller.currentMenu = 0
 
 
 	
@@ -16,6 +17,13 @@ func _ready() -> void:
 	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
 	DiscordRPC.refresh()
 func _process(delta):
+	if oldOptionsEnabled != controller.optionsEnabled:
+		oldOptionsEnabled = controller.optionsEnabled
+		if !oldOptionsEnabled:
+			if $pauseController.paused:
+				controller.currentMenu = 4
+			else:
+				controller.currentMenu = 0
 	if controller.Wave!=oldWave:
 		oldWave = controller.Wave
 		DiscordRPC.refresh() 

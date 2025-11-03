@@ -1,4 +1,4 @@
-extends Button
+extends CheckBox
 
 @export var mainButton : bool = false
 @export var menu : int = 0
@@ -24,8 +24,6 @@ var hovered := false
 var is_focused := false
 @onready var tween := get_tree().create_tween()
 
-func action():
-	print_debug("Code Error 001: Base button_general 'action()' function result. Did you override it in the extended code?")
 func _ready():
 	if horizontalAlign == HORIZONTAL_ALIGNMENT_CENTER:
 		pivot_offset = size/2
@@ -87,7 +85,7 @@ func _on_button_up():
 	update_button_scale()
 	if !disabled:
 		clickAudio.play()
-	action()
+	
 
 func changeFocus():
 	if controller.gamepad and !disabled:

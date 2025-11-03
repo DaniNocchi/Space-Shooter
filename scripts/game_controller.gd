@@ -3,6 +3,7 @@ var Wave = 1
 var Points = 0
 var MaxMeteor = 15
 var meteorAlive = 0
+var currentMenu = 0
 var gamepad = false
 var optionsEnabled = false
 var version = "2.0.0"
