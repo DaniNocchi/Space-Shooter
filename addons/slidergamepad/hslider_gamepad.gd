@@ -3,7 +3,7 @@ extends HSlider
 
 ## Horizontal slider with better support for joystick and dpad
 class_name HSliderGamepad
-
+@export var menu := 0
 @export var slider_speed: float = 2
 @export var dpad_step: int = 5
 @export var joystick_discrete: bool = false
@@ -22,7 +22,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if sliding_dir == 0: return
-	
+	if controller.gamepad: focus_mode = Control.FOCUS_ALL
+	if !controller.gamepad: focus_mode = Control.FOCUS_NONE
 	value += ceil(slider_speed * delta) * sliding_dir
 
 func handle_joystick(event: InputEvent) -> void:

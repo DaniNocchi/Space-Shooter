@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dbgn5r4vvasq4"]
+[gd_scene load_steps=64 format=3 uid="uid://dbgn5r4vvasq4"]
 
 [ext_resource type="Script" uid="uid://bc6knn14kyqun" path="res://scripts/options.gd" id="1_7advn"]
 [ext_resource type="Texture2D" uid="uid://byt0a1x4nhc85" path="res://Sprites/box.png" id="1_ki6n4"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://cv6ytbhyhah3" path="res://scripts/buttonScripts/buttonLangNext.gd" id="8_ngwu7"]
 [ext_resource type="Texture2D" uid="uid://bvufxdi42mrmq" path="res://Sprites/slider/vertical/sliderBallVerticalGrab.png" id="8_ubl4e"]
 [ext_resource type="Script" uid="uid://dvai6jm1ev14k" path="res://addons/slidergamepad/hslider_gamepad.gd" id="9_qx4md"]
-[ext_resource type="StyleBox" uid="uid://cm7c6eocwjpfu" path="res://styles/bestFocus.tres" id="11_amjcb"]
 [ext_resource type="Texture2D" uid="uid://njfipxm8ph4x" path="res://Sprites/selectPositive.png" id="11_sl78m"]
 [ext_resource type="Texture2D" uid="uid://dc454ec637353" path="res://Sprites/selectFalse.png" id="12_amjcb"]
 [ext_resource type="Script" uid="uid://by6avmr0tsm1u" path="res://scripts/buttonScripts/checkbox_general.gd" id="15_ngwu7"]
@@ -194,7 +193,11 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_haoea"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qx4md"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amjcb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngwu7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfkqb"]
 
@@ -743,6 +746,7 @@ value = 5.0
 editable = false
 scrollable = false
 script = ExtResource("9_qx4md")
+menu = null
 slider_speed = 1.0
 dpad_step = 2
 joystick_discrete = true
@@ -790,6 +794,7 @@ value = 5.0
 editable = false
 scrollable = false
 script = ExtResource("9_qx4md")
+menu = null
 slider_speed = 1.0
 dpad_step = 2
 joystick_discrete = true
@@ -814,6 +819,8 @@ layout_mode = 2
 
 [node name="FullscreenCheck" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
@@ -824,6 +831,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qx4md")
 theme_override_icons/checked = ExtResource("11_sl78m")
 theme_override_icons/unchecked = ExtResource("12_amjcb")
 theme_override_icons/radio_checked = ExtResource("11_sl78m")
@@ -850,6 +858,8 @@ layout_mode = 2
 
 [node name="screenShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
@@ -860,7 +870,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
-theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ngwu7")
 theme_override_icons/checked = ExtResource("11_sl78m")
 theme_override_icons/unchecked = ExtResource("12_amjcb")
 theme_override_icons/radio_checked = ExtResource("11_sl78m")
@@ -887,6 +897,8 @@ layout_mode = 2
 
 [node name="controllerShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
@@ -897,7 +909,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
-theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ngwu7")
 theme_override_icons/checked = ExtResource("11_sl78m")
 theme_override_icons/unchecked = ExtResource("12_amjcb")
 theme_override_icons/radio_checked = ExtResource("11_sl78m")
