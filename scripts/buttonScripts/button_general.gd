@@ -88,7 +88,9 @@ func _on_button_up():
 	if !disabled:
 		clickAudio.play()
 	action()
-
+#as linkin park once said
+#"And even though I tried, it all fell apart"
+#I cant optimize this code...
 func changeFocus():
 	if controller.gamepad and !disabled:
 		focus_mode = Control.FOCUS_ALL

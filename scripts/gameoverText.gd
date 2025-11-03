@@ -99,9 +99,9 @@ You shot [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.bulletsShot) 
 		
 [color=BBBBBB]You got a [color=FFFFFF]NEW PERSONAL RECORD!«0.3»
 [shake rate=15.0 level=3][rainbow freq=0.4]" + str(controller.personalRecord) + " Points![/rainbow][/shake]«0.5»
-[font size=6][color=888888](Old Record: " + str(controller.oldPersonalRecord) + " Points)"
+[font size=6][color=888888](Old Record: " + str(int(controller.oldPersonalRecord)) + " Points)"
 	else:
 		text_to_show = text_to_show + "
 		
 [color=BBBBBB]You did not pass your Personal Record«0.1».«0.1».«0.1».«0.5»
-[font size=6][color=888888](Personal Record: 1500 Points)"
+[font size=6][color=888888](Personal Record: " + str(int(controller.oldPersonalRecord)) + "Points)"
