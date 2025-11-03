@@ -54,7 +54,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/slidergamepad/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/slidergamepad/plugin.cfg", "res://addons/type_writer_label/plugin.cfg")
 
 [gui]
 

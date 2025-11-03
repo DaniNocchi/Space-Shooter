@@ -20,6 +20,7 @@ func playAnimation(state): ##state true: in;  state false: out
 	else:
 		if backgroundFade: backgroundAnimator.play("out")
 		everythingAnimator.play("out")
+		controller.save_game()
 		controller.optionsEnabled = false
 
 func _process(delta):

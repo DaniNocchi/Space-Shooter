@@ -3,6 +3,9 @@ extends RichTextLabel
 @export var base_speed := 0.03  # tempo entre letras
 @export var delay_marker := "«"  # marcador de pausa
 @export var end_marker := "»"  # marcador de fim de pausa (opcional)
+var textGeneral = "[center]Game Over«0.5»[br][font size=8][br][color=BBBBBB]Lets see some stats from your gameplay«0.1».«0.1».«0.1».«0.5»[br]You got [wave amp=10 freq=10][rainbow freq=0.4]"+ str(controller.Points) + " points![/rainbow][/wave]«0.5»[br]You survived [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.Wave) + " waves![/rainbow][/wave]«0.5»[br][wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.meteorKilled) + " Meteors[/rainbow][/wave] were destroyed!«0.5»[br]You shot [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.bulletsShot) + " bullets[/rainbow][/wave]«0.5» and [color=FFFFFF]missed " + str(controller.bulletsMissed) + " of them«0.1».«0.1».«0.1».«0.5»«0.5»[br][color=BBBBBB]You got [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.powerupsGotten) + " Powerups![/rainbow][/wave]«1.0»"
+var textSuccess = "[br][br][color=BBBBBB]You got a [color=FFFFFF]NEW PERSONAL RECORD!«0.3»[br][shake rate=15.0 level=3][rainbow freq=0.4]" + str(controller.personalRecord) + " Points![/rainbow][/shake]«0.5»[br][font size=6][color=888888](Old Record: " + str(int(controller.oldPersonalRecord)) + " Points)"
+var textFailed = "[br][br][color=BBBBBB]You did not pass your Personal Record«0.1».«0.1».«0.1».«0.5»[br][font size=6][color=888888](Personal Record: " + str(int(controller.oldPersonalRecord)) + " Points)"
 
 var typing := true
 var text_to_show: String
@@ -10,7 +13,7 @@ var clean_text := ""  # texto sem marcadores
 var delay_positions := {}  # posição -> tempo de delay
 
 func _ready():
-	setText()
+	text_to_show = setText()
 	_parse_text()
 	text = clean_text
 	visible_characters = 0
@@ -83,25 +86,7 @@ func _type_text():
 		await get_tree().create_timer(base_speed).timeout
 
 func setText():
-	text_to_show = "[center]Game Over«0.5»
-[font size=8]
-[color=BBBBBB]Lets see some stats from your gameplay«0.1».«0.1».«0.1».«0.5»
-You got [wave amp=10 freq=10][rainbow freq=0.4]"+ str(controller.Points) + " points![/rainbow][/wave]«0.5»
-You survived [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.Wave) + " waves![/rainbow][/wave]«0.5»
-[wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.meteorKilled) + " Meteors[/rainbow][/wave] were destroyed!«0.5»
-You shot [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.bulletsShot) + " bullets[/rainbow][/wave]«0.5» and [color=FFFFFF]missed " + str(controller.bulletsMissed) + " of them«0.1».«0.1».«0.1».«0.5»«0.5»
-[color=BBBBBB]You got [wave amp=10 freq=10][rainbow freq=0.4]" + str(controller.powerupsGotten) + " Powerups![/rainbow][/wave]«1.0»"
-	
-	
-	#about the record...
-	if controller.Points > controller.oldPersonalRecord:
-		text_to_show = text_to_show + "
-		
-[color=BBBBBB]You got a [color=FFFFFF]NEW PERSONAL RECORD!«0.3»
-[shake rate=15.0 level=3][rainbow freq=0.4]" + str(controller.personalRecord) + " Points![/rainbow][/shake]«0.5»
-[font size=6][color=888888](Old Record: " + str(int(controller.oldPersonalRecord)) + " Points)"
-	else:
-		text_to_show = text_to_show + "
-		
-[color=BBBBBB]You did not pass your Personal Record«0.1».«0.1».«0.1».«0.5»
-[font size=6][color=888888](Personal Record: " + str(int(controller.oldPersonalRecord)) + "Points)"
+	var _text = ""
+	if controller.Points >= controller.oldPersonalRecord: _text = textGeneral + textSuccess
+	else: _text = textGeneral + textFailed
+	return _text
