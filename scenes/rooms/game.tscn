@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dm2whrfs4t2gf"]
+[gd_scene load_steps=77 format=3 uid="uid://bdholht5hoev"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/gameRoot.gd" id="1_comqk"]
 [ext_resource type="AudioStream" uid="uid://cmx3tfvxy66jl" path="res://sounds/soShoot.wav" id="2_b6jqf"]
