@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=77 format=3 uid="uid://dm2whrfs4t2gf"]
 
 [ext_resource type="Script" uid="uid://jcgok7c3w0eq" path="res://scripts/gameRoot.gd" id="1_comqk"]
-=======
-[gd_scene load_steps=77 format=3 uid="uid://cmhgthbq0nxc8"]
-
-[ext_resource type="Script" path="res://scripts/gameRoot.gd" id="1_comqk"]
->>>>>>> Stashed changes
 [ext_resource type="AudioStream" uid="uid://cmx3tfvxy66jl" path="res://sounds/soShoot.wav" id="2_b6jqf"]
 [ext_resource type="AudioStream" uid="uid://cjm2n6386tf3l" path="res://sounds/meteorDamage.wav" id="3_ib7qk"]
 [ext_resource type="AudioStream" uid="uid://bsnwhethrl3ey" path="res://sounds/meteorDie.wav" id="4_y4aer"]
@@ -14,26 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="6_be0dg"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="7_d8gbx"]
 [ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scripts/points_text.gd" id="8_g7wy1"]
-<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://bpgdtgjlgq8lo" path="res://scripts/lifebarPlayer.gd" id="9_gteqf"]
-=======
-[ext_resource type="Script" path="res://scripts/lifebarPlayer.gd" id="9_gteqf"]
->>>>>>> Stashed changes
 [ext_resource type="Script" uid="uid://c6yx5j1psamix" path="res://scripts/player.gd" id="10_h4fy0"]
 [ext_resource type="Shader" uid="uid://dfe76k56ujk1d" path="res://shaders/fix.gdshader" id="11_e58hg"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_bf0fd"]
 [ext_resource type="Script" uid="uid://cn5gfmxw4c3yt" path="res://scripts/meteor_spawner.gd" id="13_boltt"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="14_xpbet"]
-<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://c75coiyeq8k6p" path="res://scripts/camera.gd" id="15_oocir"]
-=======
-[ext_resource type="Script" path="res://scripts/camera.gd" id="15_oocir"]
->>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://db68drhbssvnf" path="res://Sprites/waveBackground.png" id="16_71v3a"]
 [ext_resource type="Script" uid="uid://c2h8kpc76oi2a" path="res://scripts/nine_patch_rect.gd" id="17_hecik"]
 [ext_resource type="Shader" uid="uid://dyoyb3lncle2a" path="res://shaders/vignette.gdshader" id="18_diagt"]
 [ext_resource type="Script" uid="uid://dljau1unxw6a2" path="res://scripts/powerup_spawner.gd" id="19_b7bvp"]
-<<<<<<< Updated upstream
 [ext_resource type="Shader" uid="uid://0a2aplsr3cyk" path="res://shaders/aaaaaa.gdshader" id="20_6xgjn"]
 [ext_resource type="Script" uid="uid://dg0kqrqmjbep6" path="res://scripts/powerup_list.gd" id="21_34eh8"]
 [ext_resource type="Script" uid="uid://bbnd4i2pb0spo" path="res://scripts/pause_controller.gd" id="22_0kv8o"]
@@ -46,20 +31,6 @@
 [ext_resource type="Script" uid="uid://c7g77el357lcn" path="res://scripts/debug_mode.gd" id="28_o7ra1"]
 [ext_resource type="Script" uid="uid://cv7pxbn1pey8e" path="res://scenes/objects/shield.gd" id="30_y4aer"]
 [ext_resource type="Texture2D" uid="uid://cd5we4gxychsl" path="res://Sprites/shield.png" id="31_y8cjt"]
-=======
-[ext_resource type="Shader" path="res://shaders/aaaaaa.gdshader" id="20_6xgjn"]
-[ext_resource type="Script" path="res://scripts/powerup_list.gd" id="21_34eh8"]
-[ext_resource type="Script" uid="uid://bbnd4i2pb0spo" path="res://scripts/pause_controller.gd" id="22_0kv8o"]
-[ext_resource type="Shader" uid="uid://sisn2poemume" path="res://shaders/blur.gdshader" id="23_xhk3v"]
-[ext_resource type="Script" path="res://scripts/buttonScripts/buttonPauseResume.gd" id="24_b6jqf"]
-[ext_resource type="Script" path="res://scripts/buttonScripts/buttonOptions.gd" id="25_b6jqf"]
-[ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="26_pen73"]
-[ext_resource type="Script" path="res://scripts/buttonScripts/buttonPauseQuit.gd" id="26_y4aer"]
-[ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="27_2y8oi"]
-[ext_resource type="Script" path="res://scripts/debug_mode.gd" id="28_o7ra1"]
-[ext_resource type="Script" path="res://scenes/objects/shield.gd" id="30_y4aer"]
-[ext_resource type="Texture2D" path="res://Sprites/shield.png" id="31_y8cjt"]
->>>>>>> Stashed changes
 
 [sub_resource type="Gradient" id="Gradient_vae2y"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
