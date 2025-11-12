@@ -1,6 +1,10 @@
 extends Node2D
 var oldWave = 1
 var oldOptionsEnabled = controller.optionsEnabled
+@onready var resumeButton = $screenEffectsLayer/pauseFade/pauseController/Control/resumeButton
+@onready var optionsButton =$screenEffectsLayer/pauseFade/pauseController/Control/optionsButton
+@onready var quitButton = $screenEffectsLayer/pauseFade/pauseController/Control/quitButton
+@onready var pausedText = $screenEffectsLayer/pauseFade/pauseController/textContainer/pauseText
 func _ready() -> void:
 	$pausable/stars/Stars2.emitting=true
 	if !controller.gamepad: Input.mouse_mode = Input.MOUSE_MODE_CONFINED
@@ -20,7 +24,7 @@ func _process(delta):
 	if oldOptionsEnabled != controller.optionsEnabled:
 		oldOptionsEnabled = controller.optionsEnabled
 		if !oldOptionsEnabled:
-			if $pauseController.paused:
+			if $screenEffectsLayer/pauseFade/pauseController.paused:
 				controller.currentMenu = 4
 			else:
 				controller.currentMenu = 0
@@ -30,19 +34,19 @@ func _process(delta):
 	match controller.locale:
 		1:
 			$pausable/PointsText.text = str(controller.Points)+" Points"
-			$pauseController/pauseLayer/Control/resumeButton.text = "Resume"
-			$pauseController/pauseLayer/Control/quitButton.text = "Quit"
+			resumeButton.text = "Resume"
+			quitButton.text = "Quit"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Wave "+str(controller.Wave)
-			$pauseController/pauseLayer/textContainer/pauseText.text = "--PAUSED--"
+			pausedText.text = "--PAUSED--"
 		2:
 			$pausable/PointsText.text = str(controller.Points)+" Pontos"
-			$pauseController/pauseLayer/Control/resumeButton.text = "Continuar"
-			$pauseController/pauseLayer/Control/quitButton.text = "Sair"
+			resumeButton.text = "Continuar"
+			quitButton.text = "Sair"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Onda "+str(controller.Wave)
-			$pauseController/pauseLayer/textContainer/pauseText.text = "--PAUSADO--"
+			pausedText.text = "--PAUSADO--"
 		3:
 			$pausable/PointsText.text = str(controller.Points)+" Puntos"
-			$pauseController/pauseLayer/Control/resumeButton.text = "Reanudar"
-			$pauseController/pauseLayer/Control/quitButton.text = "Salir"
+			resumeButton.text = "Reanudar"
+			quitButton.text = "Salir"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Oleada "+str(controller.Wave)
-			$pauseController/pauseLayer/textContainer/pauseText.text = "--PAUSADO--"
+			pausedText.text = "--PAUSADO--"
