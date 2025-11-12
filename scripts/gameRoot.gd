@@ -35,18 +35,21 @@ func _process(delta):
 		1:
 			$pausable/PointsText.text = str(controller.Points)+" Points"
 			resumeButton.text = "Resume"
+			optionsButton.text = "Options"
 			quitButton.text = "Quit"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Wave "+str(controller.Wave)
 			pausedText.text = "--PAUSED--"
 		2:
 			$pausable/PointsText.text = str(controller.Points)+" Pontos"
 			resumeButton.text = "Continuar"
+			optionsButton.text = "Configurações"
 			quitButton.text = "Sair"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Onda "+str(controller.Wave)
 			pausedText.text = "--PAUSADO--"
 		3:
 			$pausable/PointsText.text = str(controller.Points)+" Puntos"
 			resumeButton.text = "Reanudar"
+			optionsButton.text = "Ajustes"
 			quitButton.text = "Salir"
 			$pausable/Camera2D/NinePatchRect/waveText.text = "Oleada "+str(controller.Wave)
 			pausedText.text = "--PAUSADO--"
