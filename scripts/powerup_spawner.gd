@@ -9,4 +9,4 @@ func spawn():
 	var powerupObject = load("res://scenes/objects/powerup.tscn").instantiate()
 	powerupObject.power = chosenPowerup
 	powerupObject.progressList = $"../powerupList"
-	$"..".add_child(powerupObject)
+	$"../powerups".add_child(powerupObject)

@@ -1057,6 +1057,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_cjq5u")
 }
 
+[node name="powerups" type="Node2D" parent="pausable"]
+
+[node name="meteors" type="Node2D" parent="pausable"]
+
+[node name="bullets" type="Node2D" parent="pausable"]
+
 [node name="MeteorSpawner" type="Node2D" parent="pausable"]
 script = ExtResource("13_boltt")
 

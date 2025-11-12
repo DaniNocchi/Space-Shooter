@@ -30,7 +30,7 @@ func _process(_delta):
 		meteorTimer.start(meteorCooldown)
 		var meteor : Area2D = load("res://scenes/objects/meteor.tscn").instantiate()
 		meteor.type = meteorType
-		$"..".add_child(meteor)
+		$"../meteors".add_child(meteor)
 		meteor.position = Vector2(locationX, locationY)
 		meteor.rotation = randi_range(0, 360)
 		meteor.damageAudioPlayer = $"../meteorDamageAudio"; 
