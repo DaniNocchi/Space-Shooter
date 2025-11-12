@@ -1,5 +1,7 @@
 extends Control
 var canSkip = true
+func _ready():
+	$stars/Stars2.emitting = true
 func _process(delta: float) -> void:
 	if Input.is_anything_pressed():
 		if canSkip:

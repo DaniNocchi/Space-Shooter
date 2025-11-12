@@ -5,18 +5,16 @@
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="2_42sfy"]
 [ext_resource type="Script" uid="uid://cwcw4f8npp1sr" path="res://scripts/settings_container.gd" id="3_xqjv0"]
 [ext_resource type="Texture2D" uid="uid://q5lt0higopc" path="res://Sprites/backButton.png" id="4_vrhon"]
-[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_sl78m"]
 [ext_resource type="Texture2D" uid="uid://bx12ni2utgkmo" path="res://Sprites/nextButton.png" id="6_amjcb"]
+[ext_resource type="Script" uid="uid://tuaqfmenc0tw" path="res://scripts/buttonScripts/buttonLangBack.gd" id="6_qx4md"]
 [ext_resource type="Texture2D" uid="uid://bfub8cfrivac0" path="res://Sprites/slider/vertical/sliderBallVertical.png" id="7_heh3d"]
-[ext_resource type="Script" uid="uid://f0h7kbfssyj0" path="res://scripts/buttonScripts/langBack_button.gd" id="7_ubl4e"]
+[ext_resource type="Script" uid="uid://cv6ytbhyhah3" path="res://scripts/buttonScripts/buttonLangNext.gd" id="8_ngwu7"]
 [ext_resource type="Texture2D" uid="uid://bvufxdi42mrmq" path="res://Sprites/slider/vertical/sliderBallVerticalGrab.png" id="8_ubl4e"]
-[ext_resource type="Script" uid="uid://caxnf4vvjd2p2" path="res://scripts/buttonScripts/langNext_button.gd" id="9_ngwu7"]
 [ext_resource type="Script" uid="uid://dvai6jm1ev14k" path="res://addons/slidergamepad/hslider_gamepad.gd" id="9_qx4md"]
-[ext_resource type="Script" uid="uid://cmhpbylxjka6i" path="res://scripts/buttonScripts/back_options_button.gd" id="10_42sfy"]
-[ext_resource type="StyleBox" uid="uid://cm7c6eocwjpfu" path="res://styles/bestFocus.tres" id="11_amjcb"]
 [ext_resource type="Texture2D" uid="uid://njfipxm8ph4x" path="res://Sprites/selectPositive.png" id="11_sl78m"]
 [ext_resource type="Texture2D" uid="uid://dc454ec637353" path="res://Sprites/selectFalse.png" id="12_amjcb"]
-[ext_resource type="Script" uid="uid://cfktg50vhxl2t" path="res://scripts/checkGeneral.gd" id="14_heh3d"]
+[ext_resource type="Script" uid="uid://by6avmr0tsm1u" path="res://scripts/buttonScripts/checkbox_general.gd" id="15_ngwu7"]
+[ext_resource type="Script" uid="uid://c3vfxsebbn7kp" path="res://scripts/buttonScripts/buttonEsc.gd" id="15_qx4md"]
 [ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="18_00o4k"]
 [ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="19_trw5i"]
 
@@ -195,7 +193,11 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_haoea"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qx4md"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amjcb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngwu7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfkqb"]
 
@@ -550,14 +552,11 @@ tracks/8/path = NodePath("../..")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"playBackgroundFade"
-}, {
-"args": [],
-"method": &"disableOptions"
+"method": &"queue_free"
 }]
 }
 
@@ -579,7 +578,7 @@ offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="options"]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="options/CanvasLayer"]
+[node name="backgroundAnimator" type="AnimationPlayer" parent="options/CanvasLayer"]
 libraries = {
 &"": SubResource("AnimationLibrary_trw5i")
 }
@@ -684,9 +683,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7advn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wwec5")
 icon = ExtResource("4_vrhon")
-script = ExtResource("5_sl78m")
+script = ExtResource("6_qx4md")
 mainButton = true
-actionScript = ExtResource("7_ubl4e")
+menu = 2
 selectAudio = NodePath("../../../../../../selectAudio")
 clickAudio = NodePath("../../../../../../clickAudio")
 
@@ -708,8 +707,8 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_2v31w")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7advn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wwec5")
 icon = ExtResource("6_amjcb")
-script = ExtResource("5_sl78m")
-actionScript = ExtResource("9_ngwu7")
+script = ExtResource("8_ngwu7")
+menu = 2
 selectAudio = NodePath("../../../../../../selectAudio")
 clickAudio = NodePath("../../../../../../clickAudio")
 
@@ -724,7 +723,7 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="space1" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
+[node name="spc1" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 text = "  "
@@ -747,13 +746,14 @@ value = 5.0
 editable = false
 scrollable = false
 script = ExtResource("9_qx4md")
+menu = null
 slider_speed = 1.0
 dpad_step = 2
 joystick_discrete = true
 joystick_smooth_discrete_threshold = 5.0
 metadata/_custom_type_script = "uid://dvai6jm1ev14k"
 
-[node name="space2" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
+[node name="spc2" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 text = "  "
@@ -771,7 +771,7 @@ layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="space1" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
+[node name="spc1" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 text = "  "
@@ -794,13 +794,14 @@ value = 5.0
 editable = false
 scrollable = false
 script = ExtResource("9_qx4md")
+menu = null
 slider_speed = 1.0
 dpad_step = 2
 joystick_discrete = true
 joystick_smooth_discrete_threshold = 5.0
 metadata/_custom_type_script = "uid://dvai6jm1ev14k"
 
-[node name="space2" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
+[node name="spc2" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 text = "  "
@@ -816,8 +817,10 @@ vertical_alignment = 1
 [node name="fullscreenCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FullscreenCheck" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter"]
+[node name="FullscreenCheck" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
@@ -828,16 +831,20 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
-theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qx4md")
 theme_override_icons/checked = ExtResource("11_sl78m")
 theme_override_icons/unchecked = ExtResource("12_amjcb")
-theme_override_icons/radio_checked = ExtResource("12_amjcb")
+theme_override_icons/radio_checked = ExtResource("11_sl78m")
 theme_override_icons/radio_unchecked = ExtResource("12_amjcb")
-theme_override_icons/checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/checked_disabled = ExtResource("11_sl78m")
 theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
-theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_checked_disabled = ExtResource("11_sl78m")
 theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
-script = ExtResource("14_heh3d")
+icon_alignment = 1
+script = ExtResource("15_ngwu7")
+menu = 2
+selectAudio = NodePath("../../../../../../selectAudio")
+clickAudio = NodePath("../../../../../../clickAudio")
 
 [node name="ScreenShake" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -849,8 +856,10 @@ vertical_alignment = 1
 [node name="screenShakeCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="screenShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter"]
+[node name="screenShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
@@ -861,16 +870,20 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
-theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ngwu7")
 theme_override_icons/checked = ExtResource("11_sl78m")
 theme_override_icons/unchecked = ExtResource("12_amjcb")
-theme_override_icons/radio_checked = ExtResource("12_amjcb")
+theme_override_icons/radio_checked = ExtResource("11_sl78m")
 theme_override_icons/radio_unchecked = ExtResource("12_amjcb")
-theme_override_icons/checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/checked_disabled = ExtResource("11_sl78m")
 theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
-theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_checked_disabled = ExtResource("11_sl78m")
 theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
 button_pressed = true
+script = ExtResource("15_ngwu7")
+menu = 2
+selectAudio = NodePath("../../../../../../selectAudio")
+clickAudio = NodePath("../../../../../../clickAudio")
 
 [node name="ControllerShake" type="Label" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -882,8 +895,10 @@ vertical_alignment = 1
 [node name="controllerShakeCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="controllerShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter"]
+[node name="controllerShake" type="CheckBox" parent="options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter" node_paths=PackedStringArray("selectAudio", "clickAudio")]
 layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4mcpc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cbgxg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vfo3u")
@@ -894,16 +909,20 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3ld5n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q37v0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_45ueg")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_haoea")
-theme_override_styles/focus = ExtResource("11_amjcb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ngwu7")
 theme_override_icons/checked = ExtResource("11_sl78m")
 theme_override_icons/unchecked = ExtResource("12_amjcb")
-theme_override_icons/radio_checked = ExtResource("12_amjcb")
+theme_override_icons/radio_checked = ExtResource("11_sl78m")
 theme_override_icons/radio_unchecked = ExtResource("12_amjcb")
-theme_override_icons/checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/checked_disabled = ExtResource("11_sl78m")
 theme_override_icons/unchecked_disabled = ExtResource("12_amjcb")
-theme_override_icons/radio_checked_disabled = ExtResource("12_amjcb")
+theme_override_icons/radio_checked_disabled = ExtResource("11_sl78m")
 theme_override_icons/radio_unchecked_disabled = ExtResource("12_amjcb")
 button_pressed = true
+script = ExtResource("15_ngwu7")
+menu = 2
+selectAudio = NodePath("../../../../../../selectAudio")
+clickAudio = NodePath("../../../../../../clickAudio")
 
 [node name="backButtonCenter" type="CenterContainer" parent="options/CanvasLayer/SettingsContainer/VBoxContainer"]
 layout_mode = 2
@@ -926,23 +945,24 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_kpsin")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oysgr")
 text = "Save and Exit"
 flat = true
-script = ExtResource("5_sl78m")
-actionScript = ExtResource("10_42sfy")
+script = ExtResource("15_qx4md")
+menu = 2
 selectAudio = NodePath("../../../../../../selectAudio")
 clickAudio = NodePath("../../../../../../clickAudio")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="options/CanvasLayer"]
+[node name="everythingAnimator" type="AnimationPlayer" parent="options/CanvasLayer"]
 libraries = {
 &"": SubResource("AnimationLibrary_n2rvu")
 }
-autoplay = "in"
 
 [node name="selectAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("18_00o4k")
 max_polyphony = 20
 bus = &"Sounds"
 
 [node name="clickAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("19_trw5i")
 max_polyphony = 20
 bus = &"Sounds"

@@ -3,6 +3,7 @@ var Wave = 1
 var Points = 0
 var MaxMeteor = 15
 var meteorAlive = 0
+var currentMenu = 0
 var gamepad = false
 var optionsEnabled = false
 var version = "2.0.0"
@@ -15,7 +16,7 @@ var meteorKilled = 0
 var doublePoints = false
 var canShowMouse = true
 var fastShots = false
-var existingPowerup = []
+var usingPowerup = []
 
 var locale : int = 1           # 1: English, 2: Portuguese, 3: Spanish
 var maxLocaleOptions = 3       #Sets how much languages are in the game
@@ -59,7 +60,7 @@ func _process(_delta):
 	
 	
 	
-	Wave = floori((Points/25.0)+1.0) #basically, +25 points equals to +1 waves.
+	Wave = floori((Points/50.0)+1.0) #basically, +25 points equals to +1 waves.
 	MaxMeteor = 15*Wave 
 	#basically, +1 waves means +15 max meteors that can spawn. 
 	#I prob have to lower it cause 30 meteors when you have only 

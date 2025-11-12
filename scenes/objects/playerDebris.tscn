@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx05xib0vu10j"]
+[gd_scene load_steps=9 format=3 uid="uid://dx05xib0vu10j"]
 
 [ext_resource type="Texture2D" uid="uid://cirnqsq5d26ic" path="res://Sprites/particles/playerParticle.png" id="1_5h3r6"]
 
@@ -11,6 +11,23 @@ particles_anim_loop = false
 [sub_resource type="Gradient" id="Gradient_55nnf"]
 offsets = PackedFloat32Array(0, 0.73706895, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.5301724, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5h3r6"]
+gradient = SubResource("Gradient_55nnf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8hh1v"]
+particle_flag_disable_z = true
+angle_min = -576.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.7
+color_ramp = SubResource("GradientTexture1D_5h3r6")
+anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_kknpk"]
 length = 0.001
@@ -63,24 +80,17 @@ _data = {
 &"kill": SubResource("Animation_d35p7")
 }
 
-[node name="damageParticle" type="CPUParticles2D"]
+[node name="damageParticle" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_1c0e0")
 emitting = false
 texture = ExtResource("1_5h3r6")
 lifetime = 0.55
 one_shot = true
 explosiveness = 1.0
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 30.0
-angle_min = -576.0
-angle_max = 720.0
-scale_amount_min = 0.5
-scale_amount_max = 0.7
-color_ramp = SubResource("Gradient_55nnf")
-anim_offset_max = 1.0
+fixed_fps = 0
+visibility_rect = Rect2(-31.799812, -29.40181, 61.32764, 54.942345)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_8hh1v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

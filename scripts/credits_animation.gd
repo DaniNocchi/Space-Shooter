@@ -2,8 +2,11 @@ extends Node2D
 var pressedTimer = Timer.new()
 var pressing = false
 var timerActive = false
-@onready var skipText = $CanvasLayer/Label
-@onready var skipProgress = $CanvasLayer/TextureProgressBar
+@onready var skipText = $CanvasLayer/skippingText
+@onready var skipProgress = $CanvasLayer/skippingProgress
+@onready var animation = $animation
+var alpha0 = Color(1,1,1,0)
+var alpha1 = Color(1,1,1,1)
 func _ready():
 	pressedTimer.one_shot = true
 	add_child(pressedTimer)
@@ -12,30 +15,29 @@ func _ready():
 	
 	
 func _process(delta):
-	if Input.is_anything_pressed():
-		pressing = true
-	else:
-		pressing = false
-		
-	if $AnimationPlayer.current_animation == "credits":
-		if pressing == true:
+	pressing = Input.is_anything_pressed()
+	if animation.current_animation == "credits":
+		if pressing:
 			if timerActive == false:
 				timerActive = true
 				pressedTimer.start(2)
-			skipText.modulate = lerp(skipText.modulate, Color(1, 1, 1, 1), 0.1)
-			skipProgress.modulate = lerp(skipProgress.modulate, Color(1, 1, 1, 1), 0.1)
+			skipText.modulate = lerp(skipText.modulate, alpha1, 0.1)
+			skipProgress.tint_progress = alpha1
+			skipProgress.tint_under = lerp(skipProgress.tint_under, alpha1,0.1)
 			skipProgress.value = round(pressedTimer.time_left*100)/100
-		else:
-			skipText.modulate = Color(1, 1, 1, 0)
-			skipProgress.modulate = Color(1, 1, 1, 0)
+		else: #if not pressing
+			skipText.modulate = alpha0
+			skipProgress.tint_under = alpha0
+			skipProgress.tint_progress = alpha0
 			pressedTimer.stop()
 			timerActive = false
-	else:
-		skipText.modulate = Color(1, 1, 1, 0)
-		skipProgress.modulate = Color(1, 1, 1, 0)
+	else: #if not even playing the animation at all
+		skipText.modulate = alpha0
+		skipProgress.tint_under =alpha0
+		skipProgress.tint_progress = alpha0
 
 
 func _Pressed_Cooldown_Timeout():
 	if pressing == true:
 		timerActive = false
-		$AnimationPlayer.play("end")
+		animation.play("end")

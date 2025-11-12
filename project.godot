@@ -10,20 +10,25 @@ config_version=5
 
 [application]
 
-config/name="SpaceShooter"
+config/name="Space Shooter"
 config/version="2.0"
+config/tags=PackedStringArray("2d", "current")
 run/main_scene="uid://dyq1ed1tqdcy4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
+config/icon="uid://bsdv58jwgs1fs"
+config/macos_native_icon="res://Sprites/icon.icns"
+config/windows_native_icon="res://Sprites/icon.ico"
 
 [autoload]
 
 controller="*res://scripts/game_controller.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 Transition="*res://scenes/objects/transition.tscn"
+pwrupController="*res://scripts/powerup_controller.gd"
 
 [debug]
 
@@ -42,9 +47,14 @@ mouse_cursor/custom_image="uid://xix5gb2c1lo4"
 mouse_cursor/custom_image_hotspot=Vector2(14, 14)
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/slidergamepad/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/slidergamepad/plugin.cfg", "res://addons/type_writer_label/plugin.cfg")
 
 [gui]
 

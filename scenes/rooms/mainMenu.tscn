@@ -1,25 +1,58 @@
-[gd_scene load_steps=27 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=30 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
 [ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="2_oirye"]
 [ext_resource type="Texture2D" uid="uid://k815sqnqrbpg" path="res://Sprites/32circle.png" id="2_rtsuv"]
 [ext_resource type="FontFile" uid="uid://0v7x8i437x5i" path="res://fonts/pixel.ttf" id="3_2rquh"]
 [ext_resource type="AudioStream" uid="uid://dxhsr3prakp5b" path="res://sounds/menuClick.wav" id="3_f7dxx"]
-[ext_resource type="Script" uid="uid://bacs6jpxrgy24" path="res://scripts/buttonScripts/buttonGeneral.gd" id="5_6fjaf"]
-[ext_resource type="Script" uid="uid://cib8b5gqy527h" path="res://scripts/buttonScripts/start_button.gd" id="5_yx1sr"]
-[ext_resource type="Script" uid="uid://c83pjqwlrq8xq" path="res://scripts/buttonScripts/options_button.gd" id="6_ipxnb"]
 [ext_resource type="Script" uid="uid://cjx4a8imem3k5" path="res://scripts/creditsText.gd" id="6_oirye"]
-[ext_resource type="Script" uid="uid://bmj2a8xy1v5j4" path="res://scripts/buttonScripts/credits_button.gd" id="7_hxyg5"]
-[ext_resource type="Script" uid="uid://cm37m4tt2v8vi" path="res://scripts/buttonScripts/quit_button.gd" id="8_t54ei"]
 [ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scripts/credits_animation.gd" id="9_ipxnb"]
 [ext_resource type="Texture2D" uid="uid://bwnn32oh22gbd" path="res://Sprites/green_ring.png" id="10_exhbh"]
 [ext_resource type="Texture2D" uid="uid://pgiflukjxlgq" path="res://Sprites/ring.png" id="10_orv06"]
 [ext_resource type="Texture2D" uid="uid://cw8u83w3iji8b" path="res://Sprites/spaceshooterlogo.svg" id="11_t54ei"]
+[ext_resource type="Script" uid="uid://b8o5csoyngw3m" path="res://scripts/buttonScripts/startButton.gd" id="12_f7dxx"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_kputg"]
+[ext_resource type="Script" uid="uid://chg2niikwibju" path="res://scripts/buttonScripts/buttonOptions.gd" id="14_6vnmf"]
+[ext_resource type="Script" uid="uid://vhmlgp76ner2" path="res://scripts/buttonScripts/buttonCredits.gd" id="16_5ats0"]
+[ext_resource type="Script" uid="uid://c5ubvadeuegmw" path="res://scripts/buttonScripts/buttonQuit.gd" id="18_n2rvu"]
 
 [sub_resource type="Gradient" id="Gradient_am2me"]
 offsets = PackedFloat32Array(0.004310345, 0.5948276, 1)
 colors = PackedColorArray(0.0026324103, 0.0026324103, 0.0026324103, 0.6, 0.91351753, 0.91351753, 0.91351753, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_inafh"]
+gradient = SubResource("Gradient_am2me")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oirye"]
+lifetime_randomness = 0.55
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 150, 0)
+direction = Vector3(-100, 0, 0)
+spread = 0.0
+initial_velocity_min = 650.0
+initial_velocity_max = 750.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.03
+color_initial_ramp = SubResource("GradientTexture1D_inafh")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f7dxx"]
+gradient = SubResource("Gradient_am2me")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdxma"]
+lifetime_randomness = 0.55
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30000.03, 150, 0)
+direction = Vector3(-100, 0, 0)
+spread = 0.0
+initial_velocity_min = 650.0
+initial_velocity_max = 700.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.03
+color_initial_ramp = SubResource("GradientTexture1D_f7dxx")
 
 [sub_resource type="Animation" id="Animation_ipxnb"]
 length = 0.001
@@ -74,7 +107,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/4/path = NodePath("CanvasLayer/creditsText:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -98,7 +131,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/6/path = NodePath("CanvasLayer/creditsText:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -210,7 +243,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/RichTextLabel:position")
+tracks/4/path = NodePath("CanvasLayer/creditsText:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -282,7 +315,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/10/path = NodePath("CanvasLayer/creditsText:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -297,7 +330,7 @@ resource_name = "end"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/RichTextLabel:modulate")
+tracks/0/path = NodePath("CanvasLayer/creditsText:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -461,28 +494,17 @@ bus = &"Sounds"
 
 [node name="stars" type="Node2D" parent="."]
 
-[node name="Stars" type="CPUParticles2D" parent="stars"]
+[node name="Stars" type="GPUParticles2D" parent="stars"]
 position = Vector2(336, 89.00001)
 scale = Vector2(0.006041211, 0.78060913)
 amount = 500
 texture = ExtResource("2_rtsuv")
 lifetime = 110.0
 speed_scale = 5.0
-lifetime_randomness = 0.55
-fixed_fps = 30
-draw_order = 1
-emission_shape = 3
-emission_rect_extents = Vector2(1, 150)
-direction = Vector2(-100, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 650.0
-initial_velocity_max = 750.0
-scale_amount_min = 0.0
-scale_amount_max = 0.03
-color_initial_ramp = SubResource("Gradient_am2me")
+visibility_rect = Rect2(-81122.31, -181.68283, 81150.375, 363.60046)
+process_material = SubResource("ParticleProcessMaterial_oirye")
 
-[node name="Stars2" type="CPUParticles2D" parent="stars"]
+[node name="Stars2" type="GPUParticles2D" parent="stars"]
 position = Vector2(162, 94)
 scale = Vector2(0.006125344, 0.7733686)
 emitting = false
@@ -492,18 +514,9 @@ lifetime = 110.0
 one_shot = true
 speed_scale = 5.0
 explosiveness = 1.0
-lifetime_randomness = 0.55
-fixed_fps = 30
-emission_shape = 3
-emission_rect_extents = Vector2(30000.03, 150)
-direction = Vector2(-100, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 650.0
-initial_velocity_max = 700.0
-scale_amount_min = 0.0
-scale_amount_max = 0.03
-color_initial_ramp = SubResource("Gradient_am2me")
+visibility_rect = Rect2(-101966, -181.77249, 131868.44, 363.6124)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_vdxma")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -514,7 +527,7 @@ offset_bottom = 40.0
 [node name="creditsAnimation" type="Node2D" parent="UI"]
 script = ExtResource("9_ipxnb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/creditsAnimation"]
+[node name="animation" type="AnimationPlayer" parent="UI/creditsAnimation"]
 libraries = {
 &"": SubResource("AnimationLibrary_hxyg5")
 }
@@ -530,7 +543,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/creditsAnimation/CanvasLayer"]
+[node name="creditsText" type="RichTextLabel" parent="UI/creditsAnimation/CanvasLayer"]
 offset_top = 180.0
 offset_right = 320.0
 offset_bottom = 374.9975
@@ -561,7 +574,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("6_oirye")
 
-[node name="Label" type="Label" parent="UI/creditsAnimation/CanvasLayer"]
+[node name="skippingText" type="Label" parent="UI/creditsAnimation/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 offset_left = 266.0
 offset_top = 6.0
@@ -572,7 +585,7 @@ theme_override_fonts/font = ExtResource("3_2rquh")
 text = "Skipping..."
 horizontal_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/creditsAnimation/CanvasLayer"]
+[node name="skippingProgress" type="TextureProgressBar" parent="UI/creditsAnimation/CanvasLayer"]
 offset_left = 302.0
 offset_top = 3.0000002
 offset_right = 602.0
@@ -666,11 +679,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
 text = "Start Game"
 flat = true
 alignment = 0
-script = ExtResource("5_6fjaf")
+script = ExtResource("12_f7dxx")
 mainButton = true
+menu = 1
 optionsCanDisable = true
 horizontalAlign = 0
-actionScript = ExtResource("5_yx1sr")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 
@@ -700,10 +713,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
 text = "Options"
 flat = true
 alignment = 0
-script = ExtResource("5_6fjaf")
+script = ExtResource("14_6vnmf")
+menu = 1
 optionsCanDisable = true
 horizontalAlign = 0
-actionScript = ExtResource("6_ipxnb")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 
@@ -733,10 +746,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kputg")
 text = "Credits"
 flat = true
 alignment = 0
-script = ExtResource("5_6fjaf")
+script = ExtResource("16_5ats0")
+menu = 1
 optionsCanDisable = true
 horizontalAlign = 0
-actionScript = ExtResource("7_hxyg5")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 
@@ -767,10 +780,10 @@ toggle_mode = true
 text = "Quit"
 flat = true
 alignment = 0
-script = ExtResource("5_6fjaf")
+script = ExtResource("18_n2rvu")
+menu = 1
 optionsCanDisable = true
 horizontalAlign = 0
-actionScript = ExtResource("8_t54ei")
 selectAudio = NodePath("../../../selectAudio")
 clickAudio = NodePath("../../../clickAudio")
 

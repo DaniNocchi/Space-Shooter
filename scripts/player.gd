@@ -41,6 +41,10 @@ func _process(_delta): # step event
 	else:
 		hspd = lerpf(hspd, 0, speedInc)
 		vspd = lerpf(vspd, 0, speedInc)
+	
+	if pwrupController.plusLife: 
+		life+=1
+		pwrupController.plusLife = false
 	ShootBullets()
 	spriteStretch()
 	damageProcess()
@@ -89,7 +93,7 @@ func MoveAndRotate(): #the name says it all
 		knockbackSpeed = lerp(knockbackSpeed, 0.0, 0.05)
 		position -= transform.x * knockbackSpeed
 func ShootBullets(): #the name says it all
-	if controller.fastShots: shootCooldown = 0.1
+	if pwrupController.fastShots: shootCooldown = 0.1
 	else: shootCooldown = 0.2
 	if canShoot:
 		if Input.is_action_pressed("shoot") and shootBool:
@@ -98,7 +102,7 @@ func ShootBullets(): #the name says it all
 			knockbackSpeed = 0.15
 			$"../shootAudio".play()
 			var bullet = load("res://scenes/objects/bullet.scn").instantiate()
-			$"..".add_child(bullet)
+			$"../bullets".add_child(bullet)
 			bullet.transform = $Muzzle.global_transform
 			shootTimer.start(shootCooldown)
 			camera.add_trauma(0.2)

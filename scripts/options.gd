@@ -1,19 +1,28 @@
 extends Node2D
 var backgroundFade = true
+@onready var backgroundAnimator = $options/CanvasLayer/backgroundAnimator
+@onready var everythingAnimator = $options/CanvasLayer/everythingAnimator
 func _ready():
-	if backgroundFade:
-		$options/CanvasLayer/AnimationPlayer2.play("in")
+	controller.currentMenu = 2
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value = controller.SFXVolume
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/musicContainer/musicSlider.value = controller.musicVolume
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck.button_pressed = controller.fullscreen
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/screenShakeCenter/screenShake.button_pressed = controller.screenShake
 	$options/CanvasLayer/SettingsContainer/VBoxContainer/controllerShakeCenter/controllerShake.button_pressed = controller.gamepadShake
-func disableOptions():
-	controller.optionsEnabled = false
-	queue_free()
-func playBackgroundFade():
-	if backgroundFade:
-		$options/CanvasLayer/AnimationPlayer2.play("out")
+	await await get_tree().process_frame
+	playAnimation(true)
+
+func playAnimation(state): ##state true: in;  state false: out
+	if state:
+		if backgroundFade: backgroundAnimator.play("in")
+		everythingAnimator.play("in")
+		controller.optionsEnabled = true
+	else:
+		if backgroundFade: backgroundAnimator.play("out")
+		everythingAnimator.play("out")
+		controller.save_game()
+		controller.optionsEnabled = false
+
 func _process(delta):
 	controller.fullscreen = $options/CanvasLayer/SettingsContainer/VBoxContainer/fullscreenCenter/FullscreenCheck.button_pressed
 	controller.SFXVolume = $options/CanvasLayer/SettingsContainer/VBoxContainer/soundContainer/soundSlider.value
