@@ -2,8 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream:Sprites/icon.png.import
 uid="uid://bsdv58jwgs1fs"
 path="res://.godot/imported/icon.png-f9ba9008f31679cd240e2c5f33a9a4fb.ctex"
+=======
+uid="uid://dao5q7pk7rj36"
+path="res://.godot/imported/power0.png-fd405cee2f23d48c0e47c038d45af3f5.ctex"
+>>>>>>> Stashed changes:Sprites/power0.png.import
 metadata={
 "vram_texture": false
 }
