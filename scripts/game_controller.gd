@@ -30,7 +30,7 @@ var musicBus = AudioServer.get_bus_index("Music")   #The category "Music" (Used 
 var oldSFXVolume = SFXVolume                        #Used to check if the sound volume changed (Performance Reasons)
 var oldMusicVolume = musicVolume                    #Used to cehck if the music volume changed (Performance Reasons)
 var oldFullscreen = fullscreen                      #Used to check if the fullscreen changed (Performance Reasons)
-
+var localeCodes = [null, "en", "pt", "es"]
 func newPersonalRecord():
 	if Points > personalRecord:
 		oldPersonalRecord = personalRecord
@@ -40,7 +40,7 @@ func newPersonalRecord():
 		oldPersonalRecord = personalRecord
 func _process(_delta):
 	locale = wrap(locale, 1, maxLocaleOptions+1) #limits the languages and wrap it (if i pass the last language, it goes back to the first)
-	
+	TranslationServer.set_locale(localeCodes[locale])
 	
 	#checks if i changed the fullscreen or the volumes (for performance reasons)
 	if oldSFXVolume != SFXVolume:

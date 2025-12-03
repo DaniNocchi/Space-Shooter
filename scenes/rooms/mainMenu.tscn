@@ -576,9 +576,9 @@ script = ExtResource("6_oirye")
 
 [node name="skippingText" type="Label" parent="UI/creditsAnimation/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
-offset_left = 266.0
+offset_left = 215.0
 offset_top = 6.0
-offset_right = 347.0
+offset_right = 423.5
 offset_bottom = 26.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("3_2rquh")

@@ -1,0 +1,27 @@
+keys,en,pt,es
+MENU_START_BUTTON,Start Game,Começar o Jogo,Comenzar Juego
+MENU_OPTIONS_BUTTON,Settings,Configurações,Ajustes
+MENU_CREDITS_BUTTON,Credits,Créditos,Creditos
+MENU_QUIT_BUTTON,Quit,Sair,Salir
+MENU_MADE_BY,Made by DaniNocchi,Feito por DaniNocchi,Hecho por DaniNocchi
+MENU_VERSION,Version {version},Versão {version},Versión {version}
+MENU_SKIP_TEXT,Skipping...,Pulando...,Saltando...
+SET_TITLE,Settings,Configurações,Ajustes
+SET_LANG_TITLE,Language,Idioma,Idioma
+SET_LANG_LABEL,English,Português,Español
+SET_SOUNDS_VOLUME,Sound  Volume,Volume do Som,Volumen del Sonido
+SET_MUSIC_VOLUME,Music Volume,Volume da Música,Volumen de la Música
+SET_SCREEN_SHAKE,Screen Shake,Tremor da Tela,Vibracíon de Pantalla
+SET_CONTROLLER_SHAKE,Controller Shake,Tremor do Controle,Vibracíon del Mando
+SET_SAVE_AND_EXIT,Save and Exit,Salvar e Sair,Guardar y Salir
+SET_FULLSCREEN,Fullscreen,Tela Cheia,Pantalla Completa
+GAME_POINTS,{points} Points,{points} Pontos,{points} Puntos
+GAME_PAUSE_RESUME,Resume,Continuar,Reanudar
+GAME_PAUSE_OPTIONS,Options,Configurações,Ajustes
+GAME_PAUSE_QUIT,Quit,Sair,Salir
+GAME_WAVE,Wave {wave} ,Onda {wave},Oleada {wave}
+GAME_PAUSE_LABEL,--PAUSED--,--PAUSADO--,--PAUSADO--
+CREDITS_TEXT,"SPACE SHOOTER\n[font_size=8]\n\n\nDeveloper - DaniNocchi\nAudio - DaniNocchi, Vicent\nMusic - TalonTrueBlood\n\nfont_size=10]\nSpecial Thanks[font_size=8]\nAll my friends that tested the game\n\n\nYes, DaniNocchi (Me) did basically everything.\n\nActually, I did the game all by myself\nsince the first version of it.","SPACE SHOOTER\n[font_size=8]\n\n\nDesenvolvedor - DaniNocchi\nÁudio - DaniNocchi, Vincent\nMúsica - TalonTrueBlood\n\n[font_size=10]\nAgradecimentos Especiais[font_size=8]\nTodos meus amigos que testaram o jogo.\n\n\nSim, DaniNocchi (Eu) fez basicamente tudo.\n\nNa verdade, eu fiz o jogo todo sozinho\ndesde a primeira versão.","SPACE SHOOTER\n[font_size=8]\n\n\nDesarrollador - DaniNocchi\nAudio - DaniNocchi, Vincent\nMúsica - TalonTrueBlood\n\n[font_size=10]\nAgradecimiento Especial[font_size=8]\nTodos mis amigos que probaram el juego.\n\n\nSi, DaniNocchi (Yo) hice basicamente todo.\n\nEn realidad, hice el juego yo solo\ndesde la primera versión."
+GAMEOVER_TEXT,pass,pass,pass
+GAMEOVER_SUCCESS,pass,pass,pass
+GAMEOVER_FAIL,pass,pass,pass

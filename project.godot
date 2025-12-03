@@ -54,7 +54,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/git_bash_here/plugin.cfg", "res://addons/slidergamepad/plugin.cfg", "res://addons/type_writer_label/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/slidergamepad/plugin.cfg", "res://addons/type_writer_label/plugin.cfg")
 
 [gui]
 
@@ -179,7 +179,8 @@ lookRight={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://locale/english.tres", "res://locale/portuguese.tres", "res://locale/spanish.tres")
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://translation/text.en.translation", "res://translation/text.es.translation", "res://translation/text.pt.translation")
 
 [rendering]
 

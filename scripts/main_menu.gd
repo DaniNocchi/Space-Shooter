@@ -19,32 +19,10 @@ func _process(delta: float) -> void:
 		oldOptionsEnabled = controller.optionsEnabled
 		if !oldOptionsEnabled:
 			controller.currentMenu = 1
-	if controller.locale != locale:
-		locale = controller.locale
-		match controller.locale:
-			1:
-				$UI/creditsAnimation/CanvasLayer/skippingText.text = "Skipping..."
-				$UI/mainButtons/startButton.text = "Start Game"
-				$UI/mainButtons/optionsButton.text = "Settings"
-				$UI/mainButtons/creditsButton.text = "Credits"
-				$UI/mainButtons/quitButton.text = "Quit"
-				$"UI/made by".text = "Made by DaniNocchi"
-				$UI/version.text = "Version "+controller.version
-			2:
-				$UI/creditsAnimation/CanvasLayer/skippingText.text = "Pulando..."
-				$UI/mainButtons/startButton.text = "Começar o Jogo"
-				$UI/mainButtons/optionsButton.text = "Configurações"
-				$UI/mainButtons/creditsButton.text = "Creditos"
-				$UI/mainButtons/quitButton.text = "Sair"
-				$"UI/made by".text = "Feito por DaniNocchi"
-				$UI/version.text = "Versão "+controller.version
-			3:
-				$UI/creditsAnimation/CanvasLayer/skippingText.text = "Saltando..."
-				$UI/mainButtons/startButton.text = "Comenzar Juego"
-				$UI/mainButtons/optionsButton.text = "Ajustes"
-				$UI/mainButtons/creditsButton.text = "Creditos"
-				$UI/mainButtons/quitButton.text = "Salir"
-				$"UI/made by".text = "Hecho por DaniNocchi"
-				$UI/version.text = "Versión "+controller.version
-
-	
+	$UI/creditsAnimation/CanvasLayer/skippingText.text = tr("MENU_SKIP_TEXT")
+	$UI/mainButtons/startButton.text = 					 tr("MENU_START_BUTTON")
+	$UI/mainButtons/optionsButton.text = 				 tr("MENU_OPTIONS_BUTTON")
+	$UI/mainButtons/creditsButton.text = 				 tr("MENU_CREDITS_BUTTON")
+	$UI/mainButtons/quitButton.text = 					 tr("MENU_QUIT_BUTTON")
+	$"UI/made by".text = 								 tr("MENU_MADE_BY")
+	$UI/version.text = tr("MENU_VERSION", str(controller.version))
