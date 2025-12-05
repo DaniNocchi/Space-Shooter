@@ -31,25 +31,9 @@ func _process(delta):
 	if controller.Wave!=oldWave:
 		oldWave = controller.Wave
 		DiscordRPC.refresh() 
-	match controller.locale:
-		1:
-			$pausable/PointsText.text = str(controller.Points)+" Points"
-			resumeButton.text = "Resume"
-			optionsButton.text = "Options"
-			quitButton.text = "Quit"
-			$pausable/Camera2D/NinePatchRect/waveText.text = "Wave "+str(controller.Wave)
-			pausedText.text = "--PAUSED--"
-		2:
-			$pausable/PointsText.text = str(controller.Points)+" Pontos"
-			resumeButton.text = "Continuar"
-			optionsButton.text = "Configurações"
-			quitButton.text = "Sair"
-			$pausable/Camera2D/NinePatchRect/waveText.text = "Onda "+str(controller.Wave)
-			pausedText.text = "--PAUSADO--"
-		3:
-			$pausable/PointsText.text = str(controller.Points)+" Puntos"
-			resumeButton.text = "Reanudar"
-			optionsButton.text = "Ajustes"
-			quitButton.text = "Salir"
-			$pausable/Camera2D/NinePatchRect/waveText.text = "Oleada "+str(controller.Wave)
-			pausedText.text = "--PAUSADO--"
+		$pausable/PointsText.text = tr("GAME_POINTS").format({"points"=str(controller.Points)})
+		resumeButton.text = tr("GAME_PAUSE_RESUME")
+		optionsButton.text = tr("GAME_PAUSE_OPTIONS")
+		quitButton.text = tr("GAME_PAUSE_QUIT")
+		$pausable/Camera2D/NinePatchRect/waveText.text = tr("GAME_WAVE").format({"wave"=str(controller.Wave)})
+		pausedText.text = tr("GAME_PAUSE_LABEL")

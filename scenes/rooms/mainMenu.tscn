@@ -583,7 +583,7 @@ offset_bottom = 26.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("3_2rquh")
 text = "Skipping..."
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="skippingProgress" type="TextureProgressBar" parent="UI/creditsAnimation/CanvasLayer"]
 offset_left = 302.0

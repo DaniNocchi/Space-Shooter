@@ -11,8 +11,8 @@ func _ready():
 	DiscordRPC.large_image_text = "Space Shooter"
 	DiscordRPC.refresh()
 	controller.currentMenu = 1
-	
-	
+
+
 
 func _process(delta: float) -> void:
 	if oldOptionsEnabled != controller.optionsEnabled:
@@ -25,4 +25,4 @@ func _process(delta: float) -> void:
 	$UI/mainButtons/creditsButton.text = 				 tr("MENU_CREDITS_BUTTON")
 	$UI/mainButtons/quitButton.text = 					 tr("MENU_QUIT_BUTTON")
 	$"UI/made by".text = 								 tr("MENU_MADE_BY")
-	$UI/version.text = tr("MENU_VERSION", str(controller.version))
+	$UI/version.text = tr("MENU_VERSION").format({"version" = str(controller.version)})
