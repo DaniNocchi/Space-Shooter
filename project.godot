@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Space Shooter"
+config/name="Hazard Space"
 config/version="2.0"
 config/tags=PackedStringArray("2d", "current")
 run/main_scene="uid://dyq1ed1tqdcy4"

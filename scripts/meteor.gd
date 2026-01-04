@@ -47,8 +47,9 @@ func _ready():
 			$collision.shape = colShape
 	spriteChange()
 func _process(delta: float) -> void:
-	position += transform.x * speed
-	$sprite.rotation += speed/15
+	if pwrupController.freeze != true:
+		position += transform.x * speed
+		$sprite.rotation += speed/15
 	spriteChange()
 func damage():
 	life -=1

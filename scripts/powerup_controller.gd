@@ -38,10 +38,14 @@ var spriteList = [ #powerup sprite list
 	"res://Sprites/power2.png",
 	"res://Sprites/power3.png",
 	"res://Sprites/power4.png",
-	"res://Sprites/power5.png"
+	"res://Sprites/power5.png",
+	"res://Sprites/power6.png",
+	"res://Sprites/power7.png",
+	"res://Sprites/power8.png",
+	"res://Sprites/power9.png"
 ]
-#var powerupList := [1, 2, 2, 2, 3, 3, 4, 5, 5] #powerup chances
-var powerupList := [5]
+var powerupList := [1, 2, 2, 2, 3, 3, 4, 5, 5, 6, 6, 8, 8, 8, 9] #powerup chances
+#var powerupList := [7]
 func action(pwr, obj): 
 	match pwr:
 		1:
@@ -58,6 +62,17 @@ func action(pwr, obj):
 		5:
 			aimbot = true
 			obj.spawnTimer()
+		6:
+			freeze = true
+			obj.spawnTimer()
+		7:
+			invincible = true
+			obj.spawnTimer()
+		8:
+			tripleShots = true
+			obj.spawnTimer()
+		9:
+			plusPoints = true
 	#the powerup action
 func pullTimerTime(pwr): 
 	match pwr: #The time the powerup timer will have (in seconds)
@@ -65,12 +80,19 @@ func pullTimerTime(pwr):
 		2: return 10.00
 		3: return 15.00
 		5: return 10.00
+		6: return 10.00
+		7: return 10.00
+		8: return 10.00
 func timerTimeout(pwr): 
 	match pwr:
 		1: doublePoints = false
 		2: fastShots = false
 		3: shieldOn = false
 		5: aimbot = false
+		6: freeze = false
+		7: invincible = false
+		8: tripleShots = false
+
 	#What happens if the timer runs out
 	#basically just invert the action() effect
 
@@ -93,6 +115,10 @@ func newGame():
 	shieldOn = false
 	plusLife = false
 	aimbot = false
+	freeze = false
+	invincible = false
+	tripleShots = false
+	plusPoints = false
 
 #Creating variables area
 #(add it in the newGame() too)
@@ -102,15 +128,17 @@ var oldWave = 1
 var shieldOn = false
 var plusLife = false
 var aimbot = false
-
-
+var freeze = false
+var invincible = false
+var tripleShots = false
+var plusPoints = false
 #Powerup List:
 #1- Double Points
-#2- Fast Shooting 
+#2- Fast Shooting
 #3- Shield
 #4- +1 Life
 #5- Aimbot
 #6- Freeze
 #7- Player Invencibility
 #8- Triple Bullets
-#9- Damage Pulse
+#9- 250 points

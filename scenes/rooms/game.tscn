@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://njhmg8qdmjba" path="res://scripts/points_text.gd" id="8_g7wy1"]
 [ext_resource type="Script" uid="uid://bpgdtgjlgq8lo" path="res://scripts/lifebarPlayer.gd" id="9_gteqf"]
 [ext_resource type="Script" uid="uid://c6yx5j1psamix" path="res://scripts/player.gd" id="10_h4fy0"]
-[ext_resource type="Shader" uid="uid://dfe76k56ujk1d" path="res://shaders/fix.gdshader" id="11_e58hg"]
+[ext_resource type="Shader" uid="uid://d247r5f08acra" path="res://scenes/rooms/player.gdshader" id="11_y8cjt"]
 [ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_bf0fd"]
 [ext_resource type="Script" uid="uid://cn5gfmxw4c3yt" path="res://scripts/meteor_spawner.gd" id="13_boltt"]
 [ext_resource type="Script" uid="uid://d4jw35bia2ny7" path="res://scripts/boundary.gd" id="14_xpbet"]
@@ -102,10 +102,11 @@ height = 2
 size = Vector2(8, 8)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a3i0e"]
-shader = ExtResource("11_e58hg")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_value = 0.0
-shader_parameter/alpha_value = 1.0
+shader = ExtResource("11_y8cjt")
+shader_parameter/horizontal_influence = 1.0
+shader_parameter/vertical_influence = 0.5000000074506
+shader_parameter/strength = 0.0
+shader_parameter/speed = 1.0
 
 [sub_resource type="Animation" id="Animation_a3i0e"]
 length = 0.001

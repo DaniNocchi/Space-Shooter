@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://to3sdmfn88t1"]
+[gd_scene load_steps=28 format=3 uid="uid://to3sdmfn88t1"]
 
 [ext_resource type="Script" uid="uid://d2uhjkh6pvk8l" path="res://scripts/main_menu.gd" id="1_rbs56"]
 [ext_resource type="AudioStream" uid="uid://bjhnavjsap8jn" path="res://sounds/menuNavigate.wav" id="2_oirye"]
@@ -9,9 +9,7 @@
 [ext_resource type="Script" uid="uid://dsql4ptngd5gf" path="res://scripts/credits_animation.gd" id="9_ipxnb"]
 [ext_resource type="Texture2D" uid="uid://bwnn32oh22gbd" path="res://Sprites/green_ring.png" id="10_exhbh"]
 [ext_resource type="Texture2D" uid="uid://pgiflukjxlgq" path="res://Sprites/ring.png" id="10_orv06"]
-[ext_resource type="Texture2D" uid="uid://cw8u83w3iji8b" path="res://Sprites/spaceshooterlogo.svg" id="11_t54ei"]
 [ext_resource type="Script" uid="uid://b8o5csoyngw3m" path="res://scripts/buttonScripts/startButton.gd" id="12_f7dxx"]
-[ext_resource type="Texture2D" uid="uid://d3wk7koh5x0hn" path="res://Sprites/sPlayer.png" id="12_kputg"]
 [ext_resource type="Script" uid="uid://chg2niikwibju" path="res://scripts/buttonScripts/buttonOptions.gd" id="14_6vnmf"]
 [ext_resource type="Script" uid="uid://vhmlgp76ner2" path="res://scripts/buttonScripts/buttonCredits.gd" id="16_5ats0"]
 [ext_resource type="Script" uid="uid://c5ubvadeuegmw" path="res://scripts/buttonScripts/buttonQuit.gd" id="18_n2rvu"]
@@ -597,17 +595,6 @@ value = 2.0
 fill_mode = 5
 texture_under = ExtResource("10_exhbh")
 texture_progress = ExtResource("10_orv06")
-
-[node name="Spaceshooterlogo" type="Sprite2D" parent="UI"]
-position = Vector2(73, 48.000004)
-scale = Vector2(0.10579344, 0.105793454)
-texture = ExtResource("11_t54ei")
-
-[node name="SPlayer" type="Sprite2D" parent="UI"]
-position = Vector2(73, 42)
-rotation = -1.5707964
-scale = Vector2(1.5874317, 1.5874317)
-texture = ExtResource("12_kputg")
 
 [node name="made by" type="RichTextLabel" parent="UI"]
 layout_mode = 0

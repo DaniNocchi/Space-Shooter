@@ -37,6 +37,10 @@ func _ready(): #Basically the create event
 	deadTimer.timeout.connect(Callable(self, "_Dead_Cooldown_Timeout"))
 
 func _process(_delta): # step event
+	if pwrupController.invincible == true:
+		$Sprite.material.strength = 0.3
+	else:
+		$Sprite.set_instance_shader_parameter("strength", 0.0)
 	if canMoveAndRotate: MoveAndRotate()
 	else:
 		hspd = lerpf(hspd, 0, speedInc)
@@ -101,14 +105,20 @@ func ShootBullets(): #the name says it all
 			spriteX = 1.3
 			knockbackSpeed = 0.15
 			$"../shootAudio".play()
-			var bullet = load("res://scenes/objects/bullet.scn").instantiate()
-			$"../bullets".add_child(bullet)
-			bullet.transform = $Muzzle.global_transform
+			spawnBullet(0)
+			if pwrupController.tripleShots:
+				spawnBullet(5)
+				spawnBullet(-5)
 			shootTimer.start(shootCooldown)
 			camera.add_trauma(0.2)
 			if controller.gamepad and controller.gamepadShake:
 				Input.start_joy_vibration(0, 0.1, 0.1, 0.1)
 			shootBool = false
+func spawnBullet(offset:float):
+	var bullet = load("res://scenes/objects/bullet.scn").instantiate()
+	$"../bullets".add_child(bullet)
+	bullet.transform = $Muzzle.global_transform
+	bullet.rotation += offset
 func spriteStretch(): #squatch and stretch when shooting
 	spriteX = lerp(spriteX, 1.0, 0.3)
 	spriteY = lerp(spriteY, 1.0, 0.3)
@@ -141,12 +151,12 @@ func damageProcess():
 			bodiesInside.erase(body)
 
 			
-	if bodiesInside.size() != 0:
+	if bodiesInside.size() != 0 and pwrupController.invincible == false:
 		damage()
+	
 	if life<=0:
 		canMoveAndRotate = false
 		canShoot = false
-	
 
 #region Signals and Timeouts events
 func _Damage_Cooldown_Timeout(): 
